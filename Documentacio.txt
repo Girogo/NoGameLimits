@@ -13,7 +13,7 @@ Obrir projecte -> Proyecto -> Propiedades:
 	2 -> Vinculador -> General -> Directorios de archivos adicionales -> Afegim C:\SDL2\lib\x64
 	3 -> Vinculador -> Entrada -> Dependencias adicionales -> Afegim SDL2.lib; SDL2main.lib
 	4 -> Vinculador -> Sistema -> Subsistema -> Seleccionem Windows
-
+	
 Provar de compilar el següent codi:
 #include <SDL.h>;
 
