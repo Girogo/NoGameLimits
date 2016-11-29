@@ -1,7 +1,18 @@
-﻿Documentació projecte Visual Studio 2015 + Repo
+﻿Documentació projecte Visual Studio 2015 + Repo + SDL2
 
-Descarregar SDL2.0 de la web https://www.libsdl.org/download-2.0.php
-Versió -> Development Libraries (Visual C++ 32/64-bit)
+///////////////////Descarregues///////////////////////
+
+GitHub Desktop
+-> https://desktop.github.com/
+
+Plug in de GitHub per a Visual Studio
+-> https://visualstudio.github.com/
+
+SDL2.0 de la web https://www.libsdl.org/download-2.0.php
+-> Versió -> Development Libraries (Visual C++ 32/64-bit)
+
+
+//////////Configuració Visual Studio per SDL2//////////
 
 Crear una carpeta de nom SDL2
 Ubicació -> C:\SDL2
@@ -14,7 +25,11 @@ Obrir projecte -> Proyecto -> Propiedades:
 	3 -> Vinculador -> Entrada -> Dependencias adicionales -> Afegim SDL2.lib; SDL2main.lib
 	4 -> Vinculador -> Sistema -> Subsistema -> Seleccionem Windows
 	
-Provar de compilar el següent codi:
+Copiar la llibreria SDL2.dll de C:\SDL2\lib\x64 a la carpeta Debug del projecte
+	
+///////////////////Codi per provar///////////////////////
+
+Provar de compilar el següent codi i executar-lo:
 #include <SDL.h>;
 
 int main(int argc, char ** argv)
