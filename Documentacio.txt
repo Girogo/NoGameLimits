@@ -45,3 +45,4 @@ int main(int argc, char ** argv)
 
 QUE SOC EN POL COLLONS!
 No em parlis aixi
+Soc un deu i faig el que vull
