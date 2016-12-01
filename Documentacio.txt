@@ -44,3 +44,4 @@ int main(int argc, char ** argv)
 }
 
 QUE SOC EN POL COLLONS!
+No em parlis aixi
