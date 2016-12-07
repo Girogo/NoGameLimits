@@ -7,8 +7,9 @@ using namespace std;
 
 int main(int argc, char ** argv)
 {
+
 	Game game;
-	game.Init("Videojuego", 600, 400, true);
+	game.Init("Videojuego", 600, 400, false);
 
 	while (game.Running())
 	{

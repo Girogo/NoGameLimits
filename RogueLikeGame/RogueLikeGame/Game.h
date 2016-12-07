@@ -4,7 +4,7 @@
 #define _GAME_H_
 
 #include <SDL.h>
-
+#include "Sprite.h"
 
 class Game
 {
@@ -17,8 +17,6 @@ public:
 	
 	void HandleEvents(Game* game);
 
-	bool Running() { return m_bRunning; }
-
 	void Update();
 
 	void Draw();
@@ -27,6 +25,10 @@ public:
 
 	void Quit();
 
+	bool Running() { return m_bRunning; }
+
+	SDL_Surface* WindowSurface() { return mWindowSurface; }
+
 	~Game();
 
 private:
@@ -34,6 +36,9 @@ private:
 	bool m_bRunning;
 	bool m_bFullscreen;
 	SDL_Window* Window;
+	SDL_Surface* mWindowSurface;
+
+	SDL_Surface* testSprite;
 };
 
 #endif

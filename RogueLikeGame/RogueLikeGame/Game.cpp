@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include <stdio.h>
 
 
 Game::Game()
@@ -13,9 +13,10 @@ Game::Game()
 
 void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 {
-	int flags = 0;
 	SDL_INIT_EVERYTHING;
-
+	int flags = 0;
+	testSprite = NULL;
+	
 	if (fullscreen)
 	{
 		flags = SDL_WINDOW_MAXIMIZED;
@@ -33,6 +34,9 @@ void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 
 	m_bFullscreen = fullscreen;
 	m_bRunning = true;
+
+	mWindowSurface = SDL_GetWindowSurface(Window);
+	testSprite = Sprite::Load("sprites/test.bmp", mWindowSurface);
 }
 
 
@@ -69,14 +73,15 @@ void Game::HandleEvents(Game* game)
 
 void Game::Update()
 {
-
+	SDL_UpdateWindowSurface(Window);
 }
 
 
 //Draw
 
 void Game::Draw()
-{
+{	
+	Sprite::Draw(mWindowSurface, testSprite, 0, 0);
 
 }
 
