@@ -8,57 +8,79 @@ Game::Game()
 }
 
 
-//Inicializa todos los componentes de SDL y la pantalla.
-//Parametros (Titulo pantalla, longitud, altura y fullscreen(true/false)
-
 void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 {
 	SDL_INIT_EVERYTHING;
+
 	int flags = 0;
+
+	m_Window = NULL;
+	m_WindowRenderer = NULL;
+
 	testSprite = NULL;
-	
+
 	if (fullscreen)
 	{
 		flags = SDL_WINDOW_MAXIMIZED;
 	}
 
 	//Creación de la pantalla
-	Window = SDL_CreateWindow(
+	m_Window = SDL_CreateWindow(
 		titulo,					//titulo pantalla
-		SDL_WINDOWPOS_CENTERED,	//posicion x inicial
-		SDL_WINDOWPOS_CENTERED,	//posicion y inicial
+		SDL_WINDOWPOS_UNDEFINED,	//posicion x inicial
+		SDL_WINDOWPOS_UNDEFINED,	//posicion y inicial
 		sizeX,					//ancho en px
 		sizeY,					//altura en px
 		flags
 	);
 
+	//Creación del Renderizador
+	m_WindowRenderer = SDL_CreateRenderer(
+		m_Window,
+		-1,
+		SDL_RENDERER_ACCELERATED
+	);
+
+	/*SDL_SetRenderDrawColor
+	(
+		m_WindowRenderer,
+		125,
+		255,
+		137,
+		255
+	);*/
+	
 	m_bFullscreen = fullscreen;
 	m_bRunning = true;
 
-	mWindowSurface = SDL_GetWindowSurface(Window);
-	testSprite = Sprite::Load("sprites/test.bmp", mWindowSurface);
+	testSprite = Sprite::Load("sprites/test.bmp", m_WindowRenderer);
 }
 
-
-//Controlador de eventos (Entrada de teclado, cerrar pantalla...)
 
 void Game::HandleEvents(Game* game)
 {
 	SDL_Event event;
 
+	//si hay un evento en cola
 	if (SDL_PollEvent(&event))
 	{
+
+		//switch entre diferentes tipos de evento.
 		switch (event.type)
 		{
 
-		//Si el usuario quiere salir
+		//Si el usuario pulsa la cruceta para salir, para la ejecución.
 		case SDL_QUIT:
 			game->Quit();
 			break;
 
+		//Si se pulsa una tecla
 		case SDL_KEYDOWN:
+
+			//switch entre la tecla pulsada.
 			switch (event.key.keysym.sym)
 			{
+				//Si se pulsa Esc. cierra la ejecución.
 			case SDLK_ESCAPE:
 				game->Quit();
 			}
@@ -69,38 +91,29 @@ void Game::HandleEvents(Game* game)
 }
 
 
-//Update
-
 void Game::Update()
 {
-	SDL_UpdateWindowSurface(Window);
 }
 
-
-//Draw
 
 void Game::Draw()
 {	
-	Sprite::Draw(mWindowSurface, testSprite, 0, 0);
-
+	//SDL_RenderClear(m_WindowRenderer);
+	Sprite::Draw(m_WindowRenderer, testSprite, 50, 50, 100, 100);
+	Sprite::DrawFullScreen(m_WindowRenderer, testSprite);
+	SDL_RenderPresent(m_WindowRenderer);
 }
 
-
-//Clean
 
 void Game::Clean()
 {
-
 }
 
-
-//Quit
 
 void Game::Quit()
 {
 	m_bRunning = false;
 }
-
 
 
 Game::~Game()
