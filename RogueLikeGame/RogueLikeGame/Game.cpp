@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "GameState.h"
 #include <stdio.h>
 
 
@@ -57,65 +58,76 @@ void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 }
 
 
-void Game::HandleEvents(Game* game)
+void Game::ChangeState(GameState* state)
 {
-	SDL_Event event;
-
-	//si hay un evento en cola
-	if (SDL_PollEvent(&event))
+	//Limpia el estado actual
+	if ( !states.empty() )
 	{
-
-		//switch entre diferentes tipos de evento.
-		switch (event.type)
-		{
-
-		//Si el usuario pulsa la cruceta para salir, para la ejecución.
-		case SDL_QUIT:
-			game->Quit();
-			break;
-
-		//Si se pulsa una tecla
-		case SDL_KEYDOWN:
-
-			//switch entre la tecla pulsada.
-			switch (event.key.keysym.sym)
-			{
-				//Si se pulsa Esc. cierra la ejecución.
-			case SDLK_ESCAPE:
-				game->Quit();
-			}
-		default:
-			break;
-		}
+		states.back()->Clean();
+		states.pop_back();
 	}
+
+	//Guarda e inicializa el nuevo estado
+	states.push_back(state);
+	states.back()->Init(this);
+}
+
+void Game::PushState(GameState* state)
+{
+	//Pausa el estado actual
+	if ( !states.empty() )
+	{
+		states.back()->Pause();
+	}
+
+	//Guarda e inicializa el nuevo estado
+	states.push_back(state);
+	states.back()->Init(this);
+}
+
+void Game::PopState(GameState* state)
+{
+	//Limpia el estado actual
+	if ( !states.empty() )
+	{
+		states.back()->Clean();
+		states.pop_back();
+	}
+
+	//Reanuda el estado anterior
+	if ( !states.empty() )
+	{
+		states.back()->Resume();
+	}
+}
+
+void Game::HandleEvents()
+{
+	states.back()->HandleEvents(this);
 }
 
 
 void Game::Update()
 {
+	states.back()->Update(this);
 }
 
 
 void Game::Draw()
 {	
-	//SDL_RenderClear(m_WindowRenderer);
-	Sprite::Draw(m_WindowRenderer, testSprite, 50, 50, 100, 100);
-	Sprite::DrawFullScreen(m_WindowRenderer, testSprite);
-	SDL_RenderPresent(m_WindowRenderer);
-}
+	states.back()->Draw(this);
 
+	//SDL_RenderClear(m_WindowRenderer);
+	//SDL_RenderPresent(m_WindowRenderer);
+}
 
 void Game::Clean()
 {
-}
+	while ( !states.empty() )
+	{
+		states.back()->Clean();
+		states.pop_back();
+	}
 
-
-void Game::Quit()
-{
-	m_bRunning = false;
-}
-
-
-Game::~Game()
-{
+	SDL_Quit();
 }

@@ -3,13 +3,6 @@
 #include <SDL_image.h>
 #include <stdio.h>
 
-
-
-Sprite::Sprite()
-{
-}
-
-
 SDL_Texture* Sprite::Load(char* File, SDL_Renderer* m_WindowRenderer)
 {
 	//Se inicializa una surface para cargar la imagen y la textura
@@ -19,7 +12,7 @@ SDL_Texture* Sprite::Load(char* File, SDL_Renderer* m_WindowRenderer)
 
 	if ((loadedSurface = IMG_Load(File)) == NULL)
 	{
-		printf("No se ha encontrado la imagen");
+		printf("No se ha encontrado la imagen\n");
 		return NULL;
 	}
 	else
@@ -97,9 +90,4 @@ bool Sprite::DrawFullScreen(SDL_Renderer* dest, SDL_Texture* src)
 	//Copia la textura al renderer en pantalla completa.
 	SDL_RenderCopy(dest, src, NULL, NULL);
 	return true;
-}
-
-
-Sprite::~Sprite()
-{
 }

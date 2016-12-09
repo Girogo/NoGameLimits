@@ -118,13 +118,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="PauseState.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="PauseState.h" />
+    <ClInclude Include="PlayState.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

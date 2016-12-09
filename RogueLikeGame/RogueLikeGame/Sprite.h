@@ -11,7 +11,6 @@ class Sprite
 {
 public:
 
-	Sprite();
 	/*-----------------------------------------------------------
 	 *Metodo Load:	Carga una imagen en GPU (Optimizado).
 	 *Parametros:	Path a la imagen, Renderer al que se aplica.
@@ -47,9 +46,7 @@ public:
 	 *Return:		True = se ha creado, False = no se ha creado.*/
 
 	static bool DrawFullScreen(SDL_Renderer* dest, SDL_Texture* src);
-	
 
-	~Sprite();
 };
 #endif
 
