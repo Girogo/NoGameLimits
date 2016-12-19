@@ -1,10 +1,28 @@
-#include <SDL.h>;
+#include <SDL.h>
+#include <iostream>
+#include "Game.h"
+#include "MenuState.h"
+
+
+using namespace std;
 
 int main(int argc, char ** argv)
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
 
-	// game code eventually goes here
-	SDL_Quit();
-	return 0;
+	Game game;
+
+	game.Init("Videojuego", 600, 400, false);
+
+	game.ChangeState(MenuState::Instance());
+
+	while (game.Running())
+	{
+		game.HandleEvents();
+		game.Update();
+		game.Draw();
+	}
+
+		//cleanup the engine
+		game.Clean();
+		return 0;
 }
