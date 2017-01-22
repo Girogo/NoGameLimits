@@ -52,6 +52,10 @@ public:
 	*------------------------------------------------------------------------------*/
 	void Clean();
 
+	SDL_Surface* GetWindowSurface();
+
+	SDL_Window* GetWindow();
+
 	/*------------------------------------------------------------------------------
 	*Metodo Quit:	
 	*Parametros:	
@@ -74,6 +78,7 @@ private:
 	bool m_bFullscreen;
 
 	SDL_Window* m_Window;
+	SDL_Surface *screen;
 	SDL_Renderer* m_WindowRenderer;
 
 	std::vector<GameState*> states;

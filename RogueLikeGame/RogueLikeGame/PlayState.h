@@ -4,6 +4,8 @@
 #include "SDL.h"
 #include "GameState.h"
 #include "Sprite.h"
+#include "Player.h"
+#include "Enemy.h"
 
 class PlayState : public GameState
 {
@@ -29,6 +31,17 @@ protected:
 	PlayState() {}
 
 private:
+
+	//Atributs necessaris per els personatges
+	CPlayer player;
+	CEnemy enemy;
+	int posicions_x[9] = { 120,130,140,150,160,170,180,190,200 };
+	int posicions_y[9] = { 200,200,200,200,200,200,200,200,200 };
+	int cont = 0;
+	//SDL_Texture *enemy;
+	int enemy_x, enemy_y;
+
+
 	static PlayState m_PlayState;
 
 	SDL_Texture* playSprite;
