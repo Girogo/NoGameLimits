@@ -2,7 +2,6 @@
 #include "GameState.h"
 #include <stdio.h>
 
-
 Game::Game()
 {
 
@@ -11,10 +10,11 @@ Game::Game()
 
 void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 {
+
 	SDL_INIT_EVERYTHING;
 
 	int flags = 0;
-
+	
 	m_Window = NULL;
 	m_WindowRenderer = NULL;
 
@@ -54,7 +54,8 @@ void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 	m_bFullscreen = fullscreen;
 	m_bRunning = true;
 
-	testSprite = Sprite::Load("sprites/test.bmp", m_WindowRenderer);
+	//testSprite = Sprite::Load("sprites/test.bmp", m_WindowRenderer);.
+	
 }
 
 
@@ -101,17 +102,17 @@ void Game::PopState(GameState* state)
 	}
 }
 
+
 void Game::HandleEvents()
 {
+	//states.back() Fa referencia a l'ultim element al stack, (el actual)
 	states.back()->HandleEvents(this);
 }
-
 
 void Game::Update()
 {
 	states.back()->Update(this);
 }
-
 
 void Game::Draw()
 {	

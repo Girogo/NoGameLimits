@@ -79,6 +79,34 @@ bool Sprite::Draw(SDL_Renderer* dest, SDL_Texture* src, int x, int y, int width,
 	return true;
 }
 
+bool Sprite::Draw(SDL_Renderer* dest, SDL_Texture* src, int xmap, int ymap, int width, int height, int x, int y)
+{
+	if (dest == NULL || src == NULL)
+	{
+		return false;
+	}
+
+	//Se crea el rectangulo destino.
+	SDL_Rect destR;
+
+	destR.x = xmap;
+	destR.y = ymap;
+	destR.w = width;
+	destR.h = height;
+
+	//Se crea el rectangulo src.
+	SDL_Rect srcR;
+
+	srcR.x = x;
+	srcR.y = y;
+	srcR.w = width;
+	srcR.h = height;
+
+	//Copia la textura al renderer.
+	SDL_RenderCopy(dest, src, &srcR, &destR);
+
+	return true;
+}
 
 bool Sprite::DrawFullScreen(SDL_Renderer* dest, SDL_Texture* src)
 {

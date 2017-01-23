@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include "Sprite.h"
 #include <vector>
+#include "Mapa.h"
 
 class GameState;
 
@@ -66,7 +67,9 @@ public:
 	*------------------------------------------------------------------------------*/
 	bool Running() { return m_bRunning; }
 
+	SDL_Window* GetWindow() { return m_Window; }
 	SDL_Renderer* GetRenderer() { return m_WindowRenderer; }
+
 
 private:
 

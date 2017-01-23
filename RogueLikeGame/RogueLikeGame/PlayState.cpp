@@ -4,16 +4,33 @@
 #include "Game.h"
 #include "PlayState.h"
 #include "PauseState.h"
+#include <vector>
 
 PlayState PlayState::m_PlayState;
 
 void PlayState::Init(Game* game)
 {
-	playSprite = NULL;
+	CTile tile1 = CTile(0,0,0,0,0,32,32,"suelo");
+	CTile tile2 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
 
-	playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
+	CTile tileset[2] = { tile1,tile2 };
 
-	printf("PlayState Init Successful\n");
+	CMapa mapa = CMapa("../src/maps/m1.map");
+
+	bool funciona;
+
+	funciona = mapa.setTiles(tileset);
+
+	mapa.renderMap(tileset, game->GetRenderer());
+
+	//playSprite = NULL;
+
+	//playSprite = Sprite::Load("../src/sprites/atlas.bmp", game->GetRenderer());
+
+	////playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
+
+	//printf("PlayState Init Successful\n");
+
 }
 
 void PlayState::Clean()
@@ -44,6 +61,7 @@ void PlayState::HandleEvents(Game* game)
 		case SDL_KEYDOWN:
 			switch (event.key.keysym.sym) {
 
+				//En presionar Space canvia el estado del juego a PAUSA
 			case SDLK_SPACE:
 				game->PushState(PauseState::Instance());
 				break;

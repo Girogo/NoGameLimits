@@ -11,9 +11,10 @@ int main(int argc, char ** argv)
 
 	Game game;
 
-	game.Init("Videojuego", 600, 400, false);
+	game.Init("Videojuego", 600, 400, false);	
 
 	game.ChangeState(MenuState::Instance());
+
 
 	while (game.Running())
 	{

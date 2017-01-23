@@ -4,6 +4,7 @@
 #include "SDL.h"
 #include "GameState.h"
 #include "Sprite.h"
+#include "Tile.h"
 
 class PlayState : public GameState
 {

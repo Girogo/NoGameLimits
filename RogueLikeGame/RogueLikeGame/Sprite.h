@@ -39,6 +39,17 @@ public:
 															int x2, int y2, int width2, int height2);
 
 
+
+
+	/*Metodo Draw:	Dibuja una imagen cargada anteriormente. Util para cargar imagenes de SpriteSheets.
+	*
+	*Parametros:	Renderer destino, textura cargada, posicion(x/y) donde se aplica, dimensiones(w/h) que aplica
+	*				posicion(x/y) de la imagen (SpriteSheet)
+	*
+	*Return:		True = se ha creado, False = no se ha creado.*/
+
+	static bool Draw(SDL_Renderer* dest, SDL_Texture* src, int x, int y, int width, int height, int xmap, int ymap);
+
 	/*Metodo DrawFullScreen:
 	 *				Dibuja una imagen cargada anteriormente en pantalla completa.
 	 *
