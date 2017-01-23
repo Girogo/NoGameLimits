@@ -11,6 +11,8 @@ class CTile
 {
 public:
 
+	CTile() {};
+
 	CTile(int Cid, int CposX, int CposY, int CpixelX, int CpixelY, int Cwidth, int Cheight, string Ctipo);
 
 	//void renderTile(CTile tiles[], CMapa mapa, SDL_Renderer* m_WindowRenderer);
@@ -20,14 +22,18 @@ public:
 	int getposX() { return posX; }
 	int getposY() { return posY; }
 
-	int& getpixelX() { return pixelX; }
+	int getpixelX() { return pixelX; }
 	int getpixelY() { return pixelY; }
+
+	SDL_Rect getRectOrigen() { return rectOrigen; }
+	SDL_Rect getRectDestino() { return rectDestino; }
 
 	std::string getTipo() { return tipo; }
 
 private:
 	int id, posX, posY, pixelX, pixelY, width, height;
-	SDL_Rect rect;
+	SDL_Rect rectOrigen;
+	SDL_Rect rectDestino;
 	string tipo;
 };
 #endif

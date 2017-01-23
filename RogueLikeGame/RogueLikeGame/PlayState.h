@@ -33,6 +33,8 @@ private:
 	static PlayState m_PlayState;
 
 	SDL_Texture* playSprite;
-
+	CTile tileset[50];
+	//SDL_Rect rectOrigen;
+	//SDL_Rect rectDestino;
 };
 #endif

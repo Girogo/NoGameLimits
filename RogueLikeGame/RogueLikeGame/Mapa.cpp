@@ -21,7 +21,7 @@ bool CMapa::setTiles(CTile CtileSet[])
 	json j = json::parse(ifs);
 	
 	//Tiles del mapa
-	int TOTAL_TILES = 2, TILE_WIDTH = 32, TILE_HEIGTH = 32, TOTAL_TILESWIDTH = 7, TOTAL_TILESHEIGHT = 6;
+	int TOTAL_TILES = 42, TILE_WIDTH = 32, TILE_HEIGTH = 32, TOTAL_TILESWIDTH = 7, TOTAL_TILESHEIGHT = 6;
 
 	int x = 0, y = 0;
 
@@ -119,7 +119,7 @@ void CMapa::renderMap(CTile tiles[], SDL_Renderer* m_WindowRenderer)
 	SDL_Texture* textura = Sprite::Load("sprites/atlas.bmp", m_WindowRenderer);
 
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 42; i++)
 	{
 		//Sprite::Draw(m_WindowRenderer, textura, 0, 0, 32, 32, 480, 352);
 		//Sprite::Draw(m_WindowRenderer, textura, 32, 0, 32, 32, 480, 352);

@@ -7,10 +7,15 @@ CTile::CTile(int Cid, int CposX, int CposY, int CpixelX, int CpixelY, int Cwidth
 	posX = CposX;
 	posY = CposY;
 
-	rect.x = CpixelX;
-	rect.y = CpixelY;
-	rect.w = Cwidth;
-	rect.h = Cheight;
+	rectOrigen.x = CpixelX;
+	rectOrigen.y = CpixelY;
+	rectOrigen.w = Cwidth;
+	rectOrigen.h = Cheight;
+
+	rectDestino.x = CposX;
+	rectDestino.y = CposY;
+	rectDestino.w = Cwidth;
+	rectDestino.h = Cheight;
 
 	tipo = Ctipo;
 
