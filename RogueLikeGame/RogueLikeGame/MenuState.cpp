@@ -10,7 +10,7 @@ MenuState MenuState::m_MenuState;
 void MenuState::Init(Game* game)
 {
 	menuSprite = NULL;
-	menuSprite = Sprite::Load("sprites/menustate.bmp", game->GetRenderer());
+	menuSprite = Sprite::Load("sprites/atlas.bmp", game->GetRenderer());
 	printf("MenuState Init Successful\n");
 }
 
@@ -59,8 +59,13 @@ void MenuState::Update(Game* game)
 
 void MenuState::Draw(Game* game)
 {
-	Sprite::DrawFullScreen(game->GetRenderer(), menuSprite);
+	//Sprite::DrawFullScreen(game->GetRenderer(), menuSprite);
+	//Sprite::Draw(game->GetRenderer(), menuSprite,0,0,32,32,480,352);
+	//Sprite::Draw(game->GetRenderer(), menuSprite,32,0,32,32,480,352);
 
-	// SDL_RenderClear(game->GetRenderer());
-	SDL_RenderPresent(game->GetRenderer());
+
+	//480 352 32 32
+
+	//SDL_RenderClear(game->GetRenderer());
+	  SDL_RenderPresent(game->GetRenderer());
 }

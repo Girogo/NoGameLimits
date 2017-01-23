@@ -30,6 +30,9 @@ private:
 	char* rutaMapa = "../src/maps/";
 	std::vector <CTile> tileSet;
 	std::ifstream ifs;
+
+
+
 	
 };
 #endif

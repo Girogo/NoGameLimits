@@ -20,8 +20,10 @@ public:
 	int getposX() { return posX; }
 	int getposY() { return posY; }
 
-	int getpixelX() { return pixelX; }
+	int& getpixelX() { return pixelX; }
 	int getpixelY() { return pixelY; }
+
+	std::string getTipo() { return tipo; }
 
 private:
 	int id, posX, posY, pixelX, pixelY, width, height;

@@ -10,8 +10,16 @@ PlayState PlayState::m_PlayState;
 
 void PlayState::Init(Game* game)
 {
-	CTile tile1 = CTile(0,0,0,0,0,32,32,"suelo");
+	CTile tile1 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
 	CTile tile2 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile3 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile4 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile5 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile6 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile7 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile8 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile9 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
+	//CTile tile10 = CTile(0, 0, 0, 0, 0, 32, 32, "suelo");
 
 	CTile tileset[2] = { tile1,tile2 };
 
@@ -23,14 +31,30 @@ void PlayState::Init(Game* game)
 
 	mapa.renderMap(tileset, game->GetRenderer());
 
-	//playSprite = NULL;
+	/*playSprite = NULL;
 
-	//playSprite = Sprite::Load("../src/sprites/atlas.bmp", game->GetRenderer());
+	playSprite = Sprite::Load("../src/sprites/atlas.bmp", game->GetRenderer());
 
-	////playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
+	playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
+	*/
 
-	//printf("PlayState Init Successful\n");
+	SDL_Texture* textura = Sprite::Load("sprites/atlas.bmp", game->GetRenderer());
 
+
+	for (int i = 0; i < 2; i++)
+	{
+		//Sprite::Draw(m_WindowRenderer, textura, 0, 0, 32, 32, 480, 352);
+		//Sprite::Draw(m_WindowRenderer, textura, 32, 0, 32, 32, 480, 352);
+
+ 		int pixelX = tileset[i].getpixelX();
+		std::cout << "" + tileset[i].getpixelX() << '\n';
+
+		Sprite::Draw(game->GetRenderer(), textura, tileset[i].getpixelX(), tileset[i].getpixelY(), tileset[i].getWidth(), tileset[i].getHeight(), tileset[i].getposX(), tileset[i].getposY());
+		SDL_RenderPresent(game->GetRenderer());
+
+		printf("PlayState Init Successful\n");
+
+	}
 }
 
 void PlayState::Clean()

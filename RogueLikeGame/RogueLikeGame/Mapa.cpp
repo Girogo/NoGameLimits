@@ -116,14 +116,16 @@ bool CMapa::setTiles(CTile CtileSet[])
 
 void CMapa::renderMap(CTile tiles[], SDL_Renderer* m_WindowRenderer)
 {
-	SDL_Texture* textura = Sprite::Load("sprites/negro.bmp", m_WindowRenderer);
+	SDL_Texture* textura = Sprite::Load("sprites/atlas.bmp", m_WindowRenderer);
 
 
 	for (int i = 0; i < 2; i++)
 	{
+		//Sprite::Draw(m_WindowRenderer, textura, 0, 0, 32, 32, 480, 352);
+		//Sprite::Draw(m_WindowRenderer, textura, 32, 0, 32, 32, 480, 352);
 
-		Sprite::Draw(m_WindowRenderer, textura, tiles[i].getpixelX(), tiles[i].getpixelY(), tiles[i].getWidth(), tiles[i].getHeight(), tiles[i].getposX(), tiles[i].getposY());
-		SDL_RenderPresent(m_WindowRenderer);
+		//Sprite::Draw(m_WindowRenderer, textura, tiles[i].getpixelX(), tiles[i].getpixelY(), tiles[i].getWidth(), tiles[i].getHeight(), tiles[i].getposX(), tiles[i].getposY());
+		//SDL_RenderPresent(m_WindowRenderer);
 
 	}
 

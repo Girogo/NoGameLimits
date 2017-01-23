@@ -10,7 +10,7 @@ void PauseState::Init(Game* game)
 {
 	pauseSprite = NULL;
 
-	pauseSprite = Sprite::Load("sprites/paused.bmp", game->GetRenderer());
+	//pauseSprite = Sprite::Load("sprites/paused.bmp", game->GetRenderer());
 
 	printf("PauseState Init Successful\n");
 }
@@ -50,6 +50,6 @@ void PauseState::Update(Game* game)
 
 void PauseState::Draw(Game* game)
 {
-	Sprite::DrawFullScreen(game->GetRenderer(), pauseSprite);
-	SDL_RenderPresent(game->GetRenderer());
+	//Sprite::DrawFullScreen(game->GetRenderer(), pauseSprite);
+	//SDL_RenderPresent(game->GetRenderer());
 }
