@@ -8,8 +8,11 @@ public:
 	CEnemy();
 	~CEnemy();
 	//Se passa como parametro las cordenadas del jugador i mueve el enemigo
-	void movee(int x, int y);
-	void move();
+	void move(int x, int y);
+
+
+	//No s'utilitza
+	void move(SDL_Event);
 private:
 	//Array con las posiciones del jugador
 	int posPlayer_x[8] = { 130,140,150,160,170,180,190,200 };

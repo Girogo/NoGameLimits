@@ -8,7 +8,7 @@ CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer *
 CPlayer::CPlayer()
 {
 }
-void CPlayer::movee(SDL_Event evento) {
+void CPlayer::move(SDL_Event evento) {
 	switch (evento.key.keysym.sym) {
 
 		//Eventos de teclado depende del que se clique un movimiento o otro
@@ -38,6 +38,8 @@ void CPlayer::movee(SDL_Event evento) {
 	}
 }
 
-void CPlayer::move()
+void CPlayer::move(int x, int y)
 {
 }
+
+

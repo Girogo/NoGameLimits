@@ -5,19 +5,21 @@
 #include "PlayState.h"
 #include "PauseState.h"
 #include "Player.h"
+#include "Mapa.h"
+#include "Tile.h"
+#include <vector>
 
 PlayState PlayState::m_PlayState;
-
 void PlayState::Init(Game* game)
 {
-	playSprite = NULL;
-
+	SDL_RenderClear(game->GetRenderer());
+	
 	playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
 
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
-	enemy = CEnemy("sprites/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
-	player = CPlayer("sprites/macaco.bmp", 200, 200, 64, 64, game->GetRenderer());
+	enemy = CEnemy("sprites/crab.bmp", 120, 200, 32, 32, game->GetRenderer());
+	player = CPlayer("sprites/macaco.bmp", 200, 200, 32, 32, game->GetRenderer());
 
 	//Cargo la imagen del jugador i enemigo
 	enemy.load();
@@ -58,9 +60,9 @@ void PlayState::HandleEvents(Game* game)
 				break;				
 			}
 			//Moviemiento del jugador, se passa como parametro el evento de teclado realizado
-			player.movee(event);
+			player.move(event);
 			//Movimiento del enemigo, se le passa las cordenadas del jugador
-			enemy.movee(player.get_x(), player.get_y());
+			enemy.move(player.get_x(), player.get_y());
 		}
 
 	}

@@ -16,7 +16,7 @@ CEnemy::~CEnemy()
 }
 
 
-void CEnemy::movee(int x, int y)
+void CEnemy::move(int x, int y)
 {
 	if (MovePlayer < 8) {
 		//Guarda les posicions anterior del pj a les cordenades del enemic
@@ -36,6 +36,7 @@ void CEnemy::movee(int x, int y)
 	}
 }
 
-void CEnemy::move()
+void CEnemy::move(SDL_Event)
 {
 }
+

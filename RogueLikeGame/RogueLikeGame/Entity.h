@@ -19,7 +19,9 @@ public:
 	void set_width(int width);
 
 	//Controla el movimiento de la entidad
-	virtual void move() = 0;
+	virtual void move(int x, int y) = 0;
+	virtual void move(SDL_Event evento) = 0;
+	
 	//Carga la entidad
 	void load();
 	//Dibuja la entidad

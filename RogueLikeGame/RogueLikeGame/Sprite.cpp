@@ -78,7 +78,17 @@ bool Sprite::Draw(SDL_Renderer* dest, SDL_Texture* src, int x, int y, int width,
 
 	return true;
 }
+bool Sprite::Draw(SDL_Renderer* dest, SDL_Texture* src, SDL_Rect origen, SDL_Rect destino) {
+	if (dest == NULL || src == NULL)
+	{
+		return false;
+	}
 
+	//Copia la textura al renderer.
+	SDL_RenderCopy(dest, src, &origen, &destino);
+
+	return true;
+};
 
 bool Sprite::DrawFullScreen(SDL_Renderer* dest, SDL_Texture* src)
 {
