@@ -3,14 +3,18 @@
 #include "Game.h"
 #include "MenuState.h"
 #include "PlayState.h"
+#include "Player.h"
 
 
 MenuState MenuState::m_MenuState;
 
 void MenuState::Init(Game* game)
 {
+	
 	menuSprite = NULL;
 	menuSprite = Sprite::Load("sprites/menustate.bmp", game->GetRenderer());
+	
+	
 	printf("MenuState Init Successful\n");
 }
 
@@ -60,7 +64,5 @@ void MenuState::Update(Game* game)
 void MenuState::Draw(Game* game)
 {
 	Sprite::DrawFullScreen(game->GetRenderer(), menuSprite);
-
-	// SDL_RenderClear(game->GetRenderer());
 	SDL_RenderPresent(game->GetRenderer());
 }

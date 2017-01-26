@@ -4,6 +4,10 @@
 #include "SDL.h"
 #include "GameState.h"
 #include "Sprite.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Mapa.h"
+#include "Tile.h"
 
 class PlayState : public GameState
 {
@@ -29,6 +33,14 @@ protected:
 	PlayState() {}
 
 private:
+
+	//Atributs necessaris per els personatges
+	CPlayer player;
+	CEnemy enemy;
+	CTile tileset[168];
+	CMapa mapa;
+
+
 	static PlayState m_PlayState;
 
 	SDL_Texture* playSprite;

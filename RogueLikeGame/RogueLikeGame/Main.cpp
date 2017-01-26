@@ -22,7 +22,7 @@ int main(int argc, char ** argv)
 		game.Draw();
 	}
 
-		//cleanup the engine
-		game.Clean();
-		return 0;
+	//cleanup the engine
+	game.Clean();
+	return 0;
 }

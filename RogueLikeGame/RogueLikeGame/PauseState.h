@@ -10,7 +10,7 @@ class PauseState : public GameState
 public:
 	void Init(Game* game);
 	void Clean();
-
+	
 	void Pause();
 	void Resume();
 

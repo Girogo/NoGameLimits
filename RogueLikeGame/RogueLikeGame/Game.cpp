@@ -53,8 +53,6 @@ void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 	
 	m_bFullscreen = fullscreen;
 	m_bRunning = true;
-
-	testSprite = Sprite::Load("sprites/test.bmp", m_WindowRenderer);
 }
 
 
@@ -130,4 +128,12 @@ void Game::Clean()
 	}
 
 	SDL_Quit();
+}
+SDL_Surface* Game::GetWindowSurface() {
+	SDL_Surface  *windowSurface = SDL_GetWindowSurface(m_Window);
+	return windowSurface;
+}
+
+SDL_Window* Game::GetWindow() {
+	return m_Window;
 }

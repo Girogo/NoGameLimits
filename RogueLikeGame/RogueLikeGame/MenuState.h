@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include "GameState.h"
+#include "Player.h"
 #include "Sprite.h"
 
 
@@ -30,8 +31,8 @@ protected:
 
 private:
 	static MenuState m_MenuState;
-
 	SDL_Texture* menuSprite;
+
 };
 #endif
 
