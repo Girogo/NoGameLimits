@@ -19,11 +19,11 @@ class CMapa
 public:
 	CMapa(char* mapSrc);
 	CMapa();
-	bool setTiles(CTile CtileSet[]);
+	bool setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE_HEIGHT, int TOTAL_TILESWIDTH, int TOTAL_TILESHEIGHT, int NUM_TEXTURE);
 
-	void load(CTile tiles[], SDL_Renderer* m_WindowRenderer);
+	void load(SDL_Renderer* m_WindowRenderer);
 
-	void draw(SDL_Renderer* m_WindowRenderer);
+	void draw(SDL_Renderer* m_WindowRendere, CTile tiles[]);
 
 	std::string getMapa() { return rutaMapa; }
 

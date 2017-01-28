@@ -1,0 +1,9 @@
+﻿1>------ Build started: Project: RogueLikeGame, Configuration: Debug x64 ------
+1>  PlayState.cpp
+1>  Generating Code...
+1>  Compiling...
+1>  MenuState.cpp
+1>  Generating Code...
+1>  RogueLikeGame.vcxproj -> C:\Users\Aleix\Desktop\NoGameLimits-v.0.0.3-Mapa-i-Pj-Implementat\RogueLikeGame\x64\Debug\RogueLikeGame.exe
+1>  RogueLikeGame.vcxproj -> C:\Users\Aleix\Desktop\NoGameLimits-v.0.0.3-Mapa-i-Pj-Implementat\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

@@ -12,9 +12,8 @@ class CTile
 public:
 
 	CTile() {};
-
-	CTile(int Cid, int CposX, int CposY, int CpixelX, int CpixelY, int Cwidth, int Cheight, string Ctipo);
-
+	CTile(int Cid, int CposXDestino, int CposYDestino, int CposXOrigen, int CposYOrigen, int CwidthOrigen, int CheightOrigen, int CwidthDestino, int CheightDestino, string Ctipo);
+	
 	//void renderTile(CTile tiles[], CMapa mapa, SDL_Renderer* m_WindowRenderer);
 	int getWidth() { return width; }
 	int getHeight() { return height; }
@@ -35,5 +34,6 @@ private:
 	SDL_Rect rectOrigen;
 	SDL_Rect rectDestino;
 	string tipo;
+	
 };
 #endif

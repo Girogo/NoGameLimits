@@ -14,7 +14,7 @@ CMapa::CMapa()
 {
 }
 
-bool CMapa::setTiles(CTile CtileSet[])
+bool CMapa::setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE_HEIGHT, int TOTAL_TILESWIDTH, int TOTAL_TILESHEIGHT, int NUM_TEXTURE)
 {
 
 	//Success flag
@@ -24,8 +24,7 @@ bool CMapa::setTiles(CTile CtileSet[])
 	std::ifstream ifs("ids.json");//Ruta archivo JSON con ids
 	json j = json::parse(ifs);
 	
-	//Tiles del mapa
-	int TOTAL_TILES = 168, TILE_WIDTH = 32, TILE_HEIGTH = 32, TOTAL_TILESWIDTH = 14, TOTAL_TILESHEIGHT = 12;
+
 
 	int x = 0, y = 0;
 
@@ -65,7 +64,7 @@ bool CMapa::setTiles(CTile CtileSet[])
 			}
 
 			//Si el numero que lee (ID) es valido... | 2 = TOTAL DE TILES EN EL SPRITESHEET (IDS)
-			if ((tileType >= 0) && (tileType < 2))
+			if ((tileType >= 1) && (tileType <= NUM_TEXTURE))
 			{
 				//Lee el archivo Json y recupera los datos de la Tile
 
@@ -84,7 +83,8 @@ bool CMapa::setTiles(CTile CtileSet[])
 				height = j.at(id).at("height");
 				std::string tipo = j.at(id).at("tipo");
 
-				CtileSet[i] = *(new CTile(tileType, x, y, pixelX, pixelY, width, height, tipo)); // id, posicion en mapa, posicion en sprite, width, height, tipo
+				//Se passan las possiciones del Rect destino i Rect Origen de la Tile Mirar Contructor
+				CtileSet[i] = *(new CTile(tileType, x, y, pixelX, pixelY, width, height, TILE_WIDTH, TILE_HEIGHT, tipo)); // id, posicion en mapa, posicion en sprite, width, height, tipo
 			}
 			//Si no se reconoce la id
 			else
@@ -102,7 +102,7 @@ bool CMapa::setTiles(CTile CtileSet[])
 			{
 				//Mueve X y Y a la siguiente linea de tiles:
 				x = 0;
-				y += TILE_HEIGTH;
+				y += TILE_HEIGHT;
 			}
 		}
 
@@ -120,27 +120,19 @@ bool CMapa::setTiles(CTile CtileSet[])
 
 
 //Carga las cordenadas del mapa
-void CMapa::load(CTile tiles[], SDL_Renderer* m_WindowRenderer)
+void CMapa::load(SDL_Renderer* m_WindowRenderer)
 {
 	//Carga el archivo de las texturas
 	textura = Sprite::Load("sprites/atlas.bmp", m_WindowRenderer);
-
-	for (int i = 0; i < 168; i++)
-	{
-		//Guarda les cordenades de les tiles 
-		posTextureDestino[i] = tiles[i].getRectDestino();
-		posTextureOrigen[i] = tiles[i].getRectOrigen();
-	}
-
 
 }
 
 
 //dibuja el mapa
-void CMapa::draw(SDL_Renderer * m_WindowRenderer) {
+void CMapa::draw(SDL_Renderer * m_WindowRenderer, CTile tiles[]) {
 	
-	for (int i = 0; i < 168; i++)
+	for (int i = 0; i < 357; i++)
 	{
-		Sprite::Draw(m_WindowRenderer, textura, posTextureOrigen[i], posTextureDestino[i]);
+		Sprite::Draw(m_WindowRenderer, textura, tiles[i].getRectOrigen(), tiles[i].getRectDestino());
 	}
 }

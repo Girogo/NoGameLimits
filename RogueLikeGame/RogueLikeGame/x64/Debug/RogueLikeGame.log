@@ -1,7 +1,14 @@
-﻿  PlayState.cpp
-  Mapa.cpp
-  Generando código...
-  Omitiendo... (no se detectaron cambios relevantes)
+﻿  Tile.cpp
+  Sprite.cpp
+  PlayState.cpp
+  Player.cpp
+  PauseState.cpp
   MenuState.cpp
-  RogueLikeGame.vcxproj -> C:\Users\Varez\Desktop\NoGameLimits-v.0.0.2-Personatge-Class-Create\RogueLikeGame\x64\Debug\RogueLikeGame.exe
-  RogueLikeGame.vcxproj -> C:\Users\Varez\Desktop\NoGameLimits-v.0.0.2-Personatge-Class-Create\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+  Mapa.cpp
+  Main.cpp
+  Game.cpp
+  Entity.cpp
+  Enemy.cpp
+  Generando código...
+  RogueLikeGame.vcxproj -> A:\No Game Limits\Github\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.exe
+  RogueLikeGame.vcxproj -> A:\No Game Limits\Github\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)

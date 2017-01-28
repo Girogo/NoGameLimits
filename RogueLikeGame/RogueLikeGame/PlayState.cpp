@@ -16,8 +16,11 @@ void PlayState::Init(Game* game)
 
 	//Cargamos Elementos del mapa i las tiles
 	mapa = CMapa("../src/maps/m1.map");
-	mapa.setTiles(tileset);
-	mapa.load(tileset, game->GetRenderer());
+
+	//Se passa como parametros Array de tiles, Numero de casillas de tiles que tiene el mapa, tamaño de las tyles
+	//numero de columnas del mapa, numero de filas del mapa, total de id del tileset
+	mapa.setTiles(tileset, 357, 64, 64, 14, 17, 21);
+	mapa.load(game->GetRenderer());
 	playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
 
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
@@ -80,7 +83,7 @@ void PlayState::Update(Game* game)
 void PlayState::Draw(Game* game)
 {
 	//Dibuja el mapa
-	mapa.draw(game->GetRenderer());
+	mapa.draw(game->GetRenderer(), tileset);
 
 	//Dibuja el enemigo
 	enemy.draw();

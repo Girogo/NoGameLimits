@@ -40,6 +40,9 @@ public:
 
 	 static bool Draw(SDL_Renderer * dest, SDL_Texture * src, SDL_Rect origen, SDL_Rect destino);
 
+	 
+	 
+
 
 	/*Metodo DrawFullScreen:
 	 *				Dibuja una imagen cargada anteriormente en pantalla completa.

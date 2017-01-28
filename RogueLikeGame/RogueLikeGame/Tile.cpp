@@ -1,21 +1,21 @@
 #include "Tile.h"
 
-CTile::CTile(int Cid, int CposX, int CposY, int CpixelX, int CpixelY, int Cwidth, int Cheight, string Ctipo)
+CTile::CTile(int Cid, int CposXDestino, int CposYDestino, int CposXOrigen, int CposYOrigen, int CwidthOrigen, int CheightOrigen, int CwidthDestino, int CheightDestino, string Ctipo)
 {
 	id = Cid;
 
-	posX = CposX;
-	posY = CposY;
+	posX = CposXDestino;
+	posY = CposYDestino;
 
-	rectOrigen.x = CpixelX;
-	rectOrigen.y = CpixelY;
-	rectOrigen.w = Cwidth;
-	rectOrigen.h = Cheight;
+	rectOrigen.x = CposXOrigen;
+	rectOrigen.y = CposYOrigen;
+	rectOrigen.w = CwidthOrigen;
+	rectOrigen.h = CheightOrigen;
 
-	rectDestino.x = CposX;
-	rectDestino.y = CposY;
-	rectDestino.w = Cwidth;
-	rectDestino.h = Cheight;
+	rectDestino.x = CposXDestino;
+	rectDestino.y = CposYDestino;
+	rectDestino.w = CwidthDestino;
+	rectDestino.h = CwidthDestino;
 
 	tipo = Ctipo;
 
