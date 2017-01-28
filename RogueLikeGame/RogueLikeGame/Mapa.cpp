@@ -131,7 +131,7 @@ void CMapa::load(SDL_Renderer* m_WindowRenderer)
 //dibuja el mapa
 void CMapa::draw(SDL_Renderer * m_WindowRenderer, CTile tiles[]) {
 	
-	for (int i = 0; i < 357; i++)
+	for (int i = 0; i < 130; i++)
 	{
 		Sprite::Draw(m_WindowRenderer, textura, tiles[i].getRectOrigen(), tiles[i].getRectDestino());
 	}

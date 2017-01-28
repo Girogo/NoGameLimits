@@ -13,26 +13,26 @@ void CPlayer::move(SDL_Event evento) {
 
 		//Eventos de teclado depende del que se clique un movimiento o otro
 	case SDLK_UP:
-		if (y > 0)
+		if (y > 20)
 			//Se resta la posicion y
 			y = y - 10;
 
 		break;
 	case SDLK_DOWN:
-		if (y < 340)
+		if (y < 540)
 			//Se suma la posicion y
 			y = y + 10;
 
 		break;
 	case SDLK_LEFT:
 		//Se resta la posicion x
-		if (x > 0)
+		if (x > 50)
 			x = x - 10;
 
 		break;
 	case SDLK_RIGHT:
 		//Se resta la posicion y
-		if (x < 540)
+		if (x < 720)
 			x = x + 10;
 		break;
 	}

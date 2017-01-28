@@ -19,14 +19,14 @@ void PlayState::Init(Game* game)
 
 	//Se passa como parametros Array de tiles, Numero de casillas de tiles que tiene el mapa, tamaño de las tyles
 	//numero de columnas del mapa, numero de filas del mapa, total de id del tileset
-	mapa.setTiles(tileset, 357, 64, 64, 14, 17, 21);
+	mapa.setTiles(tileset, 130, 64, 64, 13, 10, 20);
 	mapa.load(game->GetRenderer());
 	playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
 
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
-	enemy = CEnemy("sprites/crab.bmp", 120, 200, 32, 32, game->GetRenderer());
-	player = CPlayer("sprites/macaco.bmp", 200, 200, 32, 32, game->GetRenderer());
+	enemy = CEnemy("sprites/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
+	player = CPlayer("sprites/macaco.bmp", 200, 200, 64, 64, game->GetRenderer());
 
 	//Cargo la imagen del jugador i enemigo
 	enemy.load();
@@ -82,6 +82,7 @@ void PlayState::Update(Game* game)
 
 void PlayState::Draw(Game* game)
 {
+	SDL_RenderClear(game->GetRenderer());
 	//Dibuja el mapa
 	mapa.draw(game->GetRenderer(), tileset);
 
