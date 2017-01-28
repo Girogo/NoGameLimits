@@ -1,0 +1,15 @@
+﻿  Enemy.cpp
+  Game.cpp
+h:\projecte\nogamelimits-0.0.1-version-inicial\roguelikegame\roguelikegame\Game.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Main.cpp
+Main.cpp(1): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  MenuState.cpp
+MenuState.cpp(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  PauseState.cpp
+PauseState.cpp(3): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Player.cpp
+h:\projecte\nogamelimits-0.0.1-version-inicial\roguelikegame\roguelikegame\Player.h(2): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  PlayState.cpp
+PlayState.cpp(3): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Sprite.cpp
+h:\projecte\nogamelimits-0.0.1-version-inicial\roguelikegame\roguelikegame\Game.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory

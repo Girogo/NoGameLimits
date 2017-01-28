@@ -19,7 +19,7 @@ SDL_Texture* Sprite::Load(char* File, SDL_Renderer* m_WindowRenderer)
 	{
 		/*Crea la textura a base del renderer donde se va a mostrar y la superficie para
 		 *que sea optimizado*/
-
+		SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0, 255, 0));
 		optimizedTexture = SDL_CreateTextureFromSurface(m_WindowRenderer, loadedSurface);
 		SDL_FreeSurface(loadedSurface);
 
@@ -78,7 +78,17 @@ bool Sprite::Draw(SDL_Renderer* dest, SDL_Texture* src, int x, int y, int width,
 
 	return true;
 }
+bool Sprite::Draw(SDL_Renderer* dest, SDL_Texture* src, SDL_Rect origen, SDL_Rect destino) {
+	if (dest == NULL || src == NULL)
+	{
+		return false;
+	}
 
+	//Copia la textura al renderer.
+	SDL_RenderCopy(dest, src, &origen, &destino);
+
+	return true;
+};
 
 bool Sprite::DrawFullScreen(SDL_Renderer* dest, SDL_Texture* src)
 {
