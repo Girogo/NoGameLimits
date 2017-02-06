@@ -15,11 +15,13 @@ void PlayState::Init(Game* game)
 	
 
 	//Cargamos Elementos del mapa i las tiles
-	mapa = CMapa("../src/maps/m1.map");
+	mapa = CMapa();
 
 	//Se passa como parametros Array de tiles, Numero de casillas de tiles que tiene el mapa, tamaño de las tyles
 	//numero de columnas del mapa, numero de filas del mapa, total de id del tileset
-	mapa.setTiles(tileset, 130, 64, 64, 13, 10, 20);
+	mapa.setTiles(floor, 130, 64, 64, 13, 10, 21, "../src/maps/m1.map");
+	mapa.setTiles(walls, 130, 64, 64, 13, 10, 21, "../src/maps/m2.map");
+
 	mapa.load(game->GetRenderer());
 	playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
 
@@ -84,14 +86,16 @@ void PlayState::Draw(Game* game)
 {
 	SDL_RenderClear(game->GetRenderer());
 	//Dibuja el mapa
-	mapa.draw(game->GetRenderer(), tileset);
-
+	
+	mapa.draw(game->GetRenderer(), floor);
+	
 	//Dibuja el enemigo
 	enemy.draw();
 
 	//Dibuja el personaje
 	player.draw();
 	
+	mapa.draw(game->GetRenderer(), walls);
 	//Implanta los elementos en la pantalla
 	SDL_RenderPresent(game->GetRenderer());
 }

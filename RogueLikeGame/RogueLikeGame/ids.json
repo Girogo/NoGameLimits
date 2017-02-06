@@ -138,5 +138,12 @@
 	"width": 32,
 	"height": 32,
 	"tipo":"pared"
+	},
+  "21": {
+	"x": 630,
+	"y": 754,
+	"width": 32,
+	"height": 32,
+	"tipo":"pared"
 	}
 }

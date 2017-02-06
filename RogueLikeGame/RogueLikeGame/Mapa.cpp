@@ -4,17 +4,14 @@
 
 
 
-CMapa::CMapa(char* mapSrc)
+CMapa::CMapa()
 {
-	this->rutaMapa = mapSrc;
+	//this->rutaMapa = mapSrc;
 	//this->rutaMapa += mapSrc;
 }
 
-CMapa::CMapa()
-{
-}
 
-bool CMapa::setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE_HEIGHT, int TOTAL_TILESWIDTH, int TOTAL_TILESHEIGHT, int NUM_TEXTURE)
+bool CMapa::setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE_HEIGHT, int TOTAL_TILESWIDTH, int TOTAL_TILESHEIGHT, int NUM_TEXTURE, char* rutaMapa)
 {
 
 	//Success flag
@@ -128,11 +125,13 @@ void CMapa::load(SDL_Renderer* m_WindowRenderer)
 }
 
 
+
 //dibuja el mapa
 void CMapa::draw(SDL_Renderer * m_WindowRenderer, CTile tiles[]) {
 	
 	for (int i = 0; i < 130; i++)
 	{
 		Sprite::Draw(m_WindowRenderer, textura, tiles[i].getRectOrigen(), tiles[i].getRectDestino());
+
 	}
 }

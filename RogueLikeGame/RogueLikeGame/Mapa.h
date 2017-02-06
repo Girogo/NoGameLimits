@@ -17,9 +17,8 @@ class CMapa
 {
 
 public:
-	CMapa(char* mapSrc);
 	CMapa();
-	bool setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE_HEIGHT, int TOTAL_TILESWIDTH, int TOTAL_TILESHEIGHT, int NUM_TEXTURE);
+	bool setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE_HEIGHT, int TOTAL_TILESWIDTH, int TOTAL_TILESHEIGHT, int NUM_TEXTURE, char* mapSrc);
 
 	void load(SDL_Renderer* m_WindowRenderer);
 
@@ -34,8 +33,10 @@ private:
 	//std::ifstream ifs;
 
 	//Se utiliza para guardar las posiciones de donde se encuentra la tile i donde la tendemos que rendarizar
-	SDL_Rect posTextureOrigen[168];
-	SDL_Rect posTextureDestino[168];
+	SDL_Rect posTextureOrigenFloor[168];
+	SDL_Rect posTextureDestinoFloor[168];
+	SDL_Rect posTextureOrigenWalls[168];
+	SDL_Rect posTextureDestinoWalls[168];
 	SDL_Texture* textura;
 
 };

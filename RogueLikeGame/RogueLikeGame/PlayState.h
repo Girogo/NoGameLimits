@@ -37,7 +37,8 @@ private:
 	//Atributs necessaris per els personatges
 	CPlayer player;
 	CEnemy enemy;
-	CTile tileset[130];
+	CTile floor[130];
+	CTile walls[130];
 	CMapa mapa;
 
 

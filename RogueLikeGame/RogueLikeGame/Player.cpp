@@ -9,8 +9,7 @@ CPlayer::CPlayer()
 {
 }
 void CPlayer::move(SDL_Event evento) {
-	switch (evento.key.keysym.sym) {
-
+	switch (evento.key.keysym.sym) {	
 		//Eventos de teclado depende del que se clique un movimiento o otro
 	case SDLK_UP:
 		if (y > 20)
@@ -26,13 +25,13 @@ void CPlayer::move(SDL_Event evento) {
 		break;
 	case SDLK_LEFT:
 		//Se resta la posicion x
-		if (x > 50)
+		if (x > 30)
 			x = x - 10;
 
 		break;
 	case SDLK_RIGHT:
 		//Se resta la posicion y
-		if (x < 720)
+		if (x < 740)
 			x = x + 10;
 		break;
 	}
