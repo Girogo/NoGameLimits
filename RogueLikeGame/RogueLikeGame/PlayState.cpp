@@ -5,6 +5,8 @@
 #include "PlayState.h"
 #include "PauseState.h"
 #include "Player.h"
+#include "Timer.h"
+#include "GUI.h"
 #include <vector>
 
 PlayState PlayState::m_PlayState;
@@ -28,11 +30,16 @@ void PlayState::Init(Game* game)
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
 	enemy = CEnemy("sprites/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
-	player = CPlayer("sprites/macaco.bmp", 200, 200, 64, 64, game->GetRenderer());
+	player = CPlayer("sprites/player.bmp", 200, 200, 64, 64, game->GetRenderer());
+
+
+	//Inicialicamos la GUI i la cargamos
+	GUI = CGUI(&player);
+	GUI.loadMedia(game->GetRenderer());
 
 	//Cargo la imagen del jugador i enemigo
 	enemy.load();
-	player.load();
+	player.loadMedia(game->GetRenderer());
 
 	printf("PlayState Init Successful\n");
 }
@@ -54,9 +61,10 @@ void PlayState::Resume()
 
 void PlayState::HandleEvents(Game* game)
 {
+	
 	SDL_Event event;
 
-	if (SDL_PollEvent(&event)) {
+	/*if (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_QUIT:
 			game->Quit();
@@ -68,14 +76,53 @@ void PlayState::HandleEvents(Game* game)
 				game->PushState(PauseState::Instance());
 				break;				
 			}
-			//Moviemiento del jugador, se passa como parametro el evento de teclado realizado
-			player.move(event);
-			//Movimiento del enemigo, se le passa las cordenadas del jugador
-			enemy.move(player.get_x(), player.get_y());
+
 		}
 
+
+	}*/
+
+	while (SDL_PollEvent(&event) != 0) {
+		if (event.type == SDL_QUIT) {
+			game->Quit();
+		}
+		if (event.type == SDL_KEYDOWN) {
+			if (event.key.keysym.sym == SDLK_SPACE) {
+				game->PushState(PauseState::Instance());
+			}
+			if (event.key.keysym.sym == SDLK_f) {
+				player.setVida(player.getVida() + 1);
+				if (player.getVida() == 25) {
+					player.setVida(0);
+				}
+			}
+			if (event.key.keysym.sym == SDLK_c) {
+				player.setCoins(player.getCoins() + 1);
+			}
+			if (event.key.keysym.sym == SDLK_b) {
+				player.setBombs(player.getBombs() + 1);
+			}
+			if (event.key.keysym.sym == SDLK_k) {
+				player.setKeys(player.getKeys() + 1);
+			}
+		}
+		//Eventos del teclado, mira que evento ha ocurrido
+		player.handleEvent(event);
+
+		//Movimiento del enemigo, se le passa las cordenadas del jugador
+		//enemy.move(player.get_x(), player.get_y());
 	}
-	
+	//Coje los ticks
+	float timeStep = stepTimer.getTicks() / 1000.f;
+
+	//Mueve el jugador
+	player.move(timeStep);
+
+	//Reinicia el timer
+	stepTimer.start();
+
+	//animacion del personaje
+	player.animation();
 }
 
 void PlayState::Update(Game* game)
@@ -93,9 +140,11 @@ void PlayState::Draw(Game* game)
 	enemy.draw();
 
 	//Dibuja el personaje
-	player.draw();
+	player.render(game->GetRenderer());
 	
 	mapa.draw(game->GetRenderer(), walls);
+	
+	GUI.drawGUI(game->GetRenderer());
 	//Implanta los elementos en la pantalla
 	SDL_RenderPresent(game->GetRenderer());
 }

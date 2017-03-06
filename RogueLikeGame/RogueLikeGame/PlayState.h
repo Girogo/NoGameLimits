@@ -8,6 +8,8 @@
 #include "Enemy.h"
 #include "Mapa.h"
 #include "Tile.h"
+#include "Timer.h"
+#include "GUI.h"
 
 class PlayState : public GameState
 {
@@ -40,7 +42,8 @@ private:
 	CTile floor[130];
 	CTile walls[130];
 	CMapa mapa;
-
+	CTimer stepTimer;
+	CGUI GUI;
 
 	static PlayState m_PlayState;
 

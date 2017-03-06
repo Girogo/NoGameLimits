@@ -1,3 +1,22 @@
-﻿  PlayState.cpp
-  RogueLikeGame.vcxproj -> C:\Users\Aleix\Downloads\NoGameLimits-master\RogueLikeGame\x64\Debug\RogueLikeGame.exe
-  RogueLikeGame.vcxproj -> C:\Users\Aleix\Downloads\NoGameLimits-master\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+﻿  Timer.cpp
+  Tile.cpp
+  Texture.cpp
+  TTF.cpp
+  Sprite.cpp
+  Player.cpp
+h:\projecte\nogamelimits-master\roguelikegame\roguelikegame\player.cpp(4): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  PlayState.cpp
+  PauseState.cpp
+  MenuState.cpp
+  Mapa.cpp
+  Main.cpp
+  Game.cpp
+  GUI.cpp
+  Entity.cpp
+  Enemy.cpp
+h:\projecte\nogamelimits-master\roguelikegame\roguelikegame\enemy.cpp(5): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+h:\projecte\nogamelimits-master\roguelikegame\roguelikegame\enemy.cpp(23): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+h:\projecte\nogamelimits-master\roguelikegame\roguelikegame\enemy.cpp(24): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  Generando código...
+  RogueLikeGame.vcxproj -> H:\Projecte\NoGameLimits-master\RogueLikeGame\x64\Debug\RogueLikeGame.exe
+  RogueLikeGame.vcxproj -> H:\Projecte\NoGameLimits-master\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)

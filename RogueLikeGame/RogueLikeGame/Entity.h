@@ -4,24 +4,25 @@ class CEntity
 {
 public:
 	CEntity();
-	CEntity(char * file, int x, int y, int hight, int width, SDL_Renderer* window);
+	CEntity(char * file, float mPosX, float mPosY, int hight, int width, SDL_Renderer* window);
 	~CEntity();
-	int get_x();
-	int get_y();
-	int get_hight();
+	float get_mPosX();
+	float get_mPosY();
+	int get_height();
 	int get_width();
 	char get_file();
 	void set_file(char* file);
 	void set_window(SDL_Renderer*  Window);
-	void set_x(int x);
-	void set_y(int y);
-	void set_hight(int hight);
+	void set_mPosX(float mPosX);
+	void set_mPosY(float mPosY);
+	void set_height(int hight);
 	void set_width(int width);
 
 	//Controla el movimiento de la entidad
 	virtual void move(int x, int y) = 0;
-	virtual void move(SDL_Event evento) = 0;
-	
+	virtual void move(const Uint8 *keyboard_state_array) = 0;
+
+
 	//Carga la entidad
 	void load();
 	//Dibuja la entidad
@@ -37,11 +38,11 @@ private:
 
 protected:
 	//Tamaño
-	int hight;
+	int height;
 	int width;
 	//Posicion
-	int x;
-	int y;
+	float mPosX;
+	float mPosY;
 
 };
 

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "GameState.h"
 #include <stdio.h>
+#include <SDL_ttf.h>
 
 
 Game::Game()
@@ -39,7 +40,7 @@ void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 	m_WindowRenderer = SDL_CreateRenderer(
 		m_Window,
 		-1,
-		SDL_RENDERER_ACCELERATED
+		SDL_RENDERER_ACCELERATED || SDL_RENDERER_PRESENTVSYNC
 	);
 
 	/*SDL_SetRenderDrawColor
@@ -53,6 +54,11 @@ void Game::Init(const char* titulo, int sizeX, int sizeY, bool fullscreen)
 	
 	m_bFullscreen = fullscreen;
 	m_bRunning = true;
+
+	//Inicialitzem SDL_ttf
+	if (!TTF_Init()) {
+		printf("Error al iniciar SDL_ttf");
+	}
 }
 
 

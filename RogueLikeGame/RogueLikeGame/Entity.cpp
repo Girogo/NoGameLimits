@@ -6,12 +6,12 @@ CEntity::CEntity()
 {
 }
 
-CEntity::CEntity(char * file, int x, int y, int hight, int width, SDL_Renderer * window)
+CEntity::CEntity(char * file, float mPosX, float mPosY, int height, int width, SDL_Renderer * window)
 {
 	this->file = file;
-	this->x = x;
-	this->y = y;
-	this->hight = hight;
+	this->mPosX = mPosX;
+	this->mPosY = mPosY;
+	this->height = height;
 	this->width = width;
 	this->window = window;
 }
@@ -21,19 +21,19 @@ CEntity::~CEntity()
 {
 }
 
-int CEntity::get_x()
+float CEntity::get_mPosX()
 {
-	return x;
+	return mPosX;
 }
 
-int CEntity::get_y()
+float CEntity::get_mPosY()
 {
-	return y;
+	return mPosY;
 }
 
-int CEntity::get_hight()
+int CEntity::get_height()
 {
-	return hight;
+	return height;
 }
 
 int CEntity::get_width()
@@ -49,22 +49,22 @@ char CEntity::get_file()
 
 //Dona erroer es te que mirar, tot i que per el moment no es necessari mes endevant pot ser que ho necessitem
 /*SDL_Renderer CEntity::get_window() {
-	return window;
+return window;
 }*/
 
-void CEntity::set_x(int x)
+void CEntity::set_mPosX(float mPosX)
 {
-	this->x = x;
+	this->mPosX = mPosX;
 }
 
-void CEntity::set_y(int y)
+void CEntity::set_mPosY(float mPosY)
 {
-	this->y = y;
+	this->mPosY = mPosY;
 }
 
-void CEntity::set_hight(int hight)
+void CEntity::set_height(int hight)
 {
-	this->hight = hight;
+	this->height = hight;
 }
 
 void CEntity::set_width(int width)
@@ -89,5 +89,5 @@ void CEntity::load()
 void CEntity::draw()
 {
 	//Dibuja el pj
-	Sprite::Draw(window, image, x, y, width, hight);
+	Sprite::Draw(window, image, (int)mPosX, (int)mPosY, width, height);
 }
