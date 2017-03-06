@@ -25,12 +25,11 @@ void PlayState::Init(Game* game)
 	mapa.setTiles(walls, 130, 64, 64, 13, 10, 21, "../src/maps/m2.map");
 
 	mapa.load(game->GetRenderer());
-	playSprite = Sprite::Load("sprites/playstate.bmp", game->GetRenderer());
 
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
-	enemy = CEnemy("sprites/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
-	player = CPlayer("sprites/player.bmp", 200, 200, 64, 64, game->GetRenderer());
+	enemy = CEnemy("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
+	player = CPlayer("../src/sprites/pj/player.bmp", 200, 200, 64, 64, game->GetRenderer());
 
 
 	//Inicialicamos la GUI i la cargamos

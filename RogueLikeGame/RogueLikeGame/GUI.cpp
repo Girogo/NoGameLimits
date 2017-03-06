@@ -22,11 +22,11 @@ CGUI::~CGUI()
 
 void CGUI::loadMedia(SDL_Renderer * m_WindowRenderer)
 {
-	coin = Sprite::Load("sprites/gui/coin.bmp", m_WindowRenderer);
-	heart = Sprite::Load("sprites/gui/heart.bmp", m_WindowRenderer);
-	key = Sprite::Load("sprites/gui/key.bmp", m_WindowRenderer);
-	bomb = Sprite::Load("sprites/gui/bomb.bmp", m_WindowRenderer);
-	font = CTTF::setupTTF("font.ttf");
+	coin = Sprite::Load("../src/sprites/gui/coin.bmp", m_WindowRenderer);
+	heart = Sprite::Load("../src/sprites/gui/heart.bmp", m_WindowRenderer);
+	key = Sprite::Load("../src/sprites/gui/key.bmp", m_WindowRenderer);
+	bomb = Sprite::Load("../src/sprites/gui/bomb.bmp", m_WindowRenderer);
+	font = CTTF::setupTTF("../src/ttf/font.ttf");
 	
 }
 

@@ -155,7 +155,7 @@ bool CPlayer::loadMedia(SDL_Renderer* m_WindowRenderer)
 	bool success = true;
 
 	//Load sprite sheet texture
-	if (!gSpriteSheetTexture.loadFromFile("sprites/player.bmp", m_WindowRenderer))
+	if (!gSpriteSheetTexture.loadFromFile("../src/sprites/pj/player.bmp", m_WindowRenderer))
 	{
 		printf("Failed to load walking animation texture!\n");
 		success = false;

@@ -18,7 +18,7 @@ bool CMapa::setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE
 	bool tilesLoaded = true;
 
 	//Lector archivo JSON
-	std::ifstream ifs("ids.json");//Ruta archivo JSON con ids
+	std::ifstream ifs("../src/json/ids.json");//Ruta archivo JSON con ids
 	json j = json::parse(ifs);
 	
 
@@ -120,7 +120,7 @@ bool CMapa::setTiles(CTile CtileSet[], int TOTAL_TILES, int TILE_WIDTH, int TILE
 void CMapa::load(SDL_Renderer* m_WindowRenderer)
 {
 	//Carga el archivo de las texturas
-	textura = Sprite::Load("sprites/atlas.bmp", m_WindowRenderer);
+	textura = Sprite::Load("../src/sprites/mapa/atlas.bmp", m_WindowRenderer);
 
 }
 
