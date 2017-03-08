@@ -14,6 +14,8 @@ CEntity::CEntity(char * file, float mPosX, float mPosY, int height, int width, S
 	this->height = height;
 	this->width = width;
 	this->window = window;
+	this->mCollider.h = this->height;
+	this->mCollider.w = this->width;
 }
 
 

@@ -146,7 +146,32 @@ void CPlayer::move(float timeStep)
 
 
 }
+void CPlayer::move(float timeStep, list<SDL_Rect> wall)
+{
+	//Move the dot left or right
+	mPosX += mVelX * timeStep;
+	mCollider.x = mPosX;
 
+	//If the dot collided or went too far to the left or right
+	if (CColission::checkColission(mCollider, wall))
+	{
+		//Move back
+		mPosX -= mVelX * timeStep;
+		mCollider.x = mPosX;
+	}
+
+	//Move the dot up or down
+	mPosY += mVelY * timeStep;
+	mCollider.y = mPosY;
+
+	//If the dot collided or went too far up or down
+	if (CColission::checkColission(mCollider, wall))
+	{
+		//Move back
+		mPosY -= mVelY * timeStep;
+		mCollider.y = mPosY;
+	}
+}
 
 //Carga todas las sprites
 bool CPlayer::loadMedia(SDL_Renderer* m_WindowRenderer)

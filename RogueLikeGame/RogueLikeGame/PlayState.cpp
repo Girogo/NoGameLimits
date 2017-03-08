@@ -9,6 +9,7 @@
 #include "GUI.h"
 #include <vector>
 
+
 PlayState PlayState::m_PlayState;
 void PlayState::Init(Game* game)
 {
@@ -41,6 +42,10 @@ void PlayState::Init(Game* game)
 	player.loadMedia(game->GetRenderer());
 
 	printf("PlayState Init Successful\n");
+
+	CColission::getRectColission(walls, &collisions, "pared");
+	CColission::getRectColission(floor, &collisions, "pared");
+
 }
 
 void PlayState::Clean()
@@ -115,7 +120,7 @@ void PlayState::HandleEvents(Game* game)
 	float timeStep = stepTimer.getTicks() / 1000.f;
 
 	//Mueve el jugador
-	player.move(timeStep);
+	player.move(timeStep, collisions);
 
 	//Reinicia el timer
 	stepTimer.start();

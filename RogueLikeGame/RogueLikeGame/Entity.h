@@ -28,6 +28,8 @@ public:
 	//Dibuja la entidad
 	void draw();
 
+	SDL_Rect getCollider() { return mCollider; };
+
 private:
 	//Pantalla donde se carga la entidad
 	SDL_Renderer* window;
@@ -43,6 +45,6 @@ protected:
 	//Posicion
 	float mPosX;
 	float mPosY;
-
+	SDL_Rect mCollider;
 };
 

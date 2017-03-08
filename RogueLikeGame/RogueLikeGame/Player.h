@@ -3,6 +3,8 @@
 #include"Sprite.h"
 #include "Entity.h"
 #include "Texture.h"
+#include "Colission.h"
+#include <list>
 class CPlayer : public CEntity
 {
 public:
@@ -12,6 +14,7 @@ public:
 	void move(int x, int y);
 	void handleEvent(SDL_Event& e);
 	void move(float timeStep);
+	void move(float timeStep, list<SDL_Rect> wall);
 	bool loadMedia(SDL_Renderer* m_WindowRenderer);
 
 	void render(SDL_Renderer * m_WindowRenderer);

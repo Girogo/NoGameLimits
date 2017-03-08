@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "Game.h"
 #include "PauseState.h"
+#include "Colission.h"
 
 PauseState PauseState::m_PauseState;
 
