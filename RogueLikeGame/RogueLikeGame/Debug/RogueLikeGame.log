@@ -1,0 +1,31 @@
+﻿  TTF.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\ttf.h(3): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Timer.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\timer.h(2): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Tile.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\tile.h(5): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Texture.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\texture.h(2): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Sprite.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\game.h(4): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  PlayState.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\playstate.cpp(3): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Player.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.h(2): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  PauseState.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\pausestate.cpp(3): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  MenuState.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\menustate.cpp(2): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Mapa.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\game.h(4): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Main.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\main.cpp(1): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  GUI.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.h(2): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Game.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\game.h(4): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Entity.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\entity.h(2): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Enemy.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\enemy.h(2): fatal error C1083: No se puede abrir el archivo incluir: 'SDL.h': No such file or directory
+  Generando código...

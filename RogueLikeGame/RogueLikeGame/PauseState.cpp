@@ -10,7 +10,7 @@ void PauseState::Init(Game* game)
 {
 	pauseSprite = NULL;
 
-	pauseSprite = Sprite::Load("sprites/paused.bmp", game->GetRenderer());
+	pauseSprite = Sprite::Load("../src/sprites/menu/paused.bmp", game->GetRenderer());
 
 	printf("PauseState Init Successful\n");
 }

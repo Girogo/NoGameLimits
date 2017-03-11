@@ -12,7 +12,7 @@ void MenuState::Init(Game* game)
 {
 	
 	menuSprite = NULL;
-	menuSprite = Sprite::Load("sprites/menustate.bmp", game->GetRenderer());
+	menuSprite = Sprite::Load("../src/sprites/menu/menustate.bmp", game->GetRenderer());
 	
 	
 	printf("MenuState Init Successful\n");
