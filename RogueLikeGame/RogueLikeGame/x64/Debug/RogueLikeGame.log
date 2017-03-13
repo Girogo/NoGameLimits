@@ -1,4 +1,5 @@
-﻿  Player.cpp
-c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(6): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  RogueLikeGame.vcxproj -> C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.exe
-  RogueLikeGame.vcxproj -> C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+﻿  PauseState.cpp
+  MenuState.cpp
+  Generating Code...
+  RogueLikeGame.vcxproj -> C:\Users\Eric\Desktop\Projecte\v4Atac\NoGameLimits-0.0.4-Atac (1)\NoGameLimits-0.0.4-Atac\RogueLikeGame\x64\Debug\RogueLikeGame.exe
+  RogueLikeGame.vcxproj -> C:\Users\Eric\Desktop\Projecte\v4Atac\NoGameLimits-0.0.4-Atac (1)\NoGameLimits-0.0.4-Atac\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)

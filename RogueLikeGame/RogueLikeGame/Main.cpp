@@ -11,7 +11,7 @@ int main(int argc, char ** argv)
 
 	Game game;
 
-	game.Init("The Binding of Pol", 850, 650, false);
+	game.Init("Balar's Quest", 850, 650, false);
 
 	game.ChangeState(MenuState::Instance());
 

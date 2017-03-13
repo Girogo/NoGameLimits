@@ -135,6 +135,7 @@ void Game::Clean()
 
 	SDL_Quit();
 }
+
 SDL_Surface* Game::GetWindowSurface() {
 	SDL_Surface  *windowSurface = SDL_GetWindowSurface(m_Window);
 	return windowSurface;

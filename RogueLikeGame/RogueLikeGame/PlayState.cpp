@@ -69,7 +69,10 @@ void PlayState::HandleEvents(Game* game)
 			game->Quit();
 		}
 		if (event.type == SDL_KEYDOWN) {
-			if (event.key.keysym.sym == SDLK_SPACE) {
+			/*if (event.key.keysym.sym == SDLK_SPACE) {
+				game->PushState(PauseState::Instance());
+			}*/
+			if (event.key.keysym.sym == SDLK_ESCAPE) {
 				game->PushState(PauseState::Instance());
 			}
 			if (event.key.keysym.sym == SDLK_f) {
