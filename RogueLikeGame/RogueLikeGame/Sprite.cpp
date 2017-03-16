@@ -18,7 +18,7 @@ SDL_Texture* Sprite::Load(char* File, SDL_Renderer* m_WindowRenderer)
 	else
 	{
 		/*Crea la textura a base del renderer donde se va a mostrar y la superficie para
-		 *que sea optimizado*/
+		*que sea optimizado*/
 		SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0, 255, 0));
 		optimizedTexture = SDL_CreateTextureFromSurface(m_WindowRenderer, loadedSurface);
 		SDL_FreeSurface(loadedSurface);

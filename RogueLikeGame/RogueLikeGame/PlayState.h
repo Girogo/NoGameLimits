@@ -7,9 +7,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Mapa.h"
-#include "Tile.h"
 #include "Timer.h"
 #include "GUI.h"
+#include "Colission.h"
+#include <list>
 
 class PlayState : public GameState
 {
@@ -48,6 +49,8 @@ private:
 	static PlayState m_PlayState;
 
 	SDL_Texture* playSprite;
+
+	list<CTile> collisions;
 
 };
 #endif

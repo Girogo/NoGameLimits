@@ -9,6 +9,7 @@
 #include "GUI.h"
 #include <vector>
 
+
 PlayState PlayState::m_PlayState;
 void PlayState::Init(Game* game)
 {
@@ -21,15 +22,15 @@ void PlayState::Init(Game* game)
 
 	//Se passa como parametros Array de tiles, Numero de casillas de tiles que tiene el mapa, tamaño de las tyles
 	//numero de columnas del mapa, numero de filas del mapa, total de id del tileset
-	mapa.setTiles(floor, 130, 64, 64, 13, 10, 21, "../src/maps/m1.map");
-	mapa.setTiles(walls, 130, 64, 64, 13, 10, 21, "../src/maps/m2.map");
+	mapa.setTiles(floor, 130, 64, 64, 13, 10, 25, "../src/maps/m1.map");
+	mapa.setTiles(walls, 130, 64, 64, 13, 10, 25, "../src/maps/m2.map");
 
 	mapa.load(game->GetRenderer());
 
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
 	enemy = CEnemy("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
-	player = CPlayer("../src/sprites/pj/player.bmp", 200, 200, 64, 64, game->GetRenderer());
+	player = CPlayer("../src/sprites/pj/player.bmp", 180, 200, 64, 64, game->GetRenderer());
 
 
 	//Inicialicamos la GUI i la cargamos
@@ -41,6 +42,10 @@ void PlayState::Init(Game* game)
 	player.loadMedia(game->GetRenderer());
 
 	printf("PlayState Init Successful\n");
+
+	CColission::getRectColission(walls, &collisions, "wall");
+	CColission::getRectColission(floor, &collisions, "wall");
+
 }
 
 void PlayState::Clean()
@@ -115,7 +120,7 @@ void PlayState::HandleEvents(Game* game)
 	float timeStep = stepTimer.getTicks() / 1000.f;
 
 	//Mueve el jugador
-	player.move(timeStep);
+	player.move(timeStep, collisions);
 
 	//Reinicia el timer
 	stepTimer.start();
@@ -142,7 +147,9 @@ void PlayState::Draw(Game* game)
 	player.render(game->GetRenderer());
 	
 	mapa.draw(game->GetRenderer(), walls);
-	
+	if (player.getPrint()) {
+		player.render(game->GetRenderer());
+	}
 	GUI.drawGUI(game->GetRenderer());
 	//Implanta los elementos en la pantalla
 	SDL_RenderPresent(game->GetRenderer());

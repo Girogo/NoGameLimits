@@ -9,8 +9,6 @@ public:
 	~CEnemy();
 	//Se passa como parametro las cordenadas del jugador i mueve el enemigo
 	void move(int x, int y);
-
-
 	//No s'utilitza
 	void move(SDL_Event);
 	void move(const Uint8 * keyboard_state_array);

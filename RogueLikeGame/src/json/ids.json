@@ -88,62 +88,90 @@
 	"y": 832,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"uWall"
 	},
   "14": {
 	"x": 672,
 	"y": 832,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"uWall"
 	},
   "15": {
 	"x": 704,
 	"y": 832,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"uWall"
 	},
   "16": {
 	"x": 640,
 	"y": 896,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"dWallSL"
 	},
   "17": {
 	"x": 672,
 	"y": 896,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"dWall"
 	},
   "18": {
 	"x": 704,
 	"y": 896,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"dWall"
 	},
   "19": {
 	"x": 704,
 	"y": 864,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"rWall"
 	},
   "20": {
 	"x": 640,
 	"y": 864,
 	"width": 32,
 	"height": 32,
-	"tipo":"pared"
+	"tipo":"lWall"
 	},
   "21": {
-	"x": 630,
-	"y": 754,
-	"width": 32,
-	"height": 32,
-	"tipo":"pared"
-	}
+    "x": 630,
+    "y": 754,
+    "width": 32,
+    "height": 32,
+    "tipo": "transparente"
+  },
+  "22": {
+    "x": 704,
+    "y": 960,
+    "width": 32,
+    "height": 32,
+    "tipo": "transparente"
+  },
+  "23": {
+    "x": 96,
+    "y": 992,
+    "width": 32,
+    "height": 32,
+    "tipo": "transparente"
+  },
+  "24": {
+    "x": 128,
+    "y": 992,
+    "width": 32,
+    "height": 32,
+    "tipo": "transparente"
+  },
+  "25": {
+    "x": 160,
+    "y": 992,
+    "width": 32,
+    "height": 32,
+    "tipo": "transparente"
+  }
 }

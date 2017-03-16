@@ -3,6 +3,8 @@
 #include"Sprite.h"
 #include "Entity.h"
 #include "Texture.h"
+#include "Colission.h"
+#include <list>
 class CPlayer : public CEntity
 {
 public:
@@ -12,6 +14,7 @@ public:
 	void move(int x, int y);
 	void handleEvent(SDL_Event& e);
 	void move(float timeStep);
+	void move(float timeStep, list<CTile> wall);
 	bool loadMedia(SDL_Renderer* m_WindowRenderer);
 
 	void render(SDL_Renderer * m_WindowRenderer);
@@ -42,6 +45,7 @@ public:
 	void setCoins(int i) { coins = i; };
 	void setBombs(int i) { bombs = i; };
 	void setKeys(int i) { keys = i; };
+	bool getPrint() { return print; };
 private:
 	CTexture gSpriteSheetTexture;
 	static const int WALKING_ANIMATION_FRAMES = 36;
@@ -64,5 +68,8 @@ private:
 	int coins;
 	int bombs;
 	int keys;
+
+	//variable para saber si esta por debajo de textura i de esta forma imprimir de una manera u otra
+	bool print;
 };
  
