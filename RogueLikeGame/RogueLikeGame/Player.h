@@ -1,9 +1,12 @@
 #pragma once
+
 #include<SDL.h>
+
 #include"Sprite.h"
 #include "Entity.h"
 #include "Texture.h"
 #include "FireBall.h"
+#include <vector>
 
 class CPlayer : public CEntity
 {
@@ -45,11 +48,17 @@ public:
 	void animation();
 	void render(SDL_Renderer * m_WindowRenderer);
 	void close(SDL_Renderer* m_WindowRenderer);
+	//std::vector getAttacks() { return attacks };
+	std::vector<CFireBall> getAttacks() { return attacks; };
+
 
 private:
 	CTexture gSpriteSheetTexture;
 	CTexture gSpriteSheetTextureAttack;
 	CFireBall fb;
+
+	std::vector<CFireBall> attacks;
+
 
 	static const int WALKING_ANIMATION_FRAMES = 36;
 	static const int ATTACK_ANIMATION_FRAMES = 28;

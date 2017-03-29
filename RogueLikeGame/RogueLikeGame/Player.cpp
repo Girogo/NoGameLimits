@@ -1,6 +1,6 @@
+
 #include "Player.h"
-#include "Entity.h"
-#include "FireBall.h"
+
 
 CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer * window) : CEntity(file, x, y, hight, width, window)
 {
@@ -532,12 +532,38 @@ void CPlayer::render(SDL_Renderer* m_WindowRenderer)
 	else {
 		gSpriteSheetTextureAttack.render((int)mPosX, (int)mPosY, currentClip, m_WindowRenderer);
 
-		if (battack && fb.colision()) {
+		/*if (battack && fb.colision()) {
 			fb.loadMedia();
 			fb.animation();
 			fb.move();
 			fb.render();
+		}*/
+	}
+
+	if (!attacks.empty()) {
+		int i = 0;
+		int deleteElement = 0;
+		bool borrar = false;
+
+		for (CFireBall &fb : attacks) {
+			//Comprueba si hay colision. Si la hay, guarda la posición del ataque en una variable para eliminarla mas tarde del vector.
+			if (fb.colision()) {
+				borrar = true;
+				deleteElement = i;
+			}
+
+			fb.animation();
+			fb.move();
+			fb.render();
+			i++;
 		}
+
+		//Si ha habido colision, borra el elemento del array.
+		if (borrar) {
+			attacks.erase(attacks.begin() + deleteElement);
+			borrar = false;
+		}
+		
 	}
 
 }
@@ -695,6 +721,9 @@ void CPlayer::animation()
 
 void CPlayer::attack() {
 	fb = CFireBall::CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
+	attacks.push_back(fb);
+	
+
 }
 
 

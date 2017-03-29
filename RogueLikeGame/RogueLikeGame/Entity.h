@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+
 class CEntity
 {
 public:
@@ -17,7 +18,7 @@ public:
 	void set_mPosY(float mPosY);
 	void set_height(int hight);
 	void set_width(int width);
-
+	
 	//Controla el movimiento de la entidad
 	virtual void move(int x, int y) = 0;
 	virtual void move(const Uint8 *keyboard_state_array) = 0;

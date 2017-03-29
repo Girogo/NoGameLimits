@@ -1,13 +1,5 @@
-#include <stdio.h>
 
-#include "SDL.h"
-#include "Game.h"
 #include "PlayState.h"
-#include "PauseState.h"
-#include "Player.h"
-#include "Timer.h"
-#include "GUI.h"
-#include <vector>
 
 PlayState PlayState::m_PlayState;
 void PlayState::Init(Game* game)
@@ -125,7 +117,12 @@ void PlayState::Draw(Game* game)
 	//Dibuja el personaje
 	player.render(game->GetRenderer());
 
-
+	//playerAttacks = player.getAttacks();
+	/*for (CFireBall &fb : playerAttacks) {
+		//fb.animation();
+		//fb.move();
+		fb.render();
+	}*/
 	
 	GUI.drawGUI(game->GetRenderer());
 	//Implanta los elementos en la pantalla

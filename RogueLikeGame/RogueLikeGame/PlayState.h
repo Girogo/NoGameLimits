@@ -1,8 +1,9 @@
 #ifndef  _PLAY_STATE_H_
 #define _PLAY_STATE_H_
 
-#include "SDL.h"
+#include "Game.h"
 #include "GameState.h"
+#include "PauseState.h"
 #include "Sprite.h"
 #include "Player.h"
 #include "Enemy.h"
@@ -10,6 +11,10 @@
 #include "Tile.h"
 #include "Timer.h"
 #include "GUI.h"
+#include "FireBall.h"
+
+#include <vector>
+#include <stdio.h>
 
 class PlayState : public GameState
 {
@@ -30,6 +35,8 @@ public:
 		return &m_PlayState;
 	}
 
+	std::vector<CFireBall> playerAttacks;
+
 protected:
 
 	PlayState() {}
@@ -44,6 +51,11 @@ private:
 	CMapa mapa;
 	CTimer stepTimer;
 	CGUI GUI;
+	CFireBall Fireball;
+
+
+	
+
 
 	static PlayState m_PlayState;
 
