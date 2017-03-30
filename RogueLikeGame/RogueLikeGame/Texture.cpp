@@ -99,13 +99,13 @@ bool CTexture::loadFromFile(char * path, SDL_Renderer * m_WindowRenderer)
 void CTexture::free()
 {
 	//Libera la texture si esta existe
-	if (mTexture != NULL)
+	/*if (mTexture != NULL)
 	{
 		SDL_DestroyTexture(mTexture);
 		mTexture = NULL;
 		mWidth = 0;
 		mHeight = 0;
-	}
+	}*/
 }
 
 void CTexture::setColor(Uint8 red, Uint8 green, Uint8 blue)

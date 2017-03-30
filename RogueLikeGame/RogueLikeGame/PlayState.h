@@ -5,7 +5,7 @@
 #include "GameState.h"
 #include "Sprite.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "Mosca.h"
 #include "Mapa.h"
 #include "Timer.h"
 #include "GUI.h"
@@ -39,7 +39,7 @@ private:
 
 	//Atributs necessaris per els personatges
 	CPlayer player;
-	CEnemy enemy;
+	CMosca mosca;
 	CTile floor[130];
 	CTile walls[130];
 	CMapa mapa;

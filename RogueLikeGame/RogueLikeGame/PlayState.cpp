@@ -13,6 +13,15 @@
 PlayState PlayState::m_PlayState;
 void PlayState::Init(Game* game)
 {
+	
+	//Carga la musica
+	music.loadMedia();
+	//Inicializa la musica
+	if (Mix_PlayingMusic() == 0) {
+		Mix_PlayMusic(music.getMusicPartida(), -1);
+	}
+
+
 	//Limpia el renderer
 	SDL_RenderClear(game->GetRenderer());
 	
@@ -29,7 +38,7 @@ void PlayState::Init(Game* game)
 
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
-	enemy = CEnemy("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
+	mosca = CMosca("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
 	player = CPlayer("../src/sprites/pj/player.bmp", 180, 200, 64, 64, game->GetRenderer());
 
 
@@ -38,7 +47,7 @@ void PlayState::Init(Game* game)
 	GUI.loadMedia(game->GetRenderer());
 
 	//Cargo la imagen del jugador i enemigo
-	enemy.load();
+	mosca.loadMedia(game->GetRenderer());
 	player.loadMedia(game->GetRenderer());
 
 	printf("PlayState Init Successful\n");
@@ -68,30 +77,13 @@ void PlayState::HandleEvents(Game* game)
 	
 	SDL_Event event;
 
-	/*if (SDL_PollEvent(&event)) {
-		switch (event.type) {
-		case SDL_QUIT:
-			game->Quit();
-			break;
-		case SDL_KEYDOWN:
-			switch (event.key.keysym.sym) {
-			//Eventos de teclado depende del que se clique un movimiento o otro
-			case SDLK_SPACE:
-				game->PushState(PauseState::Instance());
-				break;				
-			}
-
-		}
-
-
-	}*/
-
 	while (SDL_PollEvent(&event) != 0) {
 		if (event.type == SDL_QUIT) {
 			game->Quit();
 		}
 		if (event.type == SDL_KEYDOWN) {
-			if (event.key.keysym.sym == SDLK_SPACE) {
+			if (event.key.keysym.sym == SDLK_ESCAPE) {
+				Mix_PauseMusic();
 				game->PushState(PauseState::Instance());
 			}
 			if (event.key.keysym.sym == SDLK_f) {
@@ -121,16 +113,22 @@ void PlayState::HandleEvents(Game* game)
 
 	//Mueve el jugador
 	player.move(timeStep, collisions);
-
+	mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
 	//Reinicia el timer
 	stepTimer.start();
 
 	//animacion del personaje
 	player.animation();
+	mosca.animation();
 }
 
 void PlayState::Update(Game* game)
 {
+	if (Mix_PlayingMusic() == 0)
+	{
+		//Play the music
+		Mix_PlayMusic(music.getMusicPartida(), -1);
+	}
 }
 
 void PlayState::Draw(Game* game)
@@ -141,7 +139,7 @@ void PlayState::Draw(Game* game)
 	mapa.draw(game->GetRenderer(), floor);
 	
 	//Dibuja el enemigo
-	enemy.draw();
+	mosca.render(game->GetRenderer());
 
 	//Dibuja el personaje
 	player.render(game->GetRenderer());
@@ -149,6 +147,9 @@ void PlayState::Draw(Game* game)
 	mapa.draw(game->GetRenderer(), walls);
 	if (player.getPrint()) {
 		player.render(game->GetRenderer());
+	}
+	if (mosca.getPrint()) {
+		mosca.render(game->GetRenderer());
 	}
 	GUI.drawGUI(game->GetRenderer());
 	//Implanta los elementos en la pantalla
