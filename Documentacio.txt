@@ -42,3 +42,7 @@ int main(int argc, char ** argv)
 
 	return 0;
 }
+
+QUE SOC EN POL COLLONS!
+No em parlis aixi
+Soc un deu i faig el que vull
