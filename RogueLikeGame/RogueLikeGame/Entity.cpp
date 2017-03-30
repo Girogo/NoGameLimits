@@ -16,6 +16,12 @@ CEntity::CEntity(char * file, float mPosX, float mPosY, int height, int width, S
 	this->window = window;
 	this->mCollider.h = this->height;
 	this->mCollider.w = this->width;
+	this->print = false;
+	this->mCollider.x = this->mPosX;
+	this->mCollider.y = this->mPosY;
+	this->mCollider.h = this->height;
+	this->mCollider.w = this->width;
+	this->frame = 0;
 }
 
 
@@ -92,4 +98,10 @@ void CEntity::draw()
 {
 	//Dibuja el pj
 	Sprite::Draw(window, image, (int)mPosX, (int)mPosY, width, height);
+}
+
+void CEntity::render(SDL_Renderer* m_WindowRenderer)
+{
+	SDL_Rect* currentClip = &gSpriteClips[frame];
+	gSpriteSheetTexture.render((int)mPosX, (int)mPosY, currentClip, m_WindowRenderer);
 }

@@ -10,5 +10,6 @@ public:
 	~CColission();
 	static bool checkColission(SDL_Rect a, list<CTile> list, bool* print);
 	static void getRectColission(CTile tiles[], list<CTile>* list, char* id);
+	static bool checkColission(SDL_Rect a, SDL_Rect b);
 };
 

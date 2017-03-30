@@ -4,7 +4,6 @@
 #include "MenuState.h"
 #include "PlayState.h"
 #include "Player.h"
-#include <stdio.h>
 #include <string.h>
 
 
@@ -21,11 +20,16 @@ Menu menu;
 
 void MenuState::Init(Game* game)
 {
+	//escala la resolucion
+	SDL_RenderSetLogicalSize(game->GetRenderer(), 850, 650);
 
 	menuSprite = NULL;
 	menuSprite = Sprite::Load("../src/sprites/menu/MainMenuStart.png", game->GetRenderer());
-
-
+	music.loadMedia();
+	//Si no està la musica iniciamos el audio
+	if (Mix_PlayingMusic() == 0) {
+		Mix_PlayMusic(music.getMusic(), -1);
+	}
 	printf("MenuState Init Successful\n");
 }
 
@@ -65,7 +69,9 @@ void MenuState::HandleEvents(Game* game)
 				game->ChangeState(PlayState::Instance());
 				break;
 				*/
+
 			case SDLK_UP:
+				Mix_PlayChannel(-1, music.getMoverMenu(), 0);
 				if (mainMenuIndex == 0) {
 					if (posMainMenu - 1 != 0) {
 						posMainMenu--;
@@ -83,6 +89,7 @@ void MenuState::HandleEvents(Game* game)
 				break;
 
 			case SDLK_DOWN:
+				Mix_PlayChannel(-1, music.getMoverMenu(), 0);
 				if (mainMenuIndex == 0) {
 					if (posMainMenu < numOpcionsMain) {
 						posMainMenu++;
@@ -103,10 +110,13 @@ void MenuState::HandleEvents(Game* game)
 				if (mainMenuIndex == 0) {
 					switch (posMainMenu) {
 					case 1:
+						Mix_HaltMusic();
+						Mix_PlayChannel(-1, music.getEntrarPartida(), 0);
 						game->ChangeState(PlayState::Instance());
 						break;
 
 					case 2:
+						Mix_PlayChannel(-1, music.getEntrarOpcion(), 0);
 						//menuSprite = Sprite::Load("../src/sprites/menu/SettingsMenuSound1no.png", game->GetRenderer());
 						CargaMenuSettings(game, posMainMenuSettings, mainFullScreen, mainVolSelected);
 						//CargaImgSprite(game, "SettingsMenuSound1no.png");
@@ -114,6 +124,7 @@ void MenuState::HandleEvents(Game* game)
 						break;
 
 					case 3:
+						Mix_PlayChannel(-1, music.getEntrarOpcion(), 0);
 						game->Quit();
 						break;
 
@@ -121,6 +132,7 @@ void MenuState::HandleEvents(Game* game)
 				}
 				if (mainMenuIndex == 1) {
 					if (posMainMenuSettings == 3) {
+						Mix_PlayChannel(-1, music.getEntrarOpcion(), 0);
 						mainMenuIndex = 0;
 						posMainMenu = 2;
 						posMainMenuSettings = 1;
@@ -131,6 +143,7 @@ void MenuState::HandleEvents(Game* game)
 
 			case SDLK_RIGHT:
 				if (mainMenuIndex == 1) {
+					Mix_PlayChannel(-1, music.getCanviarOpcion(), 0);
 					if (posMainMenuSettings == 1) {
 						if (mainVolSelected < mainNumOpcionsVol - 1) {
 							mainVolSelected++;
@@ -141,6 +154,7 @@ void MenuState::HandleEvents(Game* game)
 						if (mainFullScreen == true) {
 							mainFullScreen = false;
 							SDL_SetWindowFullscreen(game->GetWindow(), SDL_FALSE);
+							//game->SDL_SetRendererViewportRatio_4_3(game->GetWindow(), game->GetRenderer(), NULL);
 							CanviaScreen(game, mainVolSelected, mainFullScreen);
 						}
 					}
@@ -149,6 +163,7 @@ void MenuState::HandleEvents(Game* game)
 
 			case SDLK_LEFT:
 				if (mainMenuIndex == 1) {
+					Mix_PlayChannel(-1, music.getCanviarOpcion(), 0);
 					if (posMainMenuSettings == 1) {
 						if (mainVolSelected - 1 != -1) {
 							mainVolSelected--;

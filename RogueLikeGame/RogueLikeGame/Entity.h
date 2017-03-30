@@ -1,5 +1,8 @@
 #pragma once
 #include <SDL.h>
+#include "Colission.h"
+#include "Texture.h"
+#include <list>
 class CEntity
 {
 public:
@@ -11,17 +14,28 @@ public:
 	int get_height();
 	int get_width();
 	char get_file();
+	bool getDOWN() { return DOWN; };
+	bool getUP() { return UP; };
+	bool getRIGHT() { return RIGHT; };
+	bool getLEFT() { return LEFT; };
+	int getFrame() { return frame; };
+
+	void setFrame(int frame) { this->frame = frame; };
 	void set_file(char* file);
 	void set_window(SDL_Renderer*  Window);
 	void set_mPosX(float mPosX);
 	void set_mPosY(float mPosY);
 	void set_height(int hight);
 	void set_width(int width);
-
+	void setVida(int i) { vida = i; };
+	int getVida() { return vida; };
+	bool getPrint() { return print; };
 	//Controla el movimiento de la entidad
-	virtual void move(int x, int y) = 0;
 	virtual void move(const Uint8 *keyboard_state_array) = 0;
-
+	virtual void move(float timeStep, list<CTile> wall) = 0;
+	virtual void animation() = 0;
+	void render(SDL_Renderer * m_WindowRenderer);
+	virtual bool loadMedia(SDL_Renderer* m_WindowRenderer) = 0;
 
 	//Carga la entidad
 	void load();
@@ -42,9 +56,37 @@ protected:
 	//Tamaño
 	int height;
 	int width;
+
 	//Posicion
 	float mPosX;
 	float mPosY;
+
+	//Rectangulo colisionador
 	SDL_Rect mCollider;
+
+	//Vida 
+	int vida;
+
+	//variable para saber si esta por debajo de textura i de esta forma imprimir de una manera u otra
+	bool print;
+
+	//Velocidad de movimiento
+	float mVelX, mVelY;
+
+	//Sprites de la entidad 
+	CTexture gSpriteSheetTexture;
+	std::vector<SDL_Rect> gSpriteClips;
+
+	//frame actual
+	int frame;
+
+	//temporitzador de frames
+	int frameCont = 0;
+
+	//Control de direcciones
+	bool UP = false;
+	bool DOWN = false;
+	bool RIGHT = false;
+	bool LEFT = false;
 };
 

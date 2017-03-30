@@ -21,9 +21,11 @@ void PauseState::Init(Game* game)
 	//pauseSprite = Sprite::Load("../src/sprites/menu/paused.bmp", game->GetRenderer());
 	pauseSprite = Sprite::Load("../src/sprites/menu/PauseMenuReturn.png", game->GetRenderer());
 	posPauseMenu = 1;
-
+	music.loadMedia();
+	Mix_PlayMusic(music.getMusic(), -1);
 
 	printf("PauseState Init Successful\n");
+	
 }
 
 void PauseState::Clean()
@@ -56,6 +58,7 @@ void PauseState::HandleEvents(Game* game)
 				break;*/
 
 			case SDLK_UP:
+				Mix_PlayChannel(-1, music.getMoverMenu(), 0);
 				if (pauseMenuIndex == 0) {
 					if (posPauseMenu - 1 != 0) {
 						posPauseMenu--;
@@ -72,6 +75,7 @@ void PauseState::HandleEvents(Game* game)
 				break;
 
 			case SDLK_DOWN:
+				Mix_PlayChannel(-1, music.getMoverMenu(), 0);
 				if (pauseMenuIndex == 0) {
 					if (posPauseMenu < numOpcionsPause) {
 						posPauseMenu++;
@@ -92,10 +96,13 @@ void PauseState::HandleEvents(Game* game)
 				if (pauseMenuIndex == 0) {
 					switch (posPauseMenu) {
 					case 1:
+						Mix_HaltMusic();
+						Mix_PlayChannel(-1, music.getEntrarPartida(), 0);
 						game->PopState(PauseState::Instance());
 						break;
 
 					case 2:
+						Mix_PlayChannel(-1, music.getEntrarOpcion(), 0);
 						//pauseSprite = Sprite::Load("../src/sprites/menu/SettingsMenuSound1no.png", game->GetRenderer());
 						CargaMenuSettings(game, posPauseMenuSettings, pauseFullScreen, pauseVolSelected);
 						//CargaImgSprite(game, "SettingsMenuSound1no.png");
@@ -103,6 +110,7 @@ void PauseState::HandleEvents(Game* game)
 						break;
 
 					case 3:
+						Mix_PlayChannel(-1, music.getEntrarOpcion(), 0);
 						game->Quit();
 						break;
 
@@ -110,6 +118,7 @@ void PauseState::HandleEvents(Game* game)
 				}
 				if (pauseMenuIndex == 1) {
 					if (posPauseMenuSettings == 3) {
+						Mix_PlayChannel(-1, music.getEntrarOpcion(), 0);
 						pauseMenuIndex = 0;
 						posPauseMenu = 2;
 						posPauseMenuSettings = 1;
@@ -119,6 +128,7 @@ void PauseState::HandleEvents(Game* game)
 				break;
 
 			case SDLK_RIGHT:
+				Mix_PlayChannel(-1, music.getCanviarOpcion(), 0);
 				if (pauseMenuIndex == 1) {
 					if (posPauseMenuSettings == 1) {
 						if (pauseVolSelected < pauseNumOpcionsVol - 1) {
@@ -137,6 +147,7 @@ void PauseState::HandleEvents(Game* game)
 				break;
 
 			case SDLK_LEFT:
+				Mix_PlayChannel(-1, music.getCanviarOpcion(), 0);
 				if (pauseMenuIndex == 1) {
 					if (posPauseMenuSettings == 1) {
 						if (pauseVolSelected - 1 != -1) {
