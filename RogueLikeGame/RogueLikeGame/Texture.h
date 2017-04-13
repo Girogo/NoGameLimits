@@ -7,7 +7,6 @@
 class CTexture
 {
 public:
-public:
 	//Initializes variables
 	CTexture();
 

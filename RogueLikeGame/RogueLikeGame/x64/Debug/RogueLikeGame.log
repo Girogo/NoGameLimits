@@ -1,3 +1,52 @@
-﻿  PauseState.cpp
-  RogueLikeGame.vcxproj -> H:\Projecte\Colisions\primera demo colisions\NoGameLimits-master - copia - copia - copia\RogueLikeGame\x64\Debug\RogueLikeGame.exe
-  RogueLikeGame.vcxproj -> H:\Projecte\Colisions\primera demo colisions\NoGameLimits-master - copia - copia - copia\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+﻿  TTF.cpp
+  Timer.cpp
+  Tile.cpp
+  Texture.cpp
+  Sprite.cpp
+  PlayState.cpp
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\playstate.cpp(163): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Player.cpp
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(5): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(155): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(168): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(177): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(183): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(188): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(195): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(197): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(198): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(199): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(200): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\player.cpp(893): warning C4244: 'inicializando': conversión de 'clock_t' a 'float'; posible pérdida de datos
+  PauseState.cpp
+  Music.cpp
+  Mosca.cpp
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(254): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(255): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(258): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(259): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(340): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(341): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(344): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(345): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(533): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(536): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  MenuState.cpp
+  Menu.cpp
+  Mapa.cpp
+  Main.cpp
+  Item.cpp
+  GUI.cpp
+  Game.cpp
+  Fireball.cpp
+  Entity.cpp
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\entity.cpp(20): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\entity.cpp(21): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Enemy.cpp
+c:\users\varez\documents\nogamelimits\roguelikegame\roguelikegame\enemy.cpp(5): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Generando código...
+  Compilando...
+  Colission.cpp
+  Generando código...
+  RogueLikeGame.vcxproj -> C:\Users\Varez\Documents\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.exe
+  RogueLikeGame.vcxproj -> C:\Users\Varez\Documents\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)

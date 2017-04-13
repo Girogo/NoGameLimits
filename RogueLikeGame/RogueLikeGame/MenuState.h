@@ -7,7 +7,6 @@
 #include "Sprite.h"
 #include "Menu.h"
 
-
 class MenuState : public GameState, public Menu
 {
 public:

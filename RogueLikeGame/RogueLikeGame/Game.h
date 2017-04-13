@@ -71,6 +71,8 @@ public:
 	bool Running() { return m_bRunning; }
 
 	SDL_Renderer* GetRenderer() { return m_WindowRenderer; }
+	void SDL_SetRendererViewportRatio_4_3(SDL_Window * window, SDL_Renderer * renderer, SDL_Rect * viewport);
+
 
 private:
 
@@ -86,3 +88,4 @@ private:
 	SDL_Texture* testSprite;
 };
 #endif
+

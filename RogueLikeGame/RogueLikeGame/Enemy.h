@@ -1,22 +1,35 @@
 #pragma once
 #include <SDL.h>
+#include<time.h>
 #include "Entity.h" 
+
 class CEnemy : public CEntity
 {
 public:
 	CEnemy(char * file, int x, int y, int hight, int width, SDL_Renderer * window);
 	CEnemy();
 	~CEnemy();
-	//Se passa como parametro las cordenadas del jugador i mueve el enemigo
-	void move(int x, int y);
-	//No s'utilitza
-	void move(SDL_Event);
 	void move(const Uint8 * keyboard_state_array);
-private:
+	virtual void move(float timeStep, list<CTile> wall) = 0;
+	virtual bool loadMedia(SDL_Renderer* m_WindowRenderer) = 0;
+	virtual void animation() = 0;
+protected:
 	//Array con las posiciones del jugador
-	int posPlayer_x[8] = { 130,140,150,160,170,180,190,200 };
-	int posPlayer_y[8] = { 200,200,200,200,200,200,200,200 };
-	//Contador del movimiento del jugador
-	int MovePlayer = 0;
+	int direccio, cont;
+	clock_t start, diff;
+
+
+	//atributos para el movimiento
+	SDL_Rect col1;
+	SDL_Rect col2;
+	SDL_Rect col3;
+	SDL_Rect col4;
+	//Colider del daño;
+	SDL_Rect colDaño;
+	bool colision1, colision2, colision3, colision4;
+	bool colision;
+	bool focus = false;
+	bool crash = false;
+	bool damage = false;
 };
 

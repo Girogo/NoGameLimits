@@ -2,7 +2,7 @@
 #define _GAMESTATE_H_
 
 #include "Game.h"
-
+#include "Music.h"
 
 
 class GameState
@@ -24,5 +24,8 @@ public:
 	}
 protected:
 	GameState() { }
+	CMusic music;
+private:
+
 };
 #endif
