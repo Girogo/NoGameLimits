@@ -14,6 +14,7 @@ CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer *
 	this->m_WindowRenderer = window;
 	this->zonaSegura.h = 100;
 	this->zonaSegura.w = 100;
+
 	this->zonaDany.h = 45;
 	this->zonaDany.w = 33;
 
@@ -29,7 +30,7 @@ CPlayer::CPlayer()
 	this->keys = 0;
 }
 
-//Este movimiento est‡ obsoleto, se le passaba un mapa del teclado
+//Este movimiento est√† obsoleto, se le passaba un mapa del teclado
 void CPlayer::move(const Uint8 *keyboard_state_array) {
 	bool entrat = false;
 	if (keyboard_state_array[SDL_SCANCODE_RIGHT] && !keyboard_state_array[SDL_SCANCODE_LEFT])
@@ -198,6 +199,7 @@ void CPlayer::move(float timeStep, list<CTile> wall)
 	zonaSegura.y = mPosY;
 	zonaDany.x = mPosX;
 	zonaDany.y = mPosY;
+
 }
 
 //Carga todas las sprites
@@ -544,7 +546,6 @@ bool CPlayer::loadMedia(SDL_Renderer* m_WindowRenderer)
 		gSpriteClips[63].w = 64;
 		gSpriteClips[63].h = 64;
 
-
 	}
 	if (!gSpriteSheetTextureInmortal.loadFromFile("../src/sprites/pj/player_inmortal.bmp", m_WindowRenderer))
 	{
@@ -731,6 +732,7 @@ bool CPlayer::loadMedia(SDL_Renderer* m_WindowRenderer)
 		gSpriteClips[99].y = 192;
 		gSpriteClips[99].w = 63;
 		gSpriteClips[99].h = 63;
+
 	}
 
 	return success;
@@ -756,6 +758,7 @@ void CPlayer::close(SDL_Renderer* m_WindowRenderer)
 
 void CPlayer::animation()
 {
+
 	if (!inmortal) {
 		bool entrat = false;
 
@@ -837,6 +840,7 @@ void CPlayer::animation()
 			}
 		}
 
+
 		//43 - 49
 		if (atkLEFT) {
 			if (frame > 49 || frame < 43) {
@@ -880,6 +884,10 @@ void CPlayer::animation()
 				cont = -1;
 			}
 
+		}
+
+		if (frame == 41) {
+			cont = -1;
 		}
 	}
 	if (inmortal) {
@@ -953,8 +961,12 @@ void CPlayer::animation()
 				}
 			}
 		}
+
+		if (frame == 48) {
+			cont = -1;
+		}
 	}
-	//Velocidad de transiciÛn entre frames.
+	//Velocidad de transici√≥n entre frames.
 	if (cont > 10) {
 		cont = 0;
 	}
@@ -1018,6 +1030,5 @@ void CPlayer::attack() {
 	CFireBall* fb = new CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
 	//fb = CFireBall::CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
 	attacks.push_back(fb);
-
 
 }

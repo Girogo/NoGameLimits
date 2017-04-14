@@ -1,7 +1,6 @@
 #include "FireBall.h"
 #include "Mosca.h"
 
-
 CFireBall::CFireBall() {}
 CFireBall::CFireBall(float x, float y, char direccion, SDL_Renderer*  m_WindowRenderer)
 {
@@ -875,7 +874,7 @@ void CFireBall::animation() {
 
 	}
 
-	//Velocidad de transición entre frames.
+	//Velocidad de transiciî‰¢ entre frames.
 	if (cont > 10) {
 		cont = 0;
 	}
@@ -939,6 +938,7 @@ void CFireBall::move(std::vector<SDL_Rect>& mCollidersForntE) {
 			shiftColliders();
 			printf("FUNCIONA");
 		}
+
 		break;
 
 	}

@@ -7,7 +7,6 @@
 #include <vector>
 #include <time.h>
 
-
 class CPlayer : public CEntity
 {
 public:
@@ -78,6 +77,13 @@ private:
 	//static const int DOT_HEIGHT = 20;
 	//------------------------------------------
 
+	//SUBSTITUIDOS POR with y height en Entity?
+	//static const int DOT_WIDTH = 20;
+	//static const int DOT_HEIGHT = 20;
+	//------------------------------------------
+
+
+	//EN ENTITY?
 
 	//EN ENTITY?
 

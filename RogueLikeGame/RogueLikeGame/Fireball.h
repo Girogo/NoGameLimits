@@ -1,7 +1,9 @@
 #pragma once
 #include<SDL.h>
 #include "Texture.h"
+
 #include "Colission.h"
+
 
 class CFireBall
 {
@@ -15,6 +17,7 @@ public:
 
 	void animation();
 
+
 	void move(std::vector<SDL_Rect>& mCollidersFornt);
 
 	void render();
@@ -24,12 +27,15 @@ public:
 	//Gets the collision boxes
 	std::vector<SDL_Rect>& getCollidersFront();
 
+
 private:
 
 	float x;
 	float y;
+
 	float xIni;
 	float yIni;
+
 	char direccion;
 	int frame = 0;
 	int cont = 0;
@@ -39,9 +45,11 @@ private:
 	CTexture gSpriteSheetTexture;
 	SDL_Rect gSpriteClips[ANIMATION_FRAMES];
 
+
 	//Player collision boxes
 	std::vector<SDL_Rect> mCollidersFront;
 	//Moves the collision boxes relative to the dot's offset
 	void shiftColliders();
+
 };
 

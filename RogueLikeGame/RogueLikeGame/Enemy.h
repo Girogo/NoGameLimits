@@ -18,14 +18,13 @@ protected:
 	int direccio, cont;
 	clock_t start, diff;
 
-
 	//atributos para el movimiento
 	SDL_Rect col1;
 	SDL_Rect col2;
 	SDL_Rect col3;
 	SDL_Rect col4;
-	//Colider del daño;
-	SDL_Rect colDaño;
+	//Colider del daï¿½o;
+	SDL_Rect colDaï¿½o;
 	bool colision1, colision2, colision3, colision4;
 	bool colision;
 	bool focus = false;

@@ -11,6 +11,7 @@ public:
 	void move(float timeStep, list<CTile> wall);
 	bool loadMedia(SDL_Renderer* m_WindowRenderer);
 	void animation();
+
 	//Moves the collision boxes relative to the dot's offset
 	void shiftColliders();
 	//Gets the collision boxes
@@ -18,6 +19,6 @@ public:
 private:
 	//Enemy collision boxes
 	std::vector<SDL_Rect> mCollidersFrontE;
-	
+
 };
 

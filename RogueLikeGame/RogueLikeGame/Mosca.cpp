@@ -1,9 +1,8 @@
 #include "Mosca.h"
 
-
-
 CMosca::CMosca(char * file, int x, int y, int hight, int width, SDL_Renderer * window) : CEnemy(file, x, y, hight, width, window)
 {
+
 	//Create the necessary SDL_Rects frontalment
 	mCollidersFrontE.resize(17);
 
@@ -62,6 +61,7 @@ CMosca::CMosca(char * file, int x, int y, int hight, int width, SDL_Renderer * w
 
 	//Initialize colliders relative to position
 	shiftColliders();
+
 }
 
 CMosca::CMosca()
@@ -75,8 +75,9 @@ CMosca::~CMosca()
 
 void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer* player)
 {
+
 	colision = CColission::checkColission(mCollider, wall, &print);
-	bool colisionDamage = CColission::checkColission(colDaño, player->getZonaDany());
+	bool colisionDamage = CColission::checkColission(colDaï¿½o, player->getZonaDany());
 	col1 = mCollider;
 	col2 = mCollider;
 	col3 = mCollider;
@@ -85,12 +86,12 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 	col2.x = col2.x - 15;
 	col3.y = col1.y + 15;
 	col4.y = col2.y - 15;
-	colDaño = mCollider;
+	colDaï¿½o = mCollider;
 
-	//Son los tamaños de dimension de la mosca, asi queda mas preciso sino solo seria con  el tamaño de la tile de 64 x 64
-	//pero como en realidad la imagen de la mosca es mas pequeña aqui reduzco su tamaño
-	colDaño.h = colDaño.h - 55;
-	colDaño.w = colDaño.w - 55;
+	//Son los tamaï¿½os de dimension de la mosca, asi queda mas preciso sino solo seria con  el tamaï¿½o de la tile de 64 x 64
+	//pero como en realidad la imagen de la mosca es mas pequeï¿½a aqui reduzco su tamaï¿½o
+	colDaï¿½o.h = colDaï¿½o.h - 55;
+	colDaï¿½o.w = colDaï¿½o.w - 55;
 	diff = clock() - start;
 	int elpasedsec = diff / CLOCKS_PER_SEC;
 	if (elpasedsec >= 1 && !colision) {
@@ -107,13 +108,16 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 
 		if (!focus) {
 			if (direccio > 0 && direccio < 26 && !RIGHT && !CColission::checkColission(col1, wall, &print)) {
+
 				mPosX += mVelX * timeStep;
 				RIGHT = true;
 				LEFT = false;
 				UP = false;
 				DOWN = false;
 			}
+
 			else if (direccio > 25 && direccio < 51 && !LEFT && !CColission::checkColission(col2, wall, &print)) {
+
 				//Move the dot up or down
 				mPosX -= mVelX * timeStep;
 				RIGHT = false;
@@ -121,7 +125,9 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 				UP = false;
 				DOWN = false;
 			}
+
 			if (direccio > 50 && direccio < 76 && !DOWN && !CColission::checkColission(col3, wall, &print)) {
+
 				//Move the dot up or down
 				mPosY += mVelY * timeStep;
 				RIGHT = false;
@@ -130,7 +136,9 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 				DOWN = true;
 
 			}
+
 			else if (direccio > 75 && !UP && !CColission::checkColission(col4, wall, &print)) {
+
 				mPosY -= mVelY * timeStep;
 				RIGHT = false;
 				LEFT = false;
@@ -139,14 +147,17 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 			}
 		}
 		else {
-			if (direccio > 0 && direccio < 26 && !RIGHT && !colision) {
+
+        if (direccio > 0 && direccio < 26 && !RIGHT && !colision) {
 				mPosX += mVelX * timeStep;
 				RIGHT = true;
 				LEFT = false;
 				UP = false;
 				DOWN = false;
+
 			}
 			else if (direccio > 25 && direccio < 51 && !LEFT && !colision) {
+
 				//Move the dot up or down
 				mPosX -= mVelX * timeStep;
 				RIGHT = false;
@@ -154,16 +165,18 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 				UP = false;
 				DOWN = false;
 			}
+
 			if (direccio > 50 && direccio < 76 && !DOWN && !colision) {
+
 				//Move the dot up or down
 				mPosY += mVelY * timeStep;
 				RIGHT = false;
 				LEFT = false;
 				UP = false;
 				DOWN = true;
-
 			}
 			else if (direccio > 75 && !UP && !colision) {
+
 				mPosY -= mVelY * timeStep;
 				RIGHT = false;
 				LEFT = false;
@@ -171,6 +184,7 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 				DOWN = false;
 			}
 		}
+
 	}
 	bool entrat = false;
 	if (CColission::checkColission(mCollider, zonaSegura) && !colision && !crash) {
@@ -259,6 +273,7 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 		mCollider.y = mPosY - 1;
 	}
 }
+
 
 void CMosca::move(float timeStep, list<CTile> wall)
 {
@@ -544,6 +559,3 @@ std::vector<SDL_Rect>& CMosca::getCollidersFrontE()
 {
 	return mCollidersFrontE;
 }
-
-
-
