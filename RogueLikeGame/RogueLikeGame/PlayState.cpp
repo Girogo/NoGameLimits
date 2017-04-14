@@ -11,6 +11,7 @@
 
 
 PlayState PlayState::m_PlayState;
+CMosca moscaGlobal;
 void PlayState::Init(Game* game)
 {
 	fpsTimer.start();
@@ -124,6 +125,8 @@ void PlayState::HandleEvents(Game* game)
 	//animacion del personaje
 	player.animation();
 	mosca.animation();
+	mosca.shiftColliders();
+	moscaGlobal = mosca;
 }
 
 void PlayState::Update(Game* game)

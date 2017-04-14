@@ -19,7 +19,7 @@ public:
 
 	void render();
 
-	bool colision();
+	bool colision(std::vector<SDL_Rect>& mCollidersFornt);
 
 	//Gets the collision boxes
 	std::vector<SDL_Rect>& getCollidersFront();
@@ -28,6 +28,8 @@ private:
 
 	float x;
 	float y;
+	float xIni;
+	float yIni;
 	char direccion;
 	int frame = 0;
 	int cont = 0;

@@ -40,13 +40,13 @@ public:
 	void render(SDL_Renderer * m_WindowRenderer);
 	void close(SDL_Renderer* m_WindowRenderer);
 
-	std::vector<CFireBall> getAttacks() { return attacks; };
+	std::vector<CFireBall*> getAttacks() { return attacks; };
 
 
 	//--------
 	void move(float timeStep);
 	void move(float timeStep, list<CTile> wall);
-	
+
 	static const int PLAYER_VEL = 300;
 	//-------
 
@@ -62,12 +62,13 @@ private:
 	CTexture gSpriteSheetTextureAttack;
 	CTexture gSpriteSheetTextureInmortal;
 	CFireBall fb;
-	
-	std::vector<CFireBall> attacks;
+
+	std::vector<CFireBall*> attacks;
+	std::vector<int> colisionsFb;
 	int cont = 0;
 	static const int WALKING_ANIMATION_FRAMES = 36;
 	static const int ATTACK_ANIMATION_FRAMES = 28;
-	static const int INMORTAL_ANIMATION_FRAMES = 36;	
+	static const int INMORTAL_ANIMATION_FRAMES = 36;
 	SDL_Rect gSpriteClips[WALKING_ANIMATION_FRAMES + ATTACK_ANIMATION_FRAMES + INMORTAL_ANIMATION_FRAMES];
 
 	//static const int PLAYER_VEL = 300;
@@ -111,7 +112,7 @@ private:
 	int coins;
 	int bombs;
 	int keys;
-	
+
 	bool inmortal = false;
 
 	int contAnimacioInmortal = 0;
@@ -120,4 +121,3 @@ private:
 	clock_t start;
 	clock_t diff;
 };
- 

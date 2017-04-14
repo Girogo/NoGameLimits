@@ -6,7 +6,9 @@ CFireBall::CFireBall() {}
 CFireBall::CFireBall(float x, float y, char direccion, SDL_Renderer*  m_WindowRenderer)
 {
 	this->x = x;
+	this->xIni = x;
 	this->y = y;
+	this->yIni = y;
 	this->direccion = direccion;
 	this->m_WindowRenderer = m_WindowRenderer;
 
@@ -881,11 +883,11 @@ void CFireBall::animation() {
 }
 
 void CFireBall::move(std::vector<SDL_Rect>& mCollidersForntE) {
-
+	int vel = 5;
 	switch (direccion) {
 		//UP
 	case 'U':
-		y -= 5;
+		y -= vel;
 		shiftColliders();
 
 		//If the dot collided or went too far to the left or right
@@ -893,12 +895,13 @@ void CFireBall::move(std::vector<SDL_Rect>& mCollidersForntE) {
 		{
 			//Move back
 			shiftColliders();
-			
+			printf("FUNCIONA");
+
 		}
 		break;
 		//LEFT
 	case 'L':
-		x -= 5;
+		x -= vel;
 		shiftColliders();
 
 		//If the dot collided or went too far to the left or right
@@ -906,12 +909,13 @@ void CFireBall::move(std::vector<SDL_Rect>& mCollidersForntE) {
 		{
 			//Move back
 			shiftColliders();
-			
+			printf("FUNCIONA");
+
 		}
 		break;
 		//DOWN
 	case 'D':
-		y += 5;
+		y += vel;
 		shiftColliders();
 
 		//If the dot collided or went too far to the left or right
@@ -919,12 +923,13 @@ void CFireBall::move(std::vector<SDL_Rect>& mCollidersForntE) {
 		{
 			//Move back
 			shiftColliders();
-			
+			printf("FUNCIONA");
+
 		}
 		break;
 		//RIGHT
 	case 'R':
-		x += 5;
+		x += vel;
 		shiftColliders();
 
 		//If the dot collided or went too far to the left or right
@@ -932,6 +937,7 @@ void CFireBall::move(std::vector<SDL_Rect>& mCollidersForntE) {
 		{
 			//Move back
 			shiftColliders();
+			printf("FUNCIONA");
 		}
 		break;
 
@@ -946,19 +952,30 @@ void CFireBall::render() {
 }
 
 CMosca mosca;
-int i = 0;
-bool CFireBall::colision() {
-	//If colision con enemigo -X de vida
-	//If colision con objeto delete
 
-	i++;
-	if (i == 100) {
-		i = 0;
+bool CFireBall::colision(std::vector<SDL_Rect>& mCollidersForntE) {
+
+	if (CColission::checkCollisionPixel(mCollidersFront, mCollidersForntE))
+	{
 		return true;
-	}
-	else
-		return false;
+		printf("COLISION");
 
+	}
+	else {
+		return false;
+	}
+	/*
+	int dist = 500;
+	if (x == xIni - dist)
+	return true;
+	else if (x == xIni + dist)
+	return true;
+	else if (y == yIni - dist)
+	return true;
+	else if (y == yIni + dist)
+	return true;
+	else return false;
+	*/
 }
 
 std::vector<SDL_Rect>& CFireBall::getCollidersFront()
