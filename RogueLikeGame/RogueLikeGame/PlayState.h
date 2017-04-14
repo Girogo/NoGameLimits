@@ -10,6 +10,7 @@
 #include "Timer.h"
 #include "GUI.h"
 #include "Colission.h"
+#include "Item.h"
 #include <list>
 
 class PlayState : public GameState
@@ -45,12 +46,16 @@ private:
 	CMapa mapa;
 	CTimer stepTimer;
 	CGUI GUI;
-
+	CItem item;
 	static PlayState m_PlayState;
 
 	SDL_Texture* playSprite;
 
 	list<CTile> collisions;
 
+	//FPS
+	CTimer fpsTimer;
+	int countedFrames = 0;
+	float avgFPS;
 };
 #endif

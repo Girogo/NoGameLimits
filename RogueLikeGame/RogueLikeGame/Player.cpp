@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Entity.h"
+#include "Mosca.h"
 CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer * window) : CEntity(file, x, y, hight, width, window)
 {
 	this->gSpriteSheetTexture = CTexture::CTexture();
@@ -14,6 +15,9 @@ CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer *
 	this->zonaSegura.h = 100;
 	this->zonaSegura.w = 100;
 
+	this->zonaDany.h = 45;
+	this->zonaDany.w = 33;
+
 }
 CPlayer::CPlayer()
 {
@@ -26,7 +30,7 @@ CPlayer::CPlayer()
 	this->keys = 0;
 }
 
-//Este movimiento est‡ obsoleto, se le passaba un mapa del teclado
+//Este movimiento est√† obsoleto, se le passaba un mapa del teclado
 void CPlayer::move(const Uint8 *keyboard_state_array) {
 	bool entrat = false;
 	if (keyboard_state_array[SDL_SCANCODE_RIGHT] && !keyboard_state_array[SDL_SCANCODE_LEFT])
@@ -193,6 +197,9 @@ void CPlayer::move(float timeStep, list<CTile> wall)
 	}
 	zonaSegura.x = mPosX;
 	zonaSegura.y = mPosY;
+	zonaDany.x = mPosX;
+	zonaDany.y = mPosY;
+
 }
 
 //Carga todas las sprites
@@ -540,6 +547,193 @@ bool CPlayer::loadMedia(SDL_Renderer* m_WindowRenderer)
 		gSpriteClips[63].h = 64;
 
 	}
+	if (!gSpriteSheetTextureInmortal.loadFromFile("../src/sprites/pj/player_inmortal.bmp", m_WindowRenderer))
+	{
+		printf("Failed to load damage animation texture!\n");
+		success = false;
+	}
+	else {
+		gSpriteClips[64].x = 0;
+		gSpriteClips[64].y = 0;
+		gSpriteClips[64].w = 64;
+		gSpriteClips[64].h = 64;
+
+		gSpriteClips[65].x = 64;
+		gSpriteClips[65].y = 0;
+		gSpriteClips[65].w = 64;
+		gSpriteClips[65].h = 64;
+
+		gSpriteClips[66].x = 128;
+		gSpriteClips[66].y = 0;
+		gSpriteClips[66].w = 64;
+		gSpriteClips[66].h = 64;
+
+		gSpriteClips[67].x = 192;
+		gSpriteClips[67].y = 0;
+		gSpriteClips[67].w = 64;
+		gSpriteClips[67].h = 64;
+
+		gSpriteClips[68].x = 256;
+		gSpriteClips[68].y = 0;
+		gSpriteClips[68].w = 64;
+		gSpriteClips[68].h = 64;
+
+		gSpriteClips[69].x = 320;
+		gSpriteClips[69].y = 0;
+		gSpriteClips[69].w = 64;
+		gSpriteClips[69].h = 64;
+
+		gSpriteClips[70].x = 384;
+		gSpriteClips[70].y = 0;
+		gSpriteClips[70].w = 64;
+		gSpriteClips[70].h = 64;
+
+		gSpriteClips[71].x = 448;
+		gSpriteClips[71].y = 0;
+		gSpriteClips[71].w = 64;
+		gSpriteClips[71].h = 64;
+
+		gSpriteClips[72].x = 512;
+		gSpriteClips[72].y = 0;
+		gSpriteClips[72].w = 64;
+		gSpriteClips[72].h = 64;
+
+		gSpriteClips[73].x = 0;
+		gSpriteClips[73].y = 64;
+		gSpriteClips[73].w = 64;
+		gSpriteClips[73].h = 64;
+
+		gSpriteClips[74].x = 64;
+		gSpriteClips[74].y = 64;
+		gSpriteClips[74].w = 64;
+		gSpriteClips[74].h = 64;
+
+		gSpriteClips[75].x = 128;
+		gSpriteClips[75].y = 64;
+		gSpriteClips[75].w = 64;
+		gSpriteClips[75].h = 64;
+
+		gSpriteClips[76].x = 192;
+		gSpriteClips[76].y = 64;
+		gSpriteClips[76].w = 64;
+		gSpriteClips[76].h = 64;
+
+		gSpriteClips[77].x = 256;
+		gSpriteClips[77].y = 64;
+		gSpriteClips[77].w = 64;
+		gSpriteClips[77].h = 64;
+
+		gSpriteClips[78].x = 320;
+		gSpriteClips[78].y = 64;
+		gSpriteClips[78].w = 64;
+		gSpriteClips[78].h = 64;
+
+		gSpriteClips[79].x = 384;
+		gSpriteClips[79].y = 64;
+		gSpriteClips[79].w = 64;
+		gSpriteClips[79].h = 64;
+
+		gSpriteClips[80].x = 448;
+		gSpriteClips[80].y = 64;
+		gSpriteClips[80].w = 64;
+		gSpriteClips[80].h = 64;
+
+		gSpriteClips[81].x = 512;
+		gSpriteClips[81].y = 64;
+		gSpriteClips[81].w = 64;
+		gSpriteClips[81].h = 64;
+
+		gSpriteClips[82].x = 0;
+		gSpriteClips[82].y = 128;
+		gSpriteClips[82].w = 64;
+		gSpriteClips[82].h = 64;
+
+		gSpriteClips[83].x = 64;
+		gSpriteClips[83].y = 128;
+		gSpriteClips[83].w = 64;
+		gSpriteClips[83].h = 64;
+
+		gSpriteClips[84].x = 128;
+		gSpriteClips[84].y = 128;
+		gSpriteClips[84].w = 64;
+		gSpriteClips[84].h = 64;
+
+		gSpriteClips[85].x = 192;
+		gSpriteClips[85].y = 128;
+		gSpriteClips[85].w = 64;
+		gSpriteClips[85].h = 64;
+
+		gSpriteClips[86].x = 256;
+		gSpriteClips[86].y = 128;
+		gSpriteClips[86].w = 64;
+		gSpriteClips[86].h = 64;
+
+		gSpriteClips[87].x = 320;
+		gSpriteClips[87].y = 128;
+		gSpriteClips[87].w = 64;
+		gSpriteClips[87].h = 64;
+
+		gSpriteClips[88].x = 384;
+		gSpriteClips[88].y = 128;
+		gSpriteClips[88].w = 64;
+		gSpriteClips[88].h = 64;
+
+		gSpriteClips[89].x = 448;
+		gSpriteClips[89].y = 128;
+		gSpriteClips[89].w = 64;
+		gSpriteClips[89].h = 64;
+
+		gSpriteClips[90].x = 512;
+		gSpriteClips[90].y = 128;
+		gSpriteClips[90].w = 64;
+		gSpriteClips[90].h = 64;
+
+		gSpriteClips[91].x = 0;
+		gSpriteClips[91].y = 192;
+		gSpriteClips[91].w = 63;
+		gSpriteClips[91].h = 63;
+
+		gSpriteClips[92].x = 64;
+		gSpriteClips[92].y = 192;
+		gSpriteClips[92].w = 63;
+		gSpriteClips[92].h = 63;
+
+		gSpriteClips[93].x = 128;
+		gSpriteClips[93].y = 192;
+		gSpriteClips[93].w = 63;
+		gSpriteClips[93].h = 63;
+
+		gSpriteClips[94].x = 192;
+		gSpriteClips[94].y = 192;
+		gSpriteClips[94].w = 63;
+		gSpriteClips[94].h = 63;
+
+		gSpriteClips[95].x = 256;
+		gSpriteClips[95].y = 192;
+		gSpriteClips[95].w = 63;
+		gSpriteClips[95].h = 63;
+
+		gSpriteClips[96].x = 320;
+		gSpriteClips[96].y = 192;
+		gSpriteClips[96].w = 63;
+		gSpriteClips[96].h = 63;
+
+		gSpriteClips[97].x = 384;
+		gSpriteClips[97].y = 192;
+		gSpriteClips[97].w = 63;
+		gSpriteClips[97].h = 63;
+
+		gSpriteClips[98].x = 448;
+		gSpriteClips[98].y = 192;
+		gSpriteClips[98].w = 63;
+		gSpriteClips[98].h = 63;
+
+		gSpriteClips[99].x = 512;
+		gSpriteClips[99].y = 192;
+		gSpriteClips[99].w = 63;
+		gSpriteClips[99].h = 63;
+
+	}
 
 	return success;
 }
@@ -564,131 +758,215 @@ void CPlayer::close(SDL_Renderer* m_WindowRenderer)
 
 void CPlayer::animation()
 {
-	
-	bool entrat = false;
 
-	// 0 - 8
-	if (w && entrat != true) {
-		movimiento = true;
+	if (!inmortal) {
+		bool entrat = false;
 
-		if (frame > 7) {
-			frame = 0;
+		// 0 - 8
+
+
+		// 9 - 17
+		if (a) {
+			movimiento = true;
+
+			if (frame > 16 || frame < 9) {
+				frame = 9;
+			}
+			if (frame < 18 && cont == 1) {
+				frame++;
+			}
+
+			entrat = true;
 		}
 
-		if (frame < 8 && cont == 1)
-		{
-			frame++;
+		//19 - 26
+
+
+		//27 - 35
+		if (d) {
+			movimiento = true;
+			if (frame > 34 || frame < 27) {
+				frame = 27;
+			}
+			if (frame < 35 && cont == 1) {
+				frame++;
+			}
+			entrat = true;
+		}
+		if (s && entrat != true) {
+			movimiento = true;
+			if (frame > 25 || frame < 18) {
+				frame = 18;
+			}
+			if (frame < 26 && cont == 1) {
+				frame++;
+			}
+
+			if (frame == 18) {
+				frame++;
+			}
+		}
+		if (w && entrat != true) {
+			movimiento = true;
+
+			if (frame > 7) {
+				frame = 0;
+			}
+
+			if (frame < 8 && cont == 1)
+			{
+				frame++;
+			}
+
+			if (frame == 0) {
+				frame++;
+			}
 		}
 
-		if (frame == 0) {
-			frame++;
-		}
-	}
+		//36 - 42
+		if (atkUP) {
+			if (frame > 42 || frame < 36) {
+				frame = 36;
 
-	// 9 - 17
-	if (a) {
-		movimiento = true;
+			}
 
-		if (frame > 16 || frame < 9) {
-			frame = 9;
-		}
-		if (frame < 18 && cont == 1) {
-			frame++;
-		}
+			if (frame < 42 && cont == 1) {
 
-		entrat = true;
-	}
+				frame++;
+			}
 
-	//19 - 26
-	if (s && entrat != true) {
-		movimiento = true;
-		if (frame > 25 || frame < 18) {
-			frame = 18;
-		}
-		if (frame < 26 && cont == 1) {
-			frame++;
+			if (frame == 41) {
+				cont = -1;
+			}
 		}
 
-		if (frame == 18) {
-			frame++;
-		}
-	}
 
-	//27 - 35
-	if (d) {
-		movimiento = true;
-		if (frame > 34 || frame < 27) {
-			frame = 27;
-		}
-		if (frame < 35 && cont == 1) {
-			frame++;
-		}
-	}
+		//43 - 49
+		if (atkLEFT) {
+			if (frame > 49 || frame < 43) {
+				frame = 43;
+			}
+			if (frame < 49 && cont == 1) {
+				frame++;
+			}
 
-
-	//36 - 42
-	if (atkUP) {
-		if (frame > 42 || frame < 36) {
-			frame = 36;
-
+			if (frame == 48) {
+				cont = -1;
+			}
 		}
 
-		if (frame < 42 && cont == 1) {
+		//50 - 56
+		if (atkDOWN) {
+			if ((frame > 56 || frame < 50)) {
+				frame = 50;
+			}
+			if (frame < 56 && cont == 1) {
+				frame++;
+			}
 
-			frame++;
+			if (frame == 55) {
+				cont = -1;
+			}
+		}
+
+		//57 - 63
+		if (atkRIGHT) {
+			//No cal >62, perque si es == 62 para el moviment
+			if (frame > 63 || frame < 57) {
+				frame = 57;
+			}
+
+			if (frame < 63 && cont == 1) {
+				frame++;
+			}
+
+			if (frame == 62) {
+				cont = -1;
+			}
+
 		}
 
 		if (frame == 41) {
 			cont = -1;
 		}
 	}
+	if (inmortal) {
 
-	//43 - 49
-	if (atkLEFT) {
-		if (frame > 49 || frame < 43) {
-			frame = 43;
+
+		if (contEntradaInmortal == 0) {
+			start = clock();
+			contEntradaInmortal++;
 		}
-		if (frame < 49 && cont == 1) {
-			frame++;
+		diff = clock() - start;
+		float elpasedsec = diff / CLOCKS_PER_SEC;
+		if (elpasedsec >= 5) {
+			inmortal = false;
+			contEntradaInmortal = 0;
+			contAnimacioInmortal = 0;
+		}
+		else {
+			bool entrat = false;
+			if (a) {
+
+
+				if (frame > 80 || frame < 73) {
+					frame = 73;
+				}
+				if (frame < 82 && cont == 1) {
+					frame++;
+				}
+
+				entrat = true;
+			}
+
+			//19 - 26
+
+
+			//27 - 35
+			if (d) {
+
+				if (frame > 98 || frame < 91) {
+					frame = 91;
+				}
+				if (frame < 99 && cont == 1) {
+					frame++;
+				}
+				entrat = true;
+			}
+			if (s && entrat != true) {
+
+				if (frame > 89 || frame < 82) {
+					frame = 82;
+				}
+				if (frame < 90 && cont == 1) {
+					frame++;
+				}
+
+				if (frame == 82) {
+					frame++;
+				}
+			}
+			if (w && entrat != true) {
+				if (frame > 71 || frame < 64) {
+					frame = 64;
+				}
+
+				if (frame < 72 && cont == 1)
+				{
+					frame++;
+				}
+
+				if (frame == 64) {
+					frame++;
+				}
+			}
 		}
 
 		if (frame == 48) {
 			cont = -1;
 		}
 	}
-
-	//50 - 56
-	if (atkDOWN) {
-		if ((frame > 56 || frame < 50)) {
-			frame = 50;
-		}
-		if (frame < 56 && cont == 1) {
-			frame++;
-		}
-
-		if (frame == 55) {
-			cont = -1;
-		}
-	}
-
-	//57 - 63
-	if (atkRIGHT) {
-		//No cal >62, perque si es == 62 para el moviment
-		if (frame > 63 || frame < 57) {
-			frame = 57;
-		}
-
-		if (frame < 63 && cont == 1) {
-			frame++;
-		}
-
-		if (frame == 62) {
-			cont = -1;
-		}
-
-	}
-
-	//Velocidad de transiciÛn entre frames.
+	//Velocidad de transici√≥n entre frames.
 	if (cont > 10) {
 		cont = 0;
 	}
@@ -699,55 +977,58 @@ void CPlayer::render(SDL_Renderer* m_WindowRenderer)
 {
 	SDL_Rect* currentClip = &gSpriteClips[frame];
 
-	if (movimiento) {
+	if (movimiento && !inmortal) {
 		gSpriteSheetTexture.render((int)mPosX, (int)mPosY, currentClip, m_WindowRenderer);
 
 	}
-	else {
+	else  if (!inmortal) {
 		gSpriteSheetTextureAttack.render((int)mPosX, (int)mPosY, currentClip, m_WindowRenderer);
 
-		/*if (battack && fb.colision()) {
-		fb.loadMedia();
-		fb.animation();
-		fb.move();
-		fb.render();
-		}*/
 	}
-
+	else if (inmortal) {
+		gSpriteSheetTextureInmortal.render((int)mPosX, (int)mPosY + 6, currentClip, m_WindowRenderer);
+	}
 	if (!attacks.empty()) {
 		int i = 0;
 		int deleteElement = 0;
 		bool borrar = false;
 
-		for (CFireBall &fb : attacks) {
-			//Comprueba si hay colision. Si la hay, guarda la posiciÛn del ataque en una variable para eliminarla mas tarde del vector.
-			if (fb.colision()) {
+		for (CFireBall* atac : attacks) {
+			extern CMosca moscaGlobal;
+			CMosca mosca2;
+			mosca2 = moscaGlobal;
+			atac->animation();
+			atac->move(moscaGlobal.getCollidersFrontE());
+			atac->render();
+
+			if (atac->colision(moscaGlobal.getCollidersFrontE())) {
 				borrar = true;
-				deleteElement = i;
+				colisionsFb.push_back(i);
 			}
 
-			fb.animation();
-			fb.move();
-			fb.render();
-			i++;
-		}
+			++i;
 
-		//Si ha habido colision, borra el elemento del array.
+		}
 		if (borrar) {
-			attacks.erase(attacks.begin() + deleteElement);
+
+			if (attacks.size() > 1) {
+				for (int i = 0; i < colisionsFb.size(); i++)
+				{
+					attacks.erase(attacks.begin() + i);
+				}
+			}
+			else {
+				attacks.clear();
+			}
+			colisionsFb.clear();
 			borrar = false;
 		}
-
 	}
-
 }
 
 void CPlayer::attack() {
-	fb = CFireBall::CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
+	CFireBall* fb = new CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
+	//fb = CFireBall::CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
 	attacks.push_back(fb);
 
-
 }
-
-
-

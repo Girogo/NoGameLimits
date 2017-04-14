@@ -1,3 +1,15 @@
-﻿  PauseState.cpp
-  RogueLikeGame.vcxproj -> H:\Projecte\Colisions\primera demo colisions\NoGameLimits-master - copia - copia - copia\RogueLikeGame\x64\Debug\RogueLikeGame.exe
-  RogueLikeGame.vcxproj -> H:\Projecte\Colisions\primera demo colisions\NoGameLimits-master - copia - copia - copia\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+﻿  Player.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(5): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(155): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(168): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(177): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(183): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(188): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(195): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(197): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(198): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(199): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(200): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(893): warning C4244: 'inicializando': conversión de 'clock_t' a 'float'; posible pérdida de datos
+  RogueLikeGame.vcxproj -> C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.exe
+  RogueLikeGame.vcxproj -> C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)

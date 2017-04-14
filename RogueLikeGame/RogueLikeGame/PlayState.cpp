@@ -11,9 +11,12 @@
 
 
 PlayState PlayState::m_PlayState;
+CMosca moscaGlobal;
 void PlayState::Init(Game* game)
 {
-	
+
+	fpsTimer.start();
+
 	//Carga la musica
 	music.loadMedia();
 	//Inicializa la musica
@@ -29,7 +32,7 @@ void PlayState::Init(Game* game)
 	//Cargamos Elementos del mapa i las tiles
 	mapa = CMapa();
 
-	//Se passa como parametros Array de tiles, Numero de casillas de tiles que tiene el mapa, tamaño de las tyles
+	//Se passa como parametros Array de tiles, Numero de casillas de tiles que tiene el mapa, tamaÃ±o de las tyles
 	//numero de columnas del mapa, numero de filas del mapa, total de id del tileset
 	mapa.setTiles(floor, 130, 64, 64, 13, 10, 25, "../src/maps/m1.map");
 	mapa.setTiles(walls, 130, 64, 64, 13, 10, 25, "../src/maps/m2.map");
@@ -39,8 +42,9 @@ void PlayState::Init(Game* game)
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
 	mosca = CMosca("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
-	player = CPlayer("../src/sprites/pj/player.bmp", 180, 200, 64, 64, game->GetRenderer());
 
+	player = CPlayer("../src/sprites/pj/player.bmp", 180, 400, 64, 64, game->GetRenderer());
+	item = CItem("../src/sprites/gui/bomb.bmp", 200, 200, 64, 64, game->GetRenderer());
 
 	//Inicialicamos la GUI i la cargamos
 	GUI = CGUI(&player);
@@ -49,6 +53,7 @@ void PlayState::Init(Game* game)
 	//Cargo la imagen del jugador i enemigo
 	mosca.loadMedia(game->GetRenderer());
 	player.loadMedia(game->GetRenderer());
+//	item.load();
 
 	printf("PlayState Init Successful\n");
 
@@ -88,8 +93,10 @@ void PlayState::HandleEvents(Game* game)
 			}
 			if (event.key.keysym.sym == SDLK_f) {
 				player.setVida(player.getVida() + 1);
+				player.setInmortal(true);
 				if (player.getVida() == 25) {
 					player.setVida(0);
+					
 				}
 			}
 			if (event.key.keysym.sym == SDLK_c) {
@@ -120,6 +127,10 @@ void PlayState::HandleEvents(Game* game)
 	//animacion del personaje
 	player.animation();
 	mosca.animation();
+
+	mosca.shiftColliders();
+	moscaGlobal = mosca;
+
 }
 
 void PlayState::Update(Game* game)
@@ -151,7 +162,14 @@ void PlayState::Draw(Game* game)
 	if (mosca.getPrint()) {
 		mosca.render(game->GetRenderer());
 	}
-	GUI.drawGUI(game->GetRenderer());
+
+	avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
+	if (avgFPS > 2000000) {
+		avgFPS = 0;
+	}
+	GUI.drawGUI(game->GetRenderer(), avgFPS);
+
 	//Implanta los elementos en la pantalla
 	SDL_RenderPresent(game->GetRenderer());
+	++countedFrames;
 }
