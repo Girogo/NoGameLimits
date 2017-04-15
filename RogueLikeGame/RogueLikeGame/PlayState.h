@@ -4,13 +4,13 @@
 #include "SDL.h"
 #include "GameState.h"
 #include "Sprite.h"
-#include "Player.h"
 #include "Mosca.h"
 #include "Mapa.h"
 #include "Timer.h"
 #include "GUI.h"
 #include "Colission.h"
 #include "Item.h"
+#include "Coin.h"
 #include <list>
 
 class PlayState : public GameState
@@ -46,7 +46,7 @@ private:
 	CMapa mapa;
 	CTimer stepTimer;
 	CGUI GUI;
-	CItem item;
+	std::vector<CItem> items;
 	static PlayState m_PlayState;
 
 	SDL_Texture* playSprite;

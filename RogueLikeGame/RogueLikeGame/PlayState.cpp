@@ -4,7 +4,6 @@
 #include "Game.h"
 #include "PlayState.h"
 #include "PauseState.h"
-#include "Player.h"
 #include "Timer.h"
 #include "GUI.h"
 #include <vector>
@@ -44,8 +43,20 @@ void PlayState::Init(Game* game)
 	mosca = CMosca("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
 
 	player = CPlayer("../src/sprites/pj/player.bmp", 180, 400, 64, 64, game->GetRenderer());
-	item = CItem("../src/sprites/gui/bomb.bmp", 200, 200, 64, 64, game->GetRenderer());
-
+	
+	
+	
+	//Crea un coin i lo guarda en el vector
+	CCoin coin = CCoin("../src/sprites/gui/coin.bmp", 120, 200, 32, 32, game->GetRenderer());
+	items.push_back(coin);
+	
+	//Carga todos los items
+	for (int i = 0; i < items.size(); i++)
+	{
+		items[i].loadMedia();
+	}
+	
+	
 	//Inicialicamos la GUI i la cargamos
 	GUI = CGUI(&player);
 	GUI.loadMedia(game->GetRenderer());
@@ -79,58 +90,74 @@ void PlayState::Resume()
 
 void PlayState::HandleEvents(Game* game)
 {
-	
-	SDL_Event event;
+	if (player.getDead() != -1) {
+		SDL_Event event;
 
-	while (SDL_PollEvent(&event) != 0) {
-		if (event.type == SDL_QUIT) {
-			game->Quit();
-		}
-		if (event.type == SDL_KEYDOWN) {
-			if (event.key.keysym.sym == SDLK_ESCAPE) {
-				Mix_PauseMusic();
-				game->PushState(PauseState::Instance());
+		while (SDL_PollEvent(&event) != 0) {
+			if (event.type == SDL_QUIT) {
+				game->Quit();
 			}
-			if (event.key.keysym.sym == SDLK_f) {
-				player.setVida(player.getVida() + 1);
-				player.setInmortal(true);
-				if (player.getVida() == 25) {
-					player.setVida(0);
-					
+			if (event.type == SDL_KEYDOWN) {
+				if (event.key.keysym.sym == SDLK_ESCAPE) {
+					Mix_PauseMusic();
+					game->PushState(PauseState::Instance());
+				}
+				if (event.key.keysym.sym == SDLK_f) {
+					player.setVida(player.getVida() + 1);
+					player.setInmortal(true);
+					if (player.getVida() == 25) {
+						player.setVida(0);
+					}
+				}
+				if (event.key.keysym.sym == SDLK_c) {
+					player.setCoins(player.getCoins() + 1);
+					items.clear();
+				}
+				if (event.key.keysym.sym == SDLK_b) {
+					player.setBombs(player.getBombs() + 1);
+				}
+				if (event.key.keysym.sym == SDLK_k) {
+					player.setKeys(player.getKeys() + 1);
 				}
 			}
-			if (event.key.keysym.sym == SDLK_c) {
-				player.setCoins(player.getCoins() + 1);
-			}
-			if (event.key.keysym.sym == SDLK_b) {
-				player.setBombs(player.getBombs() + 1);
-			}
-			if (event.key.keysym.sym == SDLK_k) {
-				player.setKeys(player.getKeys() + 1);
+			//Eventos del teclado, mira que evento ha ocurrido
+			player.handleEvent(event);
+
+			//Movimiento del enemigo, se le passa las cordenadas del jugador
+			//enemy.move(player.get_x(), player.get_y());
+		}
+		//Coje los ticks
+		float timeStep = stepTimer.getTicks() / 1000.f;
+
+		
+		//Mueve el jugador
+		player.move(timeStep, collisions);
+		if (items.size() > 0) {
+			SDL_Rect col = player.getCollider();
+			
+			col.w = 32;
+			col.y = col.y + 32;
+		
+			for (int i = 0; i < items.size(); i++)
+			{
+				
+				if (CColission::checkColission(items[i].getCollider(), col)) {
+					player.setCoins(player.getCoins() + 1);
+					items.erase(items.begin() + i);
+				}
 			}
 		}
-		//Eventos del teclado, mira que evento ha ocurrido
-		player.handleEvent(event);
+		mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
+		//Reinicia el timer
+		stepTimer.start();
 
-		//Movimiento del enemigo, se le passa las cordenadas del jugador
-		//enemy.move(player.get_x(), player.get_y());
+		//animacion del personaje
+		player.animation();
+		mosca.animation();
+
+		mosca.shiftColliders();
+		moscaGlobal = mosca;
 	}
-	//Coje los ticks
-	float timeStep = stepTimer.getTicks() / 1000.f;
-
-	//Mueve el jugador
-	player.move(timeStep, collisions);
-	mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
-	//Reinicia el timer
-	stepTimer.start();
-
-	//animacion del personaje
-	player.animation();
-	mosca.animation();
-
-	mosca.shiftColliders();
-	moscaGlobal = mosca;
-
 }
 
 void PlayState::Update(Game* game)
@@ -167,6 +194,14 @@ void PlayState::Draw(Game* game)
 	if (avgFPS > 2000000) {
 		avgFPS = 0;
 	}
+
+	//recorre todos los items i los dibuja
+	for (int i = 0; i < items.size(); i++)
+	{
+		items[i].render();
+	}
+
+
 	GUI.drawGUI(game->GetRenderer(), avgFPS);
 
 	//Implanta los elementos en la pantalla
