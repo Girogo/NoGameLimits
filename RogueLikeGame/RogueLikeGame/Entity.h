@@ -43,7 +43,7 @@ public:
 	void draw();
 
 	SDL_Rect getCollider() { return mCollider; };
-
+	int getDead() { return dead; }
 private:
 	//Pantalla donde se carga la entidad
 	SDL_Renderer* window;
@@ -88,5 +88,8 @@ protected:
 	bool DOWN = false;
 	bool RIGHT = false;
 	bool LEFT = false;
+
+	//int per l'animació de mort
+	int dead;
 };
 

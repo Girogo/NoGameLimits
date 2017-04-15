@@ -1,10 +1,13 @@
 #include "FireBall.h"
+#include "Mosca.h"
 
 CFireBall::CFireBall() {}
 CFireBall::CFireBall(float x, float y, char direccion, SDL_Renderer*  m_WindowRenderer)
 {
 	this->x = x;
+	this->xIni = x;
 	this->y = y;
+	this->yIni = y;
 	this->direccion = direccion;
 	this->m_WindowRenderer = m_WindowRenderer;
 
@@ -337,6 +340,137 @@ CFireBall::CFireBall(float x, float y, char direccion, SDL_Renderer*  m_WindowRe
 		gSpriteClips[63].w = 64;
 		gSpriteClips[63].h = 64;
 	}
+
+	//Create the necessary SDL_Rects frontalment
+	mCollidersFront.resize(9);
+
+	//Create the necessary SDL_Rects lateral
+	//mCollidersLateral.resize(31);
+
+	//Initialize the collision boxes' width and height for front walk
+	mCollidersFront[0].w = 14;
+	mCollidersFront[0].h = 1;
+
+	mCollidersFront[1].w = 38;
+	mCollidersFront[1].h = 2;
+
+	mCollidersFront[2].w = 40;
+	mCollidersFront[2].h = 1;
+
+	mCollidersFront[3].w = 42;
+	mCollidersFront[3].h = 1;
+
+	mCollidersFront[4].w = 44;
+	mCollidersFront[4].h = 1;
+
+	mCollidersFront[5].w = 41;
+	mCollidersFront[5].h = 1;
+
+	mCollidersFront[6].w = 42;
+	mCollidersFront[6].h = 4;
+
+	mCollidersFront[7].w = 20;
+	mCollidersFront[7].h = 1;
+
+	mCollidersFront[8].w = 15;
+	mCollidersFront[8].h = 1;
+
+	//Initialize the collision boxes' width and height from lateral walk
+	/*mCollidersLateral[0].w = 10;
+	mCollidersLateral[0].h = 1;
+
+	mCollidersLateral[1].w = 12;
+	mCollidersLateral[1].h = 1;
+
+	mCollidersLateral[2].w = 14;
+	mCollidersLateral[2].h = 2;
+
+	mCollidersLateral[3].w = 16;
+	mCollidersLateral[3].h = 2;
+
+	mCollidersLateral[4].w = 18;
+	mCollidersLateral[4].h = 1;
+
+	mCollidersLateral[5].w = 20;
+	mCollidersLateral[5].h = 3;
+
+	mCollidersLateral[6].w = 22;
+	mCollidersLateral[6].h = 1;
+
+	mCollidersLateral[7].w = 24;
+	mCollidersLateral[7].h = 1;
+
+	mCollidersLateral[8].w = 30;
+	mCollidersLateral[8].h = 2;
+
+	mCollidersLateral[9].w = 28;
+	mCollidersLateral[9].h = 1;
+
+	mCollidersLateral[10].w = 26;
+	mCollidersLateral[10].h = 1;
+
+	mCollidersLateral[11].w = 22;
+	mCollidersLateral[11].h = 1;
+
+	mCollidersLateral[12].w = 18;
+	mCollidersLateral[12].h = 5;
+
+	mCollidersLateral[13].w = 18;
+	mCollidersLateral[13].h = 2;
+
+	mCollidersLateral[14].w = 16;
+	mCollidersLateral[14].h = 1;
+
+	mCollidersLateral[15].w = 18;
+	mCollidersLateral[15].h = 1;
+
+	mCollidersLateral[16].w = 19;
+	mCollidersLateral[16].h = 1;
+
+	mCollidersLateral[17].w = 20;
+	mCollidersLateral[17].h = 3;
+
+	mCollidersLateral[18].w = 20;
+	mCollidersLateral[18].h = 5;
+
+	mCollidersLateral[19].w = 20;
+	mCollidersLateral[19].h = 2;
+
+	mCollidersLateral[20].w = 20;
+	mCollidersLateral[20].h = 4;
+
+	mCollidersLateral[21].w = 18;
+	mCollidersLateral[21].h = 1;
+
+	mCollidersLateral[22].w = 16;
+	mCollidersLateral[22].h = 1;
+
+	mCollidersLateral[23].w = 15;
+	mCollidersLateral[23].h = 1;
+
+	mCollidersLateral[24].w = 14;
+	mCollidersLateral[24].h = 3;
+
+	mCollidersLateral[25].w = 13;
+	mCollidersLateral[25].h = 1;
+
+	mCollidersLateral[26].w = 14;
+	mCollidersLateral[26].h = 1;
+
+	mCollidersLateral[27].w = 16;
+	mCollidersLateral[27].h = 1;
+
+	mCollidersLateral[28].w = 17;
+	mCollidersLateral[28].h = 3;
+
+	mCollidersLateral[29].w = 9;
+	mCollidersLateral[29].h = 1;
+
+	mCollidersLateral[30].w = 7;
+	mCollidersLateral[30].h = 1;*/
+
+	//Initialize colliders relative to position
+	shiftColliders();
 
 }
 
@@ -740,31 +874,71 @@ void CFireBall::animation() {
 
 	}
 
-	//Velocidad de transición entre frames.
+	//Velocidad de transiciî‰¢ entre frames.
 	if (cont > 10) {
 		cont = 0;
 	}
 	cont++;
 }
 
-void CFireBall::move() {
-
+void CFireBall::move(std::vector<SDL_Rect>& mCollidersForntE) {
+	int vel = 5;
 	switch (direccion) {
 		//UP
 	case 'U':
-		y -= 5;
+		y -= vel;
+		shiftColliders();
+
+		//If the dot collided or went too far to the left or right
+		if (CColission::checkCollisionPixel(mCollidersFront, mCollidersForntE))
+		{
+			//Move back
+			shiftColliders();
+			printf("FUNCIONA");
+
+		}
 		break;
 		//LEFT
 	case 'L':
-		x -= 5;
+		x -= vel;
+		shiftColliders();
+
+		//If the dot collided or went too far to the left or right
+		if (CColission::checkCollisionPixel(mCollidersFront, mCollidersForntE))
+		{
+			//Move back
+			shiftColliders();
+			printf("FUNCIONA");
+
+		}
 		break;
 		//DOWN
 	case 'D':
-		y += 5;
+		y += vel;
+		shiftColliders();
+
+		//If the dot collided or went too far to the left or right
+		if (CColission::checkCollisionPixel(mCollidersFront, mCollidersForntE))
+		{
+			//Move back
+			shiftColliders();
+			printf("FUNCIONA");
+
+		}
 		break;
 		//RIGHT
 	case 'R':
-		x += 5;
+		x += vel;
+		shiftColliders();
+
+		//If the dot collided or went too far to the left or right
+		if (CColission::checkCollisionPixel(mCollidersFront, mCollidersForntE))
+		{
+			//Move back
+			shiftColliders();
+			printf("FUNCIONA");
+		}
+
 		break;
 
 	}
@@ -777,17 +951,53 @@ void CFireBall::render() {
 
 }
 
-int i = 0;
-bool CFireBall::colision() {
-	//If colision con enemigo -X de vida
-	//If colision con objeto delete
+CMosca mosca;
 
-	i++;
-	if (i == 100) {
-		i = 0;
+bool CFireBall::colision(std::vector<SDL_Rect>& mCollidersForntE) {
+
+	if (CColission::checkCollisionPixel(mCollidersFront, mCollidersForntE))
+	{
 		return true;
-	}
-	else
-		return false;
+		printf("COLISION");
 
+	}
+	else {
+		return false;
+	}
+	/*
+	int dist = 500;
+	if (x == xIni - dist)
+	return true;
+	else if (x == xIni + dist)
+	return true;
+	else if (y == yIni - dist)
+	return true;
+	else if (y == yIni + dist)
+	return true;
+	else return false;
+	*/
+}
+
+std::vector<SDL_Rect>& CFireBall::getCollidersFront()
+{
+	return mCollidersFront;
+}
+
+void CFireBall::shiftColliders()
+{
+	//The row offset
+	int r = 0;
+
+	//Go through the dot's collision boxes
+	for (int set = 0; set < mCollidersFront.size(); ++set)
+	{
+		//Center the collision box
+		mCollidersFront[set].x = (int)x + (mCollidersFront[set].w) / 2;
+
+		//Set the collision box at its row offset
+		mCollidersFront[set].y = (int)y + r;
+
+		//Move the row offset down the height of the collision box
+		r += mCollidersFront[set].h;
+	}
 }

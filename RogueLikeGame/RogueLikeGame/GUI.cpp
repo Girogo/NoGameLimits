@@ -30,12 +30,13 @@ void CGUI::loadMedia(SDL_Renderer * m_WindowRenderer)
 	
 }
 
-void CGUI::drawGUI(SDL_Renderer* m_WindowRenderer)
+void CGUI::drawGUI(SDL_Renderer* m_WindowRenderer, int fps)
 {
 	drawHeart(m_WindowRenderer);
 	drawKey(m_WindowRenderer);
 	drawBomb(m_WindowRenderer);
 	drawCoin(m_WindowRenderer);
+	drawFPS(m_WindowRenderer, fps);
 }
 
 void CGUI::drawHeart(SDL_Renderer * m_WindowRenderer)
@@ -118,4 +119,27 @@ void CGUI::drawBomb(SDL_Renderer * m_WindowRenderer)
 	solidRect.w = 25;
 	SDL_RenderCopy(m_WindowRenderer, text, nullptr, &solidRect);
 	Sprite::Draw(m_WindowRenderer, this->bomb, posInitX, posInitY, 25, 25);
+}
+
+void CGUI::drawFPS(SDL_Renderer * m_WindowRenderer, int fps)
+{
+	std::string cad = "FPS";
+
+	std::string cadena = "";
+	cadena = cadena + std::to_string(fps);
+	const char* nFPS = cadena.c_str();
+	const char* Tfps = cad.c_str();
+	FPS = text = CTTF::CreateTextTextures(font, SDL_Color{ 255, 255, 255 }, m_WindowRenderer, Tfps);
+	text = CTTF::CreateTextTextures(font, SDL_Color{ 255, 255, 255 }, m_WindowRenderer, nFPS);
+
+	int posInitX = 600;
+	int posInitY = 10;
+	SDL_Rect solidRect;
+	solidRect.x = 650;
+	solidRect.y = 10;
+	solidRect.h = 25;
+	solidRect.w = 100;
+	SDL_RenderCopy(m_WindowRenderer, text, nullptr, &solidRect);
+	Sprite::Draw(m_WindowRenderer, FPS, posInitX, posInitY, 40, 25);
+
 }
