@@ -7,6 +7,7 @@
 #include <vector>
 #include <time.h>
 #include "Item.h"
+#include "Mosca.h"
 
 class CPlayer : public CEntity
 {

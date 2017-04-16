@@ -1,4 +1,21 @@
-﻿  PlayState.cpp
-c:\users\varez\desktop\nogamelimits-v.0.1.1-intereccio-amb-objectes\roguelikegame\roguelikegame\playstate.cpp(337): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  RogueLikeGame.vcxproj -> C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\x64\Debug\RogueLikeGame.exe
-  RogueLikeGame.vcxproj -> C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+﻿  Player.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.h(10): error C2061: error de sintaxis: identificador 'CPlayer'
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(6): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(158): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(171): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(181): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(187): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(192): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(199): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(201): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(202): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(203): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(204): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\player.cpp(972): warning C4244: 'inicializando': conversión de 'clock_t' a 'float'; posible pérdida de datos
+  MenuState.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.h(10): error C2061: error de sintaxis: identificador 'CPlayer'
+  Main.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.h(10): error C2061: error de sintaxis: identificador 'CPlayer'
+  GUI.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.h(10): error C2061: error de sintaxis: identificador 'CPlayer'
+  Generando código...

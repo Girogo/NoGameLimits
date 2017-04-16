@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Entity.h"
 #include "Mosca.h"
+
 CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer * window) : CEntity(file, x, y, hight, width, window)
 {
 	this->gSpriteSheetTexture = CTexture::CTexture();
