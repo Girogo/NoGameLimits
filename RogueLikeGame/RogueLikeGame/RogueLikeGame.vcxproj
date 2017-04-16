@@ -69,9 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-
-    <IncludePath>C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_ttf\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_mixer\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_image\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2\include;$(IncludePath)</IncludePath>
-
+    <IncludePath>C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_ttf\include;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_mixer\include;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_image\include;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2\include;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\include;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_ttf\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_mixer\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_image\include;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -87,9 +85,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-
-      <AdditionalLibraryDirectories>C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\lib\x64;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\lib\x64;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\Jordi Parellada\Desktop\Nueva carpeta\NoGameLimits-master\RogueLikeGame\libs\SDL2\lib\x64;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_ttf\lib\x64;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_mixer\lib\x64;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\girog\Documents\NoGameLimits IA\IA - copia - copia\RogueLikeGame\libs\SDL2\lib\x64;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\lib\x64;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\lib\x64;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\cep.CEPNET1\Downloads\NoGameLimits-master\RogueLikeGame\libs\SDL2\lib\x64;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\lib\x64;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\lib\x64;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\lib\x64;F:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2\lib\x64;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_ttf\lib\x64;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_mixer\lib\x64;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2_image\lib\x64;H:\Projecte\NoGameLimits-master\RogueLikeGame\libs\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-
+      <AdditionalLibraryDirectories>C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_ttf\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_mixer\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -121,6 +117,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Colission.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -144,6 +141,7 @@
     <ClCompile Include="TTF.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="Colission.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />

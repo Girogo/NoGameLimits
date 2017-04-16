@@ -6,6 +6,7 @@
 #include "FireBall.h"
 #include <vector>
 #include <time.h>
+#include "Item.h"
 
 class CPlayer : public CEntity
 {
@@ -30,7 +31,6 @@ public:
 	void move(const Uint8 *keyboard_state_array);
 	void move(int x, int y);
 	//
-
 	void handleEvent(SDL_Event& e);
 	bool loadMedia(SDL_Renderer* m_WindowRenderer);
 	void animation();
@@ -38,7 +38,7 @@ public:
 	// EN ENTITY 
 	void render(SDL_Renderer * m_WindowRenderer);
 	void close(SDL_Renderer* m_WindowRenderer);
-
+	
 	std::vector<CFireBall*> getAttacks() { return attacks; };
 
 
@@ -51,7 +51,6 @@ public:
 
 	SDL_Rect getZonaSegura() { return zonaSegura; }
 	SDL_Rect getZonaDany() { return zonaDany; }
-
 	void setInmortal(bool inmortal) { this->inmortal = inmortal; }
 	bool getInmortal() { return inmortal; }
 private:
@@ -60,6 +59,7 @@ private:
 
 	CTexture gSpriteSheetTextureAttack;
 	CTexture gSpriteSheetTextureInmortal;
+	CTexture gSpriteSheetTextureDead;
 	CFireBall fb;
 
 	std::vector<CFireBall*> attacks;
@@ -68,7 +68,8 @@ private:
 	static const int WALKING_ANIMATION_FRAMES = 36;
 	static const int ATTACK_ANIMATION_FRAMES = 28;
 	static const int INMORTAL_ANIMATION_FRAMES = 36;
-	SDL_Rect gSpriteClips[WALKING_ANIMATION_FRAMES + ATTACK_ANIMATION_FRAMES + INMORTAL_ANIMATION_FRAMES];
+	static const int DEAD_ANIMATION_FRAMES = 12;
+	SDL_Rect gSpriteClips[WALKING_ANIMATION_FRAMES + ATTACK_ANIMATION_FRAMES + INMORTAL_ANIMATION_FRAMES + DEAD_ANIMATION_FRAMES];
 
 	//static const int PLAYER_VEL = 300;
 
@@ -112,7 +113,6 @@ private:
 	SDL_Rect zonaSegura;
 
 	SDL_Rect zonaDany;
-
 	//EN ENTITY?
 	//int vida;
 	int coins;

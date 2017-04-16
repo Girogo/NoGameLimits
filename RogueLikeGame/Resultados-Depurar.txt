@@ -1,0 +1,70 @@
+﻿'RogueLikeGame.exe' (Win32): 'C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\x64\Debug\RogueLikeGame.exe' cargado. Símbolos cargados.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\ntdll.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\kernel32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\KernelBase.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\x64\Debug\SDL2.dll' cargado. El módulo se compiló sin símbolos.
+'RogueLikeGame.exe' (Win32): 'C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\x64\Debug\SDL2_image.dll' cargado. El módulo se compiló sin símbolos.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\SDL2_ttf.dll' cargado. El módulo se compiló sin símbolos.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\SDL2_mixer.dll' cargado. El módulo se compiló sin símbolos.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\msvcrt.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\advapi32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\sechost.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\msvcp140d.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\vcruntime140d.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\rpcrt4.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\ucrtbased.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\gdi32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\libfreetype-6.dll' cargado. El módulo se compiló sin símbolos.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\gdi32full.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\winmm.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\user32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\win32u.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\zlib1.dll' cargado. El módulo se compiló sin símbolos.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\imm32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\winmmbase.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\winmmbase.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\ole32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\cfgmgr32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\combase.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\winmmbase.dll' descargado
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\ucrtbase.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\bcryptprimitives.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\oleaut32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\msvcp_win.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\shell32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\windows.storage.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\powrprof.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\shlwapi.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\kernel.appcore.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\SHCore.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\profapi.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\version.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\uxtheme.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\msctf.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\dwmapi.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\clbcatq.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\XAudio2_7.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\MMDevAPI.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\propsys.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\devobj.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\AudioSes.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\WinTypes.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\avrt.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\wdmaud.drv' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\ksuser.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\msacm32.drv' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\msacm32.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\midimap.dll' cargado. No se encuentra el archivo PDB o no se puede abrir.
+El subproceso 0x1f40 terminó con código 0 (0x0).
+'RogueLikeGame.exe' (Win32): 'C:\Windows\System32\libpng16-16.dll' cargado. El módulo se compiló sin símbolos.
+El subproceso 0x209c terminó con código 0 (0x0).
+El subproceso 0x237c terminó con código 0 (0x0).
+El subproceso 0x9ec terminó con código 0 (0x0).
+El subproceso 0x269c terminó con código 0 (0x0).
+El subproceso 0x1f50 terminó con código 0 (0x0).
+El subproceso 0x1d50 terminó con código 0 (0x0).
+El subproceso 0x840 terminó con código 0 (0x0).
+El subproceso 0x1f84 terminó con código 0 (0x0).
+El subproceso 0x13fc terminó con código 0 (0x0).
+El subproceso 0x243c terminó con código 0 (0x0).
+El programa '[11332] RogueLikeGame.exe' terminó con código 0 (0x0).

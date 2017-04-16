@@ -75,11 +75,12 @@
     <ClCompile Include="Fireball.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-
     <ClCompile Include="Item.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-
+    <ClCompile Include="Coin.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -142,10 +143,11 @@
     <ClInclude Include="Fireball.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-
     <ClInclude Include="Item.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-
+    <ClInclude Include="Coin.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

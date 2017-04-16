@@ -1,5 +1,5 @@
 #include "Colission.h"
-
+#include "Entity.h"
 CColission::CColission()
 {
 }
@@ -39,14 +39,14 @@ bool CColission::checkColission(SDL_Rect a, list<CTile> lista, bool* print)
 			leftB = it->getRectDestino().x + 32;
 			rightB = it->getRectDestino().x + it->getRectDestino().w - 60;
 			topB = it->getRectDestino().y - 35;
-			bottomB = it->getRectDestino().y + it->getRectDestino().h - 5;
+			bottomB = it->getRectDestino().y + it->getRectDestino().h - 70;
 		}
 		else if (it->getTipo() == "lWall") {
 			//Calculate the sides of rect A
 			leftB = it->getRectDestino().x;
 			rightB = it->getRectDestino().x + it->getRectDestino().w - 60;
 			topB = it->getRectDestino().y - 32;
-			bottomB = it->getRectDestino().y + it->getRectDestino().h - 5;
+			bottomB = it->getRectDestino().y + it->getRectDestino().h - 70;
 		}
 		else if (it->getTipo() == "dWall") {
 			leftB = it->getRectDestino().x;
@@ -66,6 +66,12 @@ bool CColission::checkColission(SDL_Rect a, list<CTile> lista, bool* print)
 			rightB = it->getRectDestino().x + it->getRectDestino().w;
 			topB = it->getRectDestino().y;
 			bottomB = it->getRectDestino().y + it->getRectDestino().h;
+		}
+		else if (it->getTipo() == "doorDown") {
+			leftB = it->getRectDestino().x;
+			rightB = it->getRectDestino().x + it->getRectDestino().w;
+			topB = it->getRectDestino().y;
+			bottomB = it->getRectDestino().y + it->getRectDestino().h -70;
 		}
 		else {
 			leftB = it->getRectDestino().x;
@@ -159,7 +165,23 @@ void CColission::getRectColission(CTile tiles[], list<CTile>* list, char* id)
 		{
 			if (tiles[i].getTipo() == "rWall" || tiles[i].getTipo() == "lWall" ||
 				tiles[i].getTipo() == "uWall" || tiles[i].getTipo() == "dWall" ||
-				tiles[i].getTipo() == "dWallSL") {
+				tiles[i].getTipo() == "dWallSL"|| tiles[i].getTipo() == "doorDown") {
+				list->push_back(tiles[i]);
+			}
+		}
+	}
+	else {
+		for (int i = 0; i < 130; i++)
+		{
+			if (tiles[i].getTipo() == id) {
+				list->push_back(tiles[i]);
+			}
+		}
+	}
+	if (id == "door") {
+		for (int i = 0; i < 130; i++)
+		{
+			if (tiles[i].getTipo() == "doorDown") {
 				list->push_back(tiles[i]);
 			}
 		}
@@ -173,9 +195,9 @@ void CColission::getRectColission(CTile tiles[], list<CTile>* list, char* id)
 		}
 	}
 }
-
 bool CColission::checkColission(SDL_Rect a, SDL_Rect b)
 {
+	bool colision = true;
 	//The sides of the rectangles
 	int leftA, leftB;
 	int rightA, rightB;
@@ -183,15 +205,15 @@ bool CColission::checkColission(SDL_Rect a, SDL_Rect b)
 	int bottomA, bottomB;
 
 	//Calculate the sides of rect A
-	leftA = a.x - a.w;
+	leftA = a.x;
 	rightA = a.x + a.w;
-	topA = a.y - a.h;
+	topA = a.y;
 	bottomA = a.y + a.h;
 
 	//Calculate the sides of rect B
-	leftB = b.x - b.w;
+	leftB = b.x;
 	rightB = b.x + b.w;
-	topB = b.y - b.h;
+	topB = b.y;
 	bottomB = b.y + b.h;
 
 	//If any of the sides from A are outside of B

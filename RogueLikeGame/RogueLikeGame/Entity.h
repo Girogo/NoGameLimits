@@ -32,7 +32,7 @@ public:
 	bool getPrint() { return print; };
 	//Controla el movimiento de la entidad
 	virtual void move(const Uint8 *keyboard_state_array) = 0;
-	virtual void move(float timeStep, list<CTile> wall) = 0;
+
 	virtual void animation() = 0;
 	void render(SDL_Renderer * m_WindowRenderer);
 	virtual bool loadMedia(SDL_Renderer* m_WindowRenderer) = 0;
@@ -43,7 +43,7 @@ public:
 	void draw();
 
 	SDL_Rect getCollider() { return mCollider; };
-
+	int getDead() { return dead; }
 private:
 	//Pantalla donde se carga la entidad
 	SDL_Renderer* window;
@@ -88,5 +88,8 @@ protected:
 	bool DOWN = false;
 	bool RIGHT = false;
 	bool LEFT = false;
+
+	//int per l'animació de mort
+	int dead;
 };
 

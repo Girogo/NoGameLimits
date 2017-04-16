@@ -173,5 +173,33 @@
     "width": 32,
     "height": 32,
     "tipo": "transparente"
+  },
+  "26": {
+    "x": 544,
+    "y": 672,
+    "width": 32,
+    "height": 32,
+    "tipo": "door"
+  },
+  "27": {
+    "x": 576,
+    "y": 672,
+    "width": 32,
+    "height": 32,
+    "tipo": "door"
+  },
+  "28": {
+    "x": 544,
+    "y": 704,
+    "width": 32,
+    "height": 32,
+    "tipo": "doorDown"
+  },
+  "29": {
+    "x": 576,
+    "y": 704,
+    "width": 32,
+    "height": 32,
+    "tipo": "doorDown"
   }
 }
