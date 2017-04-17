@@ -4,14 +4,13 @@
 #include "Game.h"
 #include "PlayState.h"
 #include "PauseState.h"
-#include "Player.h"
 #include "Timer.h"
 #include "GUI.h"
 #include <vector>
 
 
 PlayState PlayState::m_PlayState;
-CMosca moscaGlobal;
+//CMosca moscaGlobal;
 void PlayState::Init(Game* game)
 {
 
@@ -31,21 +30,39 @@ void PlayState::Init(Game* game)
 
 	//Cargamos Elementos del mapa i las tiles
 	mapa = CMapa();
-
+	mapa2 = CMapa();
 	//Se passa como parametros Array de tiles, Numero de casillas de tiles que tiene el mapa, tamaño de las tyles
 	//numero de columnas del mapa, numero de filas del mapa, total de id del tileset
-	mapa.setTiles(floor, 130, 64, 64, 13, 10, 25, "../src/maps/m1.map");
-	mapa.setTiles(walls, 130, 64, 64, 13, 10, 25, "../src/maps/m2.map");
 
+	mapa.setTiles(floor, 130, 64, 64, 13, 10, 29, "../src/maps/SpawnFloor.map");
+	mapa.setTiles(walls, 130, 64, 64, 13, 10, 29, "../src/maps/Spawn.map");
+	mapa2.setTiles(floor2, 130, 64, 64, 13, 10, 29, "../src/maps/mapa2Floor.map");
+	mapa2.setTiles(walls2, 130, 64, 64, 13, 10, 29, "../src/maps/mapa2.map");
+	mapa3.setTiles(floor3, 130, 64, 64, 13, 10, 29, "../src/maps/mapa3Floor.map");
+	mapa3.setTiles(walls3, 130, 64, 64, 13, 10, 29, "../src/maps/mapa3.map");
 	mapa.load(game->GetRenderer());
-
+	mapa2.load(game->GetRenderer());
+	mapa3.load(game->GetRenderer());
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
 	mosca = CMosca("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
+	enemigos.push_back(&mosca);
 
-	player = CPlayer("../src/sprites/pj/player.bmp", 180, 400, 64, 64, game->GetRenderer());
-	item = CItem("../src/sprites/gui/bomb.bmp", 200, 200, 64, 64, game->GetRenderer());
-
+	player = CPlayer("../src/sprites/pj/player.bmp", 180, 400, 64, 64, game->GetRenderer(), enemigos);
+	
+	
+	
+	//Crea un coin i lo guarda en el vector
+	CCoin coin = CCoin("../src/sprites/gui/coin.bmp", 120, 200, 32, 32, game->GetRenderer());
+	items.push_back(coin);
+	
+	//Carga todos los items
+	for (int i = 0; i < items.size(); i++)
+	{
+		items[i].loadMedia();
+	}
+	
+	
 	//Inicialicamos la GUI i la cargamos
 	GUI = CGUI(&player);
 	GUI.loadMedia(game->GetRenderer());
@@ -59,7 +76,8 @@ void PlayState::Init(Game* game)
 
 	CColission::getRectColission(walls, &collisions, "wall");
 	CColission::getRectColission(floor, &collisions, "wall");
-
+	CColission::getRectColission(walls, &doorCollisions, "door");
+	CColission::getRectColission(walls3, &collisionsMap3, "wall");
 }
 
 void PlayState::Clean()
@@ -79,58 +97,163 @@ void PlayState::Resume()
 
 void PlayState::HandleEvents(Game* game)
 {
-	
-	SDL_Event event;
+	if (player.getDead() != -1) {
+		SDL_Event event;
 
-	while (SDL_PollEvent(&event) != 0) {
-		if (event.type == SDL_QUIT) {
-			game->Quit();
-		}
-		if (event.type == SDL_KEYDOWN) {
-			if (event.key.keysym.sym == SDLK_ESCAPE) {
-				Mix_PauseMusic();
-				game->PushState(PauseState::Instance());
+		while (SDL_PollEvent(&event) != 0) {
+			if (event.type == SDL_QUIT) {
+				game->Quit();
 			}
-			if (event.key.keysym.sym == SDLK_f) {
-				player.setVida(player.getVida() + 1);
-				player.setInmortal(true);
-				if (player.getVida() == 25) {
-					player.setVida(0);
-					
+			if (event.type == SDL_KEYDOWN) {
+				if (event.key.keysym.sym == SDLK_ESCAPE) {
+					Mix_PauseMusic();
+					game->PushState(PauseState::Instance());
+				}
+				if (event.key.keysym.sym == SDLK_f) {
+					player.setVida(player.getVida() + 1);
+					player.setInmortal(true);
+					if (player.getVida() == 25) {
+						player.setVida(0);
+					}
+				}
+				if (event.key.keysym.sym == SDLK_c) {
+					player.setCoins(player.getCoins() + 1);
+					items.clear();
+				}
+				if (event.key.keysym.sym == SDLK_b) {
+					player.setBombs(player.getBombs() + 1);
+				}
+				if (event.key.keysym.sym == SDLK_k) {
+					player.setKeys(player.getKeys() + 1);
+				}
+				if (event.key.keysym.sym == SDLK_SPACE) {
+					bool print;
+					if (CColission::checkColission(player.getCollider(), doorCollisions, &print) && player.getKeys() >= 10) {
+						printf("Porta");
+						player.set_mPosY(player.get_mPosY() - 64);
+						player.setKeys(player.getKeys() - 10);
+					}
+				}
+				if (event.key.keysym.sym == SDLK_p) {
+					player.set_mPosY(player.get_mPosY() + 64);
 				}
 			}
-			if (event.key.keysym.sym == SDLK_c) {
-				player.setCoins(player.getCoins() + 1);
-			}
-			if (event.key.keysym.sym == SDLK_b) {
-				player.setBombs(player.getBombs() + 1);
-			}
-			if (event.key.keysym.sym == SDLK_k) {
-				player.setKeys(player.getKeys() + 1);
-			}
+			//Eventos del teclado, mira que evento ha ocurrido
+			player.handleEvent(event);
+
+			//Movimiento del enemigo, se le passa las cordenadas del jugador
+			//enemy.move(player.get_x(), player.get_y());
 		}
-		//Eventos del teclado, mira que evento ha ocurrido
-		player.handleEvent(event);
+		//Coje los ticks
+		float timeStep = stepTimer.getTicks() / 1000.f;
 
-		//Movimiento del enemigo, se le passa las cordenadas del jugador
-		//enemy.move(player.get_x(), player.get_y());
+#pragma region spawn
+		if (room == 1) {
+			//Mueve el jugador
+			player.move(timeStep, collisions);
+			if (items.size() > 0) {
+				SDL_Rect col = player.getCollider();
+
+				col.w = 32;
+				col.y = col.y + 32;
+
+				for (int i = 0; i < items.size(); i++)
+				{
+
+					if (CColission::checkColission(items[i].getCollider(), col)) {
+						player.setCoins(player.getCoins() + 1);
+						items.erase(items.begin() + i);
+					}
+				}
+			}
+			if (player.get_mPosX() < 0 || player.get_mPosY() < 0) {
+				room = 2;
+				player.set_mPosX(200);
+				player.set_mPosY(200);
+			}
+			if (player.get_mPosX() > 850 && room == 1) {
+				room = 3;
+				player.set_mPosX(23);
+				player.set_mPosY(276);
+			}
+
+			mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
+			//Reinicia el timer
+			stepTimer.start();
+
+			//animacion del personaje
+			player.animation();
+
+
+			for (int i = 0; i < enemigos.size(); i++)
+			{
+				enemigos.at(i)->animation();
+				enemigos.at(i)->shiftColliders();
+			}
+			//mosca.animation();
+
+			//mosca.shiftColliders();
+			//moscaGlobal = mosca;
+		}
+
+#pragma endregion
+#pragma region room2
+		else if (room == 2) {
+			//Mueve el jugador
+			player.move(timeStep, collisions);
+			if (items.size() > 0) {
+				SDL_Rect col = player.getCollider();
+
+				col.w = 32;
+				col.y = col.y + 32;
+
+				for (int i = 0; i < items.size(); i++)
+				{
+
+					if (CColission::checkColission(items[i].getCollider(), col)) {
+						player.setCoins(player.getCoins() + 1);
+						items.erase(items.begin() + i);
+					}
+				}
+			}
+
+
+			mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
+			//Reinicia el timer
+			stepTimer.start();
+
+			//animacion del personaje
+			player.animation();
+			mosca.animation();
+
+			mosca.shiftColliders();
+			//moscaGlobal = mosca;
+		}
+#pragma endregion
+#pragma region room3
+		else if (room == 3) {
+			//Mueve el jugador
+			player.move(timeStep, collisionsMap3);
+			
+			if (player.get_mPosX() < 0 && room == 3) {
+				room = 1;
+				player.set_mPosX(743);
+				player.set_mPosY(261);
+			}
+			//mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
+			//Reinicia el timer
+			stepTimer.start();
+
+			//animacion del personaje
+			player.animation();
+			//mosca.animation();
+
+			//mosca.shiftColliders();
+			//moscaGlobal = mosca;
+		}
+#pragma endregion
+
 	}
-	//Coje los ticks
-	float timeStep = stepTimer.getTicks() / 1000.f;
-
-	//Mueve el jugador
-	player.move(timeStep, collisions);
-	mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
-	//Reinicia el timer
-	stepTimer.start();
-
-	//animacion del personaje
-	player.animation();
-	mosca.animation();
-
-	mosca.shiftColliders();
-	moscaGlobal = mosca;
-
 }
 
 void PlayState::Update(Game* game)
@@ -140,22 +263,78 @@ void PlayState::Update(Game* game)
 		//Play the music
 		Mix_PlayMusic(music.getMusicPartida(), -1);
 	}
+
+	enemigos = player.getEnemigos();
 }
 
 void PlayState::Draw(Game* game)
 {
 	SDL_RenderClear(game->GetRenderer());
 	//Dibuja el mapa
-	
-	mapa.draw(game->GetRenderer(), floor);
-	
-	//Dibuja el enemigo
-	mosca.render(game->GetRenderer());
+#pragma region spawn
 
-	//Dibuja el personaje
-	player.render(game->GetRenderer());
-	
-	mapa.draw(game->GetRenderer(), walls);
+
+	if (room == 1) {
+		mapa.draw(game->GetRenderer(), floor);
+
+		//Dibuja el enemigo
+		for (int i = 0; i < enemigos.size(); i++)
+		{
+			enemigos.at(i)->render(game->GetRenderer());
+		}
+		//mosca.render(game->GetRenderer());
+
+		//Dibuja el personaje
+		player.render(game->GetRenderer());
+
+		mapa.draw(game->GetRenderer(), walls);
+
+		//recorre todos los items i los dibuja
+		for (int i = 0; i < items.size(); i++)
+		{
+			items[i].render();
+		}
+
+	}
+
+#pragma endregion
+#pragma region room2
+
+
+
+	else if (room == 2) {
+		mapa2.draw(game->GetRenderer(), floor2);
+
+		//Dibuja el enemigo
+		mosca.render(game->GetRenderer());
+
+		//Dibuja el personaje
+		player.render(game->GetRenderer());
+
+		mapa2.draw(game->GetRenderer(), walls2);
+
+		//recorre todos los items i los dibuja
+		for (int i = 0; i < items.size(); i++)
+		{
+			items[i].render();
+		}
+	}
+#pragma endregion
+#pragma region room3
+
+
+
+	else if (room = 3) {
+		mapa3.draw(game->GetRenderer(), floor3);
+		//Dibuja el enemigo
+
+		//Dibuja el personaje
+		player.render(game->GetRenderer());
+
+		mapa3.draw(game->GetRenderer(), walls3);
+
+	}
+#pragma endregion
 	if (player.getPrint()) {
 		player.render(game->GetRenderer());
 	}
@@ -167,6 +346,9 @@ void PlayState::Draw(Game* game)
 	if (avgFPS > 2000000) {
 		avgFPS = 0;
 	}
+
+
+
 	GUI.drawGUI(game->GetRenderer(), avgFPS);
 
 	//Implanta los elementos en la pantalla

@@ -1,6 +1,7 @@
 #pragma once
 #include "Enemy.h"
 #include "Player.h"
+
 class CMosca : public CEnemy
 {
 public:
@@ -11,14 +12,11 @@ public:
 	void move(float timeStep, list<CTile> wall);
 	bool loadMedia(SDL_Renderer* m_WindowRenderer);
 	void animation();
-
-	//Moves the collision boxes relative to the dot's offset
 	void shiftColliders();
 	//Gets the collision boxes
 	std::vector<SDL_Rect>& getCollidersFrontE();
 private:
 	//Enemy collision boxes
 	std::vector<SDL_Rect> mCollidersFrontE;
-
+	//Moves the collision boxes relative to the dot's offset
 };
-

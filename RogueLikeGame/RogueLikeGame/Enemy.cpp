@@ -24,6 +24,6 @@ void CEnemy::move(const Uint8 *keyboard_state_array)
 
 }
 
-
+void CEnemy::shiftColliders(){}
 
 

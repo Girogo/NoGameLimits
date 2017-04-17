@@ -10,7 +10,7 @@ public:
 	CEnemy();
 	~CEnemy();
 	void move(const Uint8 * keyboard_state_array);
-	virtual void move(float timeStep, list<CTile> wall) = 0;
+	void shiftColliders();
 	virtual bool loadMedia(SDL_Renderer* m_WindowRenderer) = 0;
 	virtual void animation() = 0;
 protected:
@@ -24,7 +24,7 @@ protected:
 	SDL_Rect col3;
 	SDL_Rect col4;
 	//Colider del da�o;
-	SDL_Rect colDa�o;
+	SDL_Rect colDany;
 	bool colision1, colision2, colision3, colision4;
 	bool colision;
 	bool focus = false;
