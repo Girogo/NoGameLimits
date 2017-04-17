@@ -40,9 +40,15 @@ void PlayState::Init(Game* game)
 	mapa2.setTiles(walls2, 130, 64, 64, 13, 10, 29, "../src/maps/mapa2.map");
 	mapa3.setTiles(floor3, 130, 64, 64, 13, 10, 29, "../src/maps/mapa3Floor.map");
 	mapa3.setTiles(walls3, 130, 64, 64, 13, 10, 29, "../src/maps/mapa3.map");
+	mapa4.setTiles(floor4, 130, 64, 64, 13, 10, 29, "../src/maps/mapa4Floor.map");
+	mapa4.setTiles(walls4, 130, 64, 64, 13, 10, 29, "../src/maps/mapa4.map");
+	mapa5.setTiles(floor5, 130, 64, 64, 13, 10, 29, "../src/maps/mapa5Floor.map");
+	mapa5.setTiles(walls5, 130, 64, 64, 13, 10, 29, "../src/maps/mapa5.map");
 	mapa.load(game->GetRenderer());
 	mapa2.load(game->GetRenderer());
 	mapa3.load(game->GetRenderer());
+	mapa4.load(game->GetRenderer());
+	mapa5.load(game->GetRenderer());
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
 	mosca = CMosca("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
@@ -78,6 +84,8 @@ void PlayState::Init(Game* game)
 	CColission::getRectColission(floor, &collisions, "wall");
 	CColission::getRectColission(walls, &doorCollisions, "door");
 	CColission::getRectColission(walls3, &collisionsMap3, "wall");
+	CColission::getRectColission(walls4, &collisionsMap4, "wall");
+	CColission::getRectColission(walls5, &collisionsMap5, "wall");
 }
 
 void PlayState::Clean()
@@ -176,6 +184,11 @@ void PlayState::HandleEvents(Game* game)
 				player.set_mPosX(23);
 				player.set_mPosY(276);
 			}
+			if (player.get_mPosY() > 650 && room == 1) {
+				room = 4;
+				player.set_mPosX(400);
+				player.set_mPosY(4);
+			}
 
 			mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
 			//Reinicia el timer
@@ -240,6 +253,11 @@ void PlayState::HandleEvents(Game* game)
 				player.set_mPosX(743);
 				player.set_mPosY(261);
 			}
+			if (player.get_mPosY() > 650 && room == 3) {
+				room = 5;
+				player.set_mPosX(400);
+				player.set_mPosY(4);
+			}
 			//mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
 			//Reinicia el timer
 			stepTimer.start();
@@ -250,6 +268,59 @@ void PlayState::HandleEvents(Game* game)
 
 			//mosca.shiftColliders();
 			//moscaGlobal = mosca;
+		}
+#pragma endregion
+#pragma region room4
+		else if (room == 4) {
+			//Mueve el jugador
+			player.move(timeStep, collisionsMap4);
+
+			if (player.get_mPosY() < 0 && room == 4) {
+				room = 1;
+				player.set_mPosX(521);
+				player.set_mPosY(534);
+			}
+			if (player.get_mPosX() > 850) {
+				room = 5;
+				player.set_mPosX(23);
+				player.set_mPosY(276);
+			}
+			//mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
+			//Reinicia el timer
+			stepTimer.start();
+
+			//animacion del personaje
+			player.animation();
+			//mosca.animation();
+
+			//mosca.shiftColliders();
+			//moscaGlobal = mosca;
+		}
+#pragma endregion
+#pragma region room5
+		else if (room == 5) {
+			//Mueve el jugador
+			player.move(timeStep, collisionsMap5);
+
+			if (player.get_mPosX() < 0) {
+				room = 4;
+				player.set_mPosX(743);
+				player.set_mPosY(261);
+			}
+			if (player.get_mPosY() < 0) {
+				room = 3;
+				player.set_mPosX(365);
+				player.set_mPosY(537);
+			}
+			//mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
+			//Reinicia el timer
+			stepTimer.start();
+
+			//animacion del personaje
+			player.animation();
+			//mosca.animation();
+
+			//mosca.shiftColliders();
 		}
 #pragma endregion
 
@@ -324,7 +395,7 @@ void PlayState::Draw(Game* game)
 
 
 
-	else if (room = 3) {
+	else if (room == 3) {
 		mapa3.draw(game->GetRenderer(), floor3);
 		//Dibuja el enemigo
 
@@ -335,6 +406,32 @@ void PlayState::Draw(Game* game)
 
 	}
 #pragma endregion
+
+#pragma region room4
+	else if (room == 4) {
+		mapa4.draw(game->GetRenderer(), floor4);
+		//Dibuja el enemigo
+
+		//Dibuja el personaje
+		player.render(game->GetRenderer());
+
+		mapa4.draw(game->GetRenderer(), walls4);
+
+	}
+#pragma endregion
+#pragma region room5
+	else if (room == 5) {
+		mapa5.draw(game->GetRenderer(), floor5);
+		//Dibuja el enemigo
+
+		//Dibuja el personaje
+		player.render(game->GetRenderer());
+
+		mapa5.draw(game->GetRenderer(), walls5);
+
+	}
+#pragma endregion
+
 	if (player.getPrint()) {
 		player.render(game->GetRenderer());
 	}
