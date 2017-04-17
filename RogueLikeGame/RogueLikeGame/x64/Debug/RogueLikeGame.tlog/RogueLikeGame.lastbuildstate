@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+<<<<<<< HEAD
 Debug|x64|C:\Users\girog\Documents\NoGameLimits Copias\NoGameLimits COLISION ATAQUE NO FUNCIONA\NoGameLimits\RogueLikeGame\|
+=======
+Debug|x64|C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\|
+>>>>>>> origin/v.0.1.2-Canvi-de-sales-i-interecció-amb-objectes

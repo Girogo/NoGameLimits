@@ -6,7 +6,11 @@
 #include <vector>
 #include <time.h>
 #include "Item.h"
+<<<<<<< HEAD
 #include "Enemy.h"
+=======
+#include "Mosca.h"
+>>>>>>> origin/v.0.1.2-Canvi-de-sales-i-interecció-amb-objectes
 
 class CPlayer : public CEntity
 {

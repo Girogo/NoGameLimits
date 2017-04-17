@@ -85,7 +85,11 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
+<<<<<<< HEAD
       <AdditionalLibraryDirectories>C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_ttf\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_mixer\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2_mixer\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+=======
+      <AdditionalLibraryDirectories>C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_ttf\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_mixer\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\Varez\Desktop\NoGameLimits-v.0.1.1-Intereccio-amb-objectes\RogueLikeGame\libs\SDL2\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2_image\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2_ttf\lib\x64;C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\libs\SDL2_mixer\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+>>>>>>> origin/v.0.1.2-Canvi-de-sales-i-interecció-amb-objectes
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>

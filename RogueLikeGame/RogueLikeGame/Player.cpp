@@ -1,7 +1,14 @@
 #include "Player.h"
+<<<<<<< HEAD
 
 
 CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer * window, std::vector<CEnemy*> enemigos) : CEntity(file, x, y, hight, width, window)
+=======
+#include "Entity.h"
+#include "Mosca.h"
+
+CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer * window) : CEntity(file, x, y, hight, width, window)
+>>>>>>> origin/v.0.1.2-Canvi-de-sales-i-interecció-amb-objectes
 {
 	this->gSpriteSheetTexture = CTexture::CTexture();
 	this->frame = 0;
