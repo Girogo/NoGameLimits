@@ -1,28 +1,30 @@
 #pragma once
 #include<SDL.h>
 #include "Texture.h"
-
 #include "Colission.h"
+#include "Enemy.h"
 
 
 class CFireBall
 {
 public:
 	CFireBall();
-	CFireBall(float x, float y, char direccion, SDL_Renderer*  m_WindowRenderer);
+	CFireBall(float x, float y, char direccion, SDL_Renderer*  m_WindowRenderer, std::vector<CEnemy*> enemigos);
 
 	~CFireBall();
 
-	bool loadMedia();
+	std::vector<CEnemy*> getEnemigos() { return enemigos; }
+
+	void loadMedia();
 
 	void animation();
 
 
-	void move(std::vector<SDL_Rect>& mCollidersFornt);
+	void move();
 
 	void render();
 
-	bool colision(std::vector<SDL_Rect>& mCollidersFornt);
+	bool colision();
 
 	//Gets the collision boxes
 	std::vector<SDL_Rect>& getCollidersFront();
@@ -33,9 +35,11 @@ private:
 	float x;
 	float y;
 
-	float xIni;
-	float yIni;
+	SDL_Rect rectFb;
+	SDL_Rect rectEnemy;
 
+	std::vector<CEnemy*> enemigos;
+	//CMosca* mosca;
 	char direccion;
 	int frame = 0;
 	int cont = 0;

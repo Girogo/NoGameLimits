@@ -10,6 +10,7 @@ public:
 	CEnemy();
 	~CEnemy();
 	void move(const Uint8 * keyboard_state_array);
+	void shiftColliders();
 	virtual bool loadMedia(SDL_Renderer* m_WindowRenderer) = 0;
 	virtual void animation() = 0;
 protected:

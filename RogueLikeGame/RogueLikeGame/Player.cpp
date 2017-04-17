@@ -1,7 +1,7 @@
 #include "Player.h"
-#include "Entity.h"
-#include "Mosca.h"
-CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer * window) : CEntity(file, x, y, hight, width, window)
+
+
+CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer * window, std::vector<CEnemy*> enemigos) : CEntity(file, x, y, hight, width, window)
 {
 	this->gSpriteSheetTexture = CTexture::CTexture();
 	this->frame = 0;
@@ -12,6 +12,7 @@ CPlayer::CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer *
 	this->bombs = 0;
 	this->keys = 0;
 	this->m_WindowRenderer = window;
+	this->enemigos = enemigos;
 	this->zonaSegura.h = 100;
 	this->zonaSegura.w = 100;
 
@@ -900,13 +901,13 @@ void CPlayer::animation()
 
 				}
 
-				if (frame < 42 && cont == 1) {
+				if (frame < 42 && contAttack == 1) {
 
 					frame++;
 				}
 
 				if (frame == 41) {
-					cont = -1;
+					contAttack = -1;
 				}
 			}
 
@@ -916,12 +917,12 @@ void CPlayer::animation()
 				if (frame > 49 || frame < 43) {
 					frame = 43;
 				}
-				if (frame < 49 && cont == 1) {
+				if (frame < 49 && contAttack == 1) {
 					frame++;
 				}
 
 				if (frame == 48) {
-					cont = -1;
+					contAttack = -1;
 				}
 			}
 
@@ -930,12 +931,12 @@ void CPlayer::animation()
 				if ((frame > 56 || frame < 50)) {
 					frame = 50;
 				}
-				if (frame < 56 && cont == 1) {
+				if (frame < 56 && contAttack == 1) {
 					frame++;
 				}
 
 				if (frame == 55) {
-					cont = -1;
+					contAttack = -1;
 				}
 			}
 
@@ -946,12 +947,12 @@ void CPlayer::animation()
 					frame = 57;
 				}
 
-				if (frame < 63 && cont == 1) {
+				if (frame < 63 && contAttack == 1) {
 					frame++;
 				}
 
 				if (frame == 62) {
-					cont = -1;
+					contAttack = -1;
 				}
 
 			}
@@ -1053,7 +1054,11 @@ void CPlayer::animation()
 	if (cont > 10) {
 		cont = 0;
 	}
+	if (contAttack > 5) {
+		contAttack = 0;
+	}
 	cont++;
+	contAttack++;
 }
 
 void CPlayer::render(SDL_Renderer* m_WindowRenderer)
@@ -1073,20 +1078,21 @@ void CPlayer::render(SDL_Renderer* m_WindowRenderer)
 	else if (inmortal) {
 		gSpriteSheetTextureInmortal.render((int)mPosX, (int)mPosY + 6, currentClip, m_WindowRenderer);
 	}
+
+
 	if (!attacks.empty()) {
+		
 		int i = 0;
 		int deleteElement = 0;
 		bool borrar = false;
 
 		for (CFireBall* atac : attacks) {
-			extern CMosca moscaGlobal;
-			CMosca mosca2;
-			mosca2 = moscaGlobal;
+			enemigos = atac->getEnemigos();
 			atac->animation();
-			atac->move(moscaGlobal.getCollidersFrontE());
+			atac->move();
 			atac->render();
 
-			if (atac->colision(moscaGlobal.getCollidersFrontE())) {
+			if (atac->colision()) {
 				borrar = true;
 				colisionsFb.push_back(i);
 			}
@@ -1112,8 +1118,7 @@ void CPlayer::render(SDL_Renderer* m_WindowRenderer)
 }
 
 void CPlayer::attack() {
-	CFireBall* fb = new CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
-	//fb = CFireBall::CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer);
+	CFireBall* fb = new CFireBall(mPosX, mPosY, atkdirection, m_WindowRenderer, enemigos);
 	attacks.push_back(fb);
 
 }

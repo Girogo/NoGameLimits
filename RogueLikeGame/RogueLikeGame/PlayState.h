@@ -68,6 +68,7 @@ private:
 	CMapa mapa8;
 	list<CTile> collisionsMap2;
 	list<CTile> collisionsMap3;
+	std::vector<CEnemy*> enemigos;
 	CTimer stepTimer;
 	CGUI GUI;
 	std::vector<CItem> items;

@@ -1,23 +1,25 @@
 #pragma once
 #include<SDL.h>
 #include"Sprite.h"
-#include "Entity.h"
 #include "Texture.h"
 #include "FireBall.h"
 #include <vector>
 #include <time.h>
 #include "Item.h"
+#include "Enemy.h"
 
 class CPlayer : public CEntity
 {
 public:
-	CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer* window);
+	CPlayer(char * file, int x, int y, int hight, int width, SDL_Renderer* window, std::vector<CEnemy*> enemigos);
 	CPlayer();
 
+	//GETTERS Y SETTERS
 	int getVida() { return vida; };
 	int getCoins() { return coins; };
 	int getBombs() { return bombs; };
 	int getKeys() { return keys; };
+	std::vector<CEnemy*> getEnemigos() { return enemigos; }
 
 	void setVida(int i) { vida = i; };
 	void setCoins(int i) { coins = i; };
@@ -27,9 +29,8 @@ public:
 	int getFrame() { return frame; };
 	void setFrame(int frame) { this->frame = frame; };
 
-	//Necesarios?
+	//Necesario?
 	void move(const Uint8 *keyboard_state_array);
-	void move(int x, int y);
 	//
 	void handleEvent(SDL_Event& e);
 	bool loadMedia(SDL_Renderer* m_WindowRenderer);
@@ -65,6 +66,7 @@ private:
 	std::vector<CFireBall*> attacks;
 	std::vector<int> colisionsFb;
 	int cont = 0;
+	int contAttack = 0;
 	static const int WALKING_ANIMATION_FRAMES = 36;
 	static const int ATTACK_ANIMATION_FRAMES = 28;
 	static const int INMORTAL_ANIMATION_FRAMES = 36;
@@ -126,4 +128,7 @@ private:
 	//Temporitzador per ser inmortal
 	clock_t start;
 	clock_t diff;
+
+	//Vector enemics
+	std::vector<CEnemy*> enemigos;
 };

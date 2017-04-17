@@ -10,7 +10,7 @@
 
 
 PlayState PlayState::m_PlayState;
-CMosca moscaGlobal;
+//CMosca moscaGlobal;
 void PlayState::Init(Game* game)
 {
 
@@ -46,8 +46,9 @@ void PlayState::Init(Game* game)
 	//Constructor del jugador i enemigo, se passa la ubicacion de la imagen i sus datos igual que
 	//el renderer donde se carga
 	mosca = CMosca("../src/sprites/enemy/crab.bmp", 120, 200, 64, 64, game->GetRenderer());
+	enemigos.push_back(&mosca);
 
-	player = CPlayer("../src/sprites/pj/player.bmp", 180, 400, 64, 64, game->GetRenderer());
+	player = CPlayer("../src/sprites/pj/player.bmp", 180, 400, 64, 64, game->GetRenderer(), enemigos);
 	
 	
 	
@@ -182,10 +183,17 @@ void PlayState::HandleEvents(Game* game)
 
 			//animacion del personaje
 			player.animation();
-			mosca.animation();
 
-			mosca.shiftColliders();
-			moscaGlobal = mosca;
+
+			for (int i = 0; i < enemigos.size(); i++)
+			{
+				enemigos.at(i)->animation();
+				enemigos.at(i)->shiftColliders();
+			}
+			//mosca.animation();
+
+			//mosca.shiftColliders();
+			//moscaGlobal = mosca;
 		}
 
 #pragma endregion
@@ -209,6 +217,7 @@ void PlayState::HandleEvents(Game* game)
 				}
 			}
 
+
 			mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
 			//Reinicia el timer
 			stepTimer.start();
@@ -218,7 +227,7 @@ void PlayState::HandleEvents(Game* game)
 			mosca.animation();
 
 			mosca.shiftColliders();
-			moscaGlobal = mosca;
+			//moscaGlobal = mosca;
 		}
 #pragma endregion
 #pragma region room3
@@ -254,6 +263,8 @@ void PlayState::Update(Game* game)
 		//Play the music
 		Mix_PlayMusic(music.getMusicPartida(), -1);
 	}
+
+	enemigos = player.getEnemigos();
 }
 
 void PlayState::Draw(Game* game)
@@ -267,7 +278,11 @@ void PlayState::Draw(Game* game)
 		mapa.draw(game->GetRenderer(), floor);
 
 		//Dibuja el enemigo
-		mosca.render(game->GetRenderer());
+		for (int i = 0; i < enemigos.size(); i++)
+		{
+			enemigos.at(i)->render(game->GetRenderer());
+		}
+		//mosca.render(game->GetRenderer());
 
 		//Dibuja el personaje
 		player.render(game->GetRenderer());
