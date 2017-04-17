@@ -11,12 +11,15 @@ public:
 	void move(float timeStep, list<CTile> wall, SDL_Rect  zonaSegura, CPlayer* player);
 	void move(float timeStep, list<CTile> wall);
 	bool loadMedia(SDL_Renderer* m_WindowRenderer);
+	void render(SDL_Renderer* m_WindowRenderer);
 	void animation();
 	void shiftColliders();
 	//Gets the collision boxes
 	std::vector<SDL_Rect>& getCollidersFrontE();
 private:
+	CTexture gSpriteSheetTextureDead;
 	//Enemy collision boxes
 	std::vector<SDL_Rect> mCollidersFrontE;
 	//Moves the collision boxes relative to the dot's offset
+
 };

@@ -19,6 +19,7 @@ public:
 	bool getRIGHT() { return RIGHT; };
 	bool getLEFT() { return LEFT; };
 	int getFrame() { return frame; };
+	bool getFinAnimacion() { return finAnimacion; }
 
 	void setFrame(int frame) { this->frame = frame; };
 	void set_file(char* file);
@@ -34,7 +35,7 @@ public:
 	virtual void move(const Uint8 *keyboard_state_array) = 0;
 
 	virtual void animation() = 0;
-	void render(SDL_Renderer * m_WindowRenderer);
+	virtual void render(SDL_Renderer * m_WindowRenderer);
 	virtual bool loadMedia(SDL_Renderer* m_WindowRenderer) = 0;
 
 	//Carga la entidad
@@ -45,6 +46,7 @@ public:
 	SDL_Rect getCollider() { return mCollider; };
 	int getDead() { return dead; }
 private:
+	
 	//Pantalla donde se carga la entidad
 	SDL_Renderer* window;
 	//Imagen de la entidad
@@ -60,6 +62,9 @@ protected:
 	//Posicion
 	float mPosX;
 	float mPosY;
+
+	//Variable para saber si ha acabado la animación de muerte
+	bool finAnimacion = false;
 
 	//Rectangulo colisionador
 	SDL_Rect mCollider;

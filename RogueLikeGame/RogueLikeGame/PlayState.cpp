@@ -189,6 +189,7 @@ void PlayState::HandleEvents(Game* game)
 				player.set_mPosX(400);
 				player.set_mPosY(4);
 			}
+			//Dibuja el enemigo
 
 			mosca.move(timeStep, collisions, player.getZonaSegura(), &player);
 			//Reinicia el timer
@@ -335,7 +336,23 @@ void PlayState::Update(Game* game)
 		Mix_PlayMusic(music.getMusicPartida(), -1);
 	}
 
-	enemigos = player.getEnemigos();
+	//enemigos = player.getEnemigos();
+
+	/*bool eliminado = false;
+
+	for (int i = 0; i < enemigos.size(); i++)
+	{
+		if (enemigos.at(i)->getFinAnimacion()) {
+			eliminado = true;
+		}
+
+	}
+	if (eliminado) {
+		eliminado = false;
+		enemigos.clear();
+		printf("ELIMINADO");
+	}*/
+
 }
 
 void PlayState::Draw(Game* game)
@@ -344,6 +361,20 @@ void PlayState::Draw(Game* game)
 	//Dibuja el mapa
 #pragma region spawn
 
+	bool eliminado = false;
+
+	for (int i = 0; i < enemigos.size(); i++)
+	{
+		if (enemigos.at(i)->getFinAnimacion()) {
+			eliminado = true;
+		}
+
+	}
+	if (eliminado) {
+		eliminado = false;
+		enemigos.clear();
+		printf("ELIMINADO");
+	}
 
 	if (room == 1) {
 		mapa.draw(game->GetRenderer(), floor);

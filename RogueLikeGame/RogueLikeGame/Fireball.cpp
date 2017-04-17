@@ -633,6 +633,7 @@ bool CFireBall::colision() {
 
 		//If none of the sides from A are outside B
 		//enemigos.clear();
+		enemigos.at(i)->setVida(enemigos.at(i)->getVida() - 1);
 		printf("DAÑADO");
 		return true;
 

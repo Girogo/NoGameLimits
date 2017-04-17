@@ -1,4 +1,9 @@
-﻿  PlayState.cpp
-c:\users\varez\desktop\fadaf\nogamelimits\roguelikegame\roguelikegame\playstate.cpp(449): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  RogueLikeGame.vcxproj -> C:\Users\Varez\Desktop\fadaf\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.exe
-  RogueLikeGame.vcxproj -> C:\Users\Varez\Desktop\fadaf\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)
+﻿  Mosca.cpp
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(270): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(271): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(274): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(275): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(592): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\girog\documents\github\nogamelimits\roguelikegame\roguelikegame\mosca.cpp(595): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  RogueLikeGame.vcxproj -> C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.exe
+  RogueLikeGame.vcxproj -> C:\Users\girog\Documents\GitHub\NoGameLimits\RogueLikeGame\x64\Debug\RogueLikeGame.pdb (Partial PDB)

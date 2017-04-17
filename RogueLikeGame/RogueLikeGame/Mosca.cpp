@@ -2,7 +2,8 @@
 
 CMosca::CMosca(char * file, int x, int y, int hight, int width, SDL_Renderer * window) : CEnemy(file, x, y, hight, width, window)
 {
-
+	this->vida = 3;
+	this->dead = 0;
 	//Create the necessary SDL_Rects frontalment
 	mCollidersFrontE.resize(17);
 
@@ -190,6 +191,7 @@ void CMosca::move(float timeStep, list<CTile> wall, SDL_Rect zonaSegura, CPlayer
 	if (CColission::checkColission(mCollider, zonaSegura) && !colision && !crash) {
 		if (colisionDamage && !player->getInmortal()) {
 			player->setVida(player->getVida() - 1);
+
 			player->setInmortal(true);
 		}
 		focus = true;
@@ -280,7 +282,7 @@ bool CMosca::loadMedia(SDL_Renderer * m_WindowRenderer)
 {
 	//Loading succes flag
 	bool success = true;
-
+	SDL_Rect gSpriteClipsCom;
 	//Load sprite sheet texture
 	if (!gSpriteSheetTexture.loadFromFile("../src/sprites/enemy/mosca.bmp", m_WindowRenderer))
 	{
@@ -289,7 +291,7 @@ bool CMosca::loadMedia(SDL_Renderer * m_WindowRenderer)
 	//definimos la posiciones de las sprites
 	else
 	{
-		SDL_Rect gSpriteClipsCom;
+		
 		//0
 		gSpriteClipsCom.x = 1;
 		gSpriteClipsCom.y = 1;
@@ -402,44 +404,180 @@ bool CMosca::loadMedia(SDL_Renderer * m_WindowRenderer)
 		gSpriteClipsCom.h = 64;
 		gSpriteClips.push_back(gSpriteClipsCom);
 	}
+
+	if (!gSpriteSheetTextureDead.loadFromFile("../src/sprites/dead/Explosion.bmp", m_WindowRenderer))
+	{
+		printf("Failed to load damage animation texture!\n");
+		success = false;
+	}
+	else {
+
+		//16
+		gSpriteClipsCom.x = 0;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//17
+		gSpriteClipsCom.x = 96;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//18
+		gSpriteClipsCom.x = 192;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//19
+		gSpriteClipsCom.x = 288;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//20
+		gSpriteClipsCom.x = 384;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//21
+		gSpriteClipsCom.x = 480;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//22
+		gSpriteClipsCom.x = 576;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//23
+		gSpriteClipsCom.x = 672;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//24
+		gSpriteClipsCom.x = 768;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//25
+		gSpriteClipsCom.x = 864;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//26
+		gSpriteClipsCom.x = 960;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//27
+		gSpriteClipsCom.x = 1056;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 96;
+		gSpriteClipsCom.h = 96;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+		//28
+		gSpriteClipsCom.x = 0;
+		gSpriteClipsCom.y = 0;
+		gSpriteClipsCom.w = 0;
+		gSpriteClipsCom.h = 0;
+		gSpriteClips.push_back(gSpriteClipsCom);
+
+
+	}
 	return success;
 }
 
 void CMosca::animation()
 {
-	if (frameCont == 9) {
-		frame++;
-	}
-	bool entrat = false;
-	if (frame == 16) {
-		printf("HOLA");
-	}
-	if (LEFT) {
-		if (frame < 12 || frame > 15) {
-			frame = 12;
+
+	if (vida > 0) {
+		if (frameCont == 9) {
+			frame++;
 		}
-	
-	}
-	if (RIGHT) {
-		if (frame < 8 || frame > 11) {
-			frame = 8;
+		bool entrat = false;
+		if (frame == 16) {
+			printf("HOLA");
 		}
-		
-	}
-	if (DOWN && !entrat) {
-		if (frame < 0 || frame > 3) {
-			frame = 0;
+		if (LEFT) {
+			if (frame < 12 || frame > 15) {
+				frame = 12;
+			}
+
 		}
-	}
-	if (UP && !entrat) {
-		if (frame < 4 || frame > 7) {
-			frame = 4;
+		if (RIGHT) {
+			if (frame < 8 || frame > 11) {
+				frame = 8;
+			}
+
 		}
+		if (DOWN && !entrat) {
+			if (frame < 0 || frame > 3) {
+				frame = 0;
+			}
+		}
+		if (UP && !entrat) {
+			if (frame < 4 || frame > 7) {
+				frame = 4;
+			}
+		}
+
+	}
+	else {
+		this->mVelX = 0;
+		this->mVelY = 0;
+
+		if (dead == 0) {
+			frame = 16;
+			dead++;
+		}
+		else if (frame < 28 && frameCont == 9) {
+			frame++;
+		}
+		else if (frame >= 28) {
+			finAnimacion = true;
+			dead = -1;
+		}
+
 	}
 	if (frameCont > 9) {
 		frameCont = 0;
 	}
 	frameCont++;
+}
+
+void CMosca::render(SDL_Renderer* m_WindowRenderer) {
+
+	SDL_Rect* currentClip = &gSpriteClips[frame];
+
+	if (vida > 0) {
+
+		gSpriteSheetTexture.render((int)mPosX, (int)mPosY, currentClip, m_WindowRenderer);
+	}
+	else {
+		gSpriteSheetTextureDead.render((int)mPosX, (int)mPosY, currentClip, m_WindowRenderer);
+	}
+
 }
 
 void CMosca::shiftColliders()
